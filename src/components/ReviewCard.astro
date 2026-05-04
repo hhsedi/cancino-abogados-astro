@@ -1,0 +1,20 @@
+---
+type Props = {
+  name: string;
+  context: string;
+  quote: string;
+};
+
+const { name, context, quote } = Astro.props;
+---
+
+<article class="relative rounded-md border border-slate-200 bg-white p-6 shadow-soft">
+  <div class="flex gap-1 text-gold" aria-label="Cinco estrellas">
+    {Array.from({ length: 5 }).map(() => <span class="text-base">★</span>)}
+  </div>
+  <p class="mt-5 text-base leading-8 text-slate-700">“{quote}”</p>
+  <div class="mt-6 border-t border-slate-200 pt-4">
+    <p class="font-semibold text-night">{name}</p>
+    <p class="text-sm text-slate-500">{context}</p>
+  </div>
+</article>

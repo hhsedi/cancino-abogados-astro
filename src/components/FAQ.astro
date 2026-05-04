@@ -1,0 +1,24 @@
+---
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type Props = {
+  items: FAQItem[];
+};
+
+const { items } = Astro.props;
+---
+
+<div class="divide-y divide-slate-200 rounded-md border border-slate-200 bg-white">
+  {items.map((item) => (
+    <details class="group p-6">
+      <summary class="flex cursor-pointer list-none items-center justify-between gap-4 font-semibold text-night">
+        <span>{item.question}</span>
+        <span class="text-gold transition group-open:rotate-45">+</span>
+      </summary>
+      <p class="mt-4 text-sm leading-7 text-slate-600">{item.answer}</p>
+    </details>
+  ))}
+</div>

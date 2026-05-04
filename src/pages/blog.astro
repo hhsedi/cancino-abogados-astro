@@ -1,0 +1,48 @@
+---
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import CTASection from "@components/CTASection.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { posts } from "@data/posts";
+import { breadcrumbSchema, legalServiceSchema } from "@utils/schema";
+import { buildCanonical } from "@utils/seo";
+
+const schema = [
+  legalServiceSchema(),
+  breadcrumbSchema([
+    { name: "Inicio", url: buildCanonical("/") },
+    { name: "Blog", url: buildCanonical("/blog") }
+  ])
+];
+---
+
+<MainLayout
+  title="Blog legal"
+  description="Artículos simulados de Cancino Abogados sobre contratos, compraventa inmobiliaria, derecho laboral y prevención legal en empresas."
+  path="/blog"
+  schema={schema}
+>
+  <section class="bg-mist py-14">
+    <div class="container-page">
+      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Blog" }]} />
+      <h1 class="mt-6 font-serif text-4xl font-semibold text-night sm:text-5xl">Blog legal</h1>
+      <p class="section-copy">
+        Contenidos generales para comprender riesgos frecuentes y preparar mejor una consulta jurídica.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container-page grid gap-5 md:grid-cols-2">
+      {posts.map((post) => (
+        <article class="rounded-md border border-slate-200 bg-white p-6 shadow-soft">
+          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{post.category}</p>
+          <h2 class="mt-4 font-serif text-2xl font-semibold text-night">{post.title}</h2>
+          <p class="mt-4 text-sm leading-7 text-slate-600">{post.excerpt}</p>
+          <p class="mt-6 text-xs text-slate-500">{new Date(post.date).toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" })}</p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <CTASection title="¿Un artículo se parece a tu situación?" text="Escríbenos para revisar tus antecedentes concretos y evaluar alternativas." />
+</MainLayout>

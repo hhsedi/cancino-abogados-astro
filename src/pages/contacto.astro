@@ -1,0 +1,126 @@
+---
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { site } from "@data/site";
+import { breadcrumbSchema, legalServiceSchema } from "@utils/schema";
+import { buildCanonical } from "@utils/seo";
+
+const schema = [
+  legalServiceSchema(),
+  breadcrumbSchema([
+    { name: "Inicio", url: buildCanonical("/") },
+    { name: "Contacto", url: buildCanonical("/contacto") }
+  ])
+];
+
+const contactItems = [
+  {
+    label: "WhatsApp",
+    value: site.phone,
+    href: site.whatsapp,
+    helper: "Respuesta directa para coordinar una consulta."
+  },
+  {
+    label: "Correo",
+    value: site.email,
+    href: site.emailHref,
+    helper: "Ideal para enviar antecedentes y documentos."
+  },
+  {
+    label: "Ubicaciones",
+    value: site.locations.join(" · "),
+    href: undefined,
+    helper: "Atención vinculada a Viña del Mar, Santiago y Los Andes."
+  }
+];
+---
+
+<MainLayout
+  title="Contacto"
+  description="Contacta a Cancino Abogados por WhatsApp, teléfono o correo. Atención legal en Viña del Mar, Santiago y Los Andes."
+  path="/contacto"
+  schema={schema}
+>
+  <section class="bg-mist py-14">
+    <div class="container-page">
+      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Contacto" }]} />
+      <h1 class="mt-6 font-serif text-4xl font-semibold text-night sm:text-5xl">Contacto</h1>
+      <p class="section-copy">
+        Cuéntanos brevemente tu situación y comparte los antecedentes disponibles para coordinar una orientación inicial.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20 lg:py-24">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+      <aside class="space-y-5">
+        <div class="rounded-md bg-night p-8 text-white shadow-[0_24px_80px_rgba(7,26,36,0.18)]">
+          <p class="eyebrow">Contacto directo</p>
+          <h2 class="mt-3 font-serif text-3xl font-semibold">Agenda una consulta</h2>
+          <p class="mt-4 text-sm leading-7 text-white/70">
+            Para una revisión eficiente, envía una breve descripción del caso y los documentos principales disponibles.
+          </p>
+          <a class="btn-primary mt-8 w-full" href={site.whatsapp} target="_blank" rel="noreferrer">Contactar por WhatsApp</a>
+        </div>
+
+        <div class="grid gap-4">
+          {contactItems.map((item) => (
+            <div class="rounded-md border border-slate-200 bg-white p-5 shadow-soft">
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">{item.label}</p>
+              {item.href ? (
+                <a class="mt-2 block font-semibold text-petroleum hover:text-gold" href={item.href} target={item.label === "WhatsApp" ? "_blank" : undefined} rel={item.label === "WhatsApp" ? "noreferrer" : undefined}>
+                  {item.value}
+                </a>
+              ) : (
+                <p class="mt-2 font-semibold text-petroleum">{item.value}</p>
+              )}
+              <p class="mt-2 text-sm leading-6 text-slate-500">{item.helper}</p>
+            </div>
+          ))}
+        </div>
+      </aside>
+
+      <form class="rounded-md border border-slate-200 bg-white p-6 shadow-soft sm:p-8" aria-label="Formulario visual de contacto">
+        <div class="border-b border-slate-200 pb-6">
+          <p class="eyebrow">Formulario visual</p>
+          <h2 class="mt-3 font-serif text-3xl font-semibold text-night">Consulta legal</h2>
+          <p class="mt-3 text-sm leading-7 text-slate-600">
+            Este formulario es una maqueta preparada para integrarse más adelante con WordPress Headless, CRM o correo transaccional.
+          </p>
+        </div>
+
+        <div class="mt-8 grid gap-5 sm:grid-cols-2">
+          <label class="grid gap-2 text-sm font-bold text-night">
+            Nombre
+            <input class="rounded-md border border-slate-200 bg-mist/40 px-4 py-3 font-normal text-slate-700 outline-none transition focus:border-gold focus:bg-white focus:ring-2 focus:ring-gold/20" type="text" placeholder="Tu nombre" />
+          </label>
+          <label class="grid gap-2 text-sm font-bold text-night">
+            Correo
+            <input class="rounded-md border border-slate-200 bg-mist/40 px-4 py-3 font-normal text-slate-700 outline-none transition focus:border-gold focus:bg-white focus:ring-2 focus:ring-gold/20" type="email" placeholder="tu@email.cl" />
+          </label>
+          <label class="grid gap-2 text-sm font-bold text-night">
+            Teléfono
+            <input class="rounded-md border border-slate-200 bg-mist/40 px-4 py-3 font-normal text-slate-700 outline-none transition focus:border-gold focus:bg-white focus:ring-2 focus:ring-gold/20" type="tel" placeholder="+56 9" />
+          </label>
+          <label class="grid gap-2 text-sm font-bold text-night">
+            Área de consulta
+            <select class="rounded-md border border-slate-200 bg-mist/40 px-4 py-3 font-normal text-slate-700 outline-none transition focus:border-gold focus:bg-white focus:ring-2 focus:ring-gold/20">
+              <option>Derecho Civil</option>
+              <option>Derecho Comercial</option>
+              <option>Derecho Inmobiliario</option>
+              <option>Derecho Laboral</option>
+            </select>
+          </label>
+          <label class="grid gap-2 text-sm font-bold text-night sm:col-span-2">
+            Mensaje
+            <textarea class="min-h-40 rounded-md border border-slate-200 bg-mist/40 px-4 py-3 font-normal text-slate-700 outline-none transition focus:border-gold focus:bg-white focus:ring-2 focus:ring-gold/20" placeholder="Describe brevemente tu consulta"></textarea>
+          </label>
+        </div>
+        <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <button class="btn-primary" type="button">Enviar consulta</button>
+          <p class="text-xs leading-6 text-slate-500">Botón no funcional en esta maqueta.</p>
+        </div>
+      </form>
+    </div>
+  </section>
+</MainLayout>

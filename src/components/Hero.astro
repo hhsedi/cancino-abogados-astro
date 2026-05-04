@@ -1,0 +1,66 @@
+---
+import { site } from "@data/site";
+---
+
+<section class="relative overflow-hidden bg-night text-white">
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(201,164,92,0.14),transparent_30%),linear-gradient(135deg,rgba(15,45,58,0.88),rgba(7,26,36,1)_58%)]"></div>
+  <div class="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white/10 to-transparent"></div>
+
+  <div class="container-page relative grid min-h-[calc(100vh-4.75rem)] items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+    <div class="max-w-4xl">
+      <div class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/80">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+        Viña del Mar · Santiago · Los Andes
+      </div>
+      <h1 class="mt-7 font-serif text-4xl font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
+        {site.tagline} para decisiones legales relevantes
+      </h1>
+      <p class="mt-6 max-w-2xl text-lg leading-9 text-white/75">
+        Asesoría jurídica en derecho civil, comercial, inmobiliario y laboral, con análisis riguroso, comunicación clara y atención en español e inglés.
+      </p>
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        <a class="btn-primary" href={site.whatsapp} target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+        <a class="btn-secondary" href="/contacto">Coordinar contacto</a>
+      </div>
+      <div class="mt-10 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-3">
+        {["Derecho Civil", "Derecho Comercial", "Derecho Inmobiliario y Laboral"].map((item) => (
+          <div>
+            <p class="text-sm font-bold text-white">{item}</p>
+            <p class="mt-1 text-xs leading-6 text-white/55">Orientación estratégica y preventiva.</p>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <aside class="dark-panel p-6 sm:p-8">
+      <div class="border-b border-white/10 pb-7">
+        <p class="eyebrow">Dirección profesional</p>
+        <h2 class="mt-3 font-serif text-3xl font-semibold text-white">{site.lawyer.name}</h2>
+        <p class="mt-3 text-sm leading-7 text-white/70">
+          Abogado por la Universidad de Valparaíso. Magíster en Derecho, mención Derecho de la Empresa, LL.M. UC.
+        </p>
+      </div>
+      <div class="grid gap-4 border-b border-white/10 py-7 sm:grid-cols-2">
+        <div class="rounded-md bg-white/[0.06] p-4">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Reconocimiento</p>
+          <p class="mt-2 text-sm leading-6 text-white/80">Mejor Licenciado 2014</p>
+        </div>
+        <div class="rounded-md bg-white/[0.06] p-4">
+          <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Idiomas</p>
+          <p class="mt-2 text-sm leading-6 text-white/80">Español e inglés</p>
+        </div>
+      </div>
+      <div class="pt-7">
+        <p class="font-serif text-2xl font-semibold text-gold">{site.promise}</p>
+        <div class="mt-5 grid gap-3">
+          {["Diagnóstico claro del problema jurídico.", "Estrategia ajustada a tus antecedentes.", "Acompañamiento formal y responsable."].map((item) => (
+            <div class="flex gap-3 text-sm leading-7 text-white/75">
+              <span class="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>

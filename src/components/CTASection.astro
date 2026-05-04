@@ -1,0 +1,30 @@
+---
+import { site } from "@data/site";
+
+type Props = {
+  title?: string;
+  text?: string;
+};
+
+const {
+  title = "Conversemos sobre tu caso",
+  text = "Agenda una consulta para revisar antecedentes, resolver dudas iniciales y definir los próximos pasos con claridad."
+} = Astro.props;
+---
+
+<section class="bg-petroleum py-16 text-white">
+  <div class="container-page">
+    <div class="relative overflow-hidden rounded-md border border-white/10 bg-night px-6 py-10 shadow-[0_24px_80px_rgba(7,26,36,0.24)] sm:px-10 lg:flex lg:items-center lg:justify-between lg:gap-10">
+      <div class="absolute right-0 top-0 h-32 w-32 bg-gold/10 blur-3xl"></div>
+      <div class="relative">
+        <p class="eyebrow">Contacto directo</p>
+        <h2 class="mt-3 font-serif text-3xl font-semibold sm:text-4xl">{title}</h2>
+        <p class="mt-4 max-w-2xl text-sm leading-7 text-white/75">{text}</p>
+      </div>
+      <div class="relative mt-8 flex flex-col gap-3 sm:flex-row lg:mt-0">
+        <a class="btn-primary" href={site.whatsapp} target="_blank" rel="noreferrer">WhatsApp</a>
+        <a class="btn-secondary" href="/contacto">Contacto</a>
+      </div>
+    </div>
+  </div>
+</section>

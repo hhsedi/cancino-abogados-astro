@@ -1,0 +1,37 @@
+---
+type Props = {
+  title: string;
+  summary: string;
+  href: string;
+};
+
+const { title, summary, href } = Astro.props;
+
+const iconPaths: Record<string, string> = {
+  "Derecho Civil":
+    "M12 3v18M6 7h12M7 7l-3 6h6L7 7Zm10 0l-3 6h6l-3-6ZM5 21h14",
+  "Derecho Comercial":
+    "M4 8h16v11H4V8Zm4 0V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M4 13h16M12 12v2",
+  "Derecho Inmobiliario":
+    "M3 11l9-7 9 7M5 10v10h14V10M9 20v-6h6v6",
+  "Derecho Laboral":
+    "M8 6h8M9 4h6l1 4H8l1-4ZM5 9h14v10H5V9Zm3 4h8"
+};
+
+const path = iconPaths[title] ?? "M12 4v16M4 12h16";
+---
+
+<article class="group relative flex h-full flex-col overflow-hidden rounded-md border border-slate-200/90 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1.5 hover:border-gold/70 hover:shadow-[0_24px_70px_rgba(7,26,36,0.13)]">
+  <div class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-gold via-[#e0c783] to-petroleum opacity-0 transition group-hover:opacity-100"></div>
+  <div class="flex h-12 w-12 items-center justify-center rounded-md bg-petroleum text-gold transition group-hover:bg-night">
+    <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      <path d={path}></path>
+    </svg>
+  </div>
+  <h3 class="mt-6 font-serif text-2xl font-semibold text-night">{title}</h3>
+  <p class="mt-4 flex-1 text-sm leading-7 text-slate-600">{summary}</p>
+  <a class="mt-7 inline-flex items-center gap-2 text-sm font-bold text-petroleum transition group-hover:text-gold" href={href}>
+    Ver servicio
+    <span aria-hidden="true" class="transition group-hover:translate-x-1">→</span>
+  </a>
+</article>

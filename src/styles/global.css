@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: #fbfcfd;
+  color: #1f2933;
+}
+
+a {
+  text-decoration: none;
+}
+
+::selection {
+  background: #c9a45c;
+  color: #071a24;
+}
+
+.container-page {
+  @apply mx-auto w-full max-w-7xl px-5 sm:px-6 lg:px-8;
+}
+
+.eyebrow {
+  @apply text-xs font-bold uppercase tracking-[0.22em] text-gold;
+}
+
+.section-title {
+  @apply mt-3 font-serif text-3xl font-semibold tracking-normal text-night sm:text-4xl lg:text-5xl;
+}
+
+.section-copy {
+  @apply mt-5 max-w-3xl text-base leading-8 text-slate-600;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-md bg-gold px-6 py-3.5 text-sm font-bold text-night shadow-[0_14px_34px_rgba(201,164,92,0.24)] transition hover:-translate-y-0.5 hover:bg-[#d7b76d] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-md border border-white/25 bg-white/10 px-6 py-3.5 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-white/15 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-night;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center rounded-md border border-petroleum/15 bg-white px-6 py-3.5 text-sm font-bold text-petroleum shadow-sm transition hover:-translate-y-0.5 hover:border-gold hover:text-night focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+}
+
+.premium-panel {
+  @apply rounded-md border border-slate-200/80 bg-white shadow-soft;
+}
+
+.dark-panel {
+  @apply rounded-md border border-white/10 bg-white/[0.055] shadow-[0_24px_80px_rgba(0,0,0,0.22)] backdrop-blur;
+}

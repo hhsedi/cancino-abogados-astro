@@ -1,0 +1,26 @@
+---
+import { buildCanonical, buildTitle } from "@utils/seo";
+
+type Props = {
+  title?: string;
+  description: string;
+  path?: string;
+  schema?: Record<string, unknown> | Record<string, unknown>[];
+};
+
+const { title, description, path = "/", schema } = Astro.props;
+const pageTitle = buildTitle(title);
+const canonical = buildCanonical(path);
+const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+---
+
+<title>{pageTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta property="og:title" content={pageTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={canonical} />
+<meta property="og:locale" content="es_CL" />
+<meta name="twitter:card" content="summary_large_image" />
+{schemas.map((item) => <script type="application/ld+json" set:html={JSON.stringify(item)} />)}

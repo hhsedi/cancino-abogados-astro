@@ -1,0 +1,50 @@
+---
+import { services } from "@data/services";
+import { site } from "@data/site";
+---
+
+<footer class="bg-night text-white">
+  <div class="container-page grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.3fr_0.9fr_0.9fr_1fr]">
+    <div>
+      <p class="font-serif text-2xl font-semibold">{site.name}</p>
+      <p class="mt-4 max-w-md text-sm leading-7 text-white/70">
+        {site.description}
+      </p>
+      <p class="mt-5 text-sm font-semibold text-gold">{site.promise}</p>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-gold">Áreas de práctica</h2>
+      <ul class="mt-4 space-y-3 text-sm text-white/75">
+        {services.map((service) => (
+          <li><a class="hover:text-white" href={`/servicios/${service.slug}`}>{service.title}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-gold">Enlaces</h2>
+      <ul class="mt-4 space-y-3 text-sm text-white/75">
+        <li><a class="hover:text-white" href="/servicios">Servicios legales</a></li>
+        <li><a class="hover:text-white" href="/abogado-saul-cancino">Abogado Saúl Cancino</a></li>
+        <li><a class="hover:text-white" href="/blog">Blog legal</a></li>
+        <li><a class="hover:text-white" href="/contacto">Contacto</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-gold">Contacto</h2>
+      <ul class="mt-4 space-y-3 text-sm text-white/75">
+        <li><a class="hover:text-white" href={site.phoneHref}>{site.phone}</a></li>
+        <li><a class="hover:text-white" href={site.emailHref}>{site.email}</a></li>
+        <li>{site.locations.join(" · ")}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="border-t border-white/10">
+    <div class="container-page flex flex-col gap-3 py-5 text-xs text-white/55 sm:flex-row sm:items-center sm:justify-between">
+      <p>© {new Date().getFullYear()} {site.name}. Todos los derechos reservados.</p>
+      <p>Información general. No constituye promesa de resultado legal ni reemplaza una consulta personalizada.</p>
+    </div>
+  </div>
+</footer>

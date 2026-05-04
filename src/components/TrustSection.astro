@@ -1,0 +1,17 @@
+---
+import { site } from "@data/site";
+---
+
+<section class="bg-mist py-16">
+  <div class="container-page grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
+    <div>
+      <p class="eyebrow">Enfoque profesional</p>
+      <h2 class="section-title">{site.promise}</h2>
+    </div>
+    <div class="grid gap-4 sm:grid-cols-3">
+      {["Experiencia aplicada a problemas reales.", "Rigor en el análisis de antecedentes.", "Compromiso con una comunicación clara."].map((item) => (
+        <div class="rounded-md bg-white p-5 text-sm leading-7 text-slate-700 shadow-soft">{item}</div>
+      ))}
+    </div>
+  </div>
+</section>
