@@ -10,6 +10,11 @@ type FAQItem = {
   answer: string;
 };
 
+const areaServed = site.locations.map((location) => ({
+  "@type": "City",
+  name: location
+}));
+
 export const legalServiceSchema = () => ({
   "@context": "https://schema.org",
   "@type": "LegalService",
@@ -18,16 +23,34 @@ export const legalServiceSchema = () => ({
   description: site.description,
   telephone: site.phone,
   email: site.email,
-  areaServed: site.locations.map((location) => ({
-    "@type": "City",
-    name: location
-  })),
-  availableLanguage: site.lawyer.languages
+  areaServed,
+  availableLanguage: site.lawyer.languages,
+  founder: {
+    "@type": "Person",
+    name: site.lawyer.name
+  }
+});
+
+export const localBusinessSchema = () => ({
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  telephone: site.phone,
+  email: site.email,
+  areaServed,
+  priceRange: "$$",
+  founder: {
+    "@type": "Person",
+    name: site.lawyer.name,
+    jobTitle: site.lawyer.title
+  }
 });
 
 export const attorneySchema = () => ({
   "@context": "https://schema.org",
-  "@type": "Attorney",
+  "@type": "Person",
   name: site.lawyer.name,
   jobTitle: site.lawyer.title,
   worksFor: {

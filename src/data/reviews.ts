@@ -1,20 +1,20 @@
 export const reviews = [
   {
-    name: "Cliente particular",
-    context: "Asesoría civil",
+    name: "Cliente empresa",
+    context: "Asesoría contractual",
     quote:
-      "Recibí una explicación clara de mis alternativas y de los pasos posibles antes de tomar una decisión."
+      "La revisión fue clara, ordenada y nos permitió entender mejor los riesgos antes de firmar."
   },
   {
-    name: "Empresa de servicios",
-    context: "Contratos comerciales",
+    name: "Propietario",
+    context: "Asesoría inmobiliaria",
     quote:
-      "El trabajo fue ordenado, preciso y muy útil para mejorar nuestros contratos con proveedores."
+      "Recibimos orientación precisa para evaluar documentos de una operación inmobiliaria relevante."
   },
   {
-    name: "Cliente inmobiliario",
-    context: "Compraventa",
+    name: "Empleador",
+    context: "Prevención laboral",
     quote:
-      "La revisión de antecedentes nos ayudó a entender mejor los riesgos de la operación."
+      "El trabajo ayudó a ordenar antecedentes y definir pasos razonables para la empresa."
   }
 ];

@@ -1,17 +1,13 @@
+import { locations } from "@data/locations";
 import { services } from "@data/services";
 import { site } from "@data/site";
 
-const staticPages = [
-  "",
-  "servicios",
-  "abogado-saul-cancino",
-  "blog",
-  "contacto"
-];
+const staticPages = ["", "blog", "contacto"];
 
 export function GET() {
-  const servicePages = services.map((service) => `servicios/${service.slug}`);
-  const pages = [...staticPages, ...servicePages];
+  const servicePages = services.map((service) => service.slug);
+  const locationPages = locations.map((location) => location.slug);
+  const pages = [...staticPages, ...servicePages, ...locationPages];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages

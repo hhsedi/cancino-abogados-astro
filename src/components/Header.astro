@@ -1,13 +1,7 @@
 ---
+import { locations } from "@data/locations";
+import { services } from "@data/services";
 import { site } from "@data/site";
-
-const navItems = [
-  { label: "Inicio", href: "/" },
-  { label: "Servicios", href: "/servicios" },
-  { label: "Saúl Cancino", href: "/abogado-saul-cancino" },
-  { label: "Blog", href: "/blog" },
-  { label: "Contacto", href: "/contacto" }
-];
 ---
 
 <header class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/90 shadow-[0_1px_0_rgba(15,45,58,0.04)] backdrop-blur-xl">
@@ -18,11 +12,26 @@ const navItems = [
     </a>
 
     <nav class="hidden items-center gap-1 rounded-md border border-slate-200/80 bg-white px-1.5 py-1.5 lg:flex" aria-label="Navegación principal">
-      {navItems.map((item) => (
-        <a class="rounded-md px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum" href={item.href}>
-          {item.label}
+      <a class="rounded-md px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum" href="/">Inicio</a>
+      <div class="group relative">
+        <button class="rounded-md px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum" type="button">
+          Servicios
+        </button>
+        <div class="invisible absolute left-0 top-full z-50 w-72 translate-y-2 rounded-md border border-slate-200 bg-white p-2 opacity-0 shadow-soft transition group-hover:visible group-hover:translate-y-3 group-hover:opacity-100">
+          {services.map((service) => (
+            <a class="block rounded-md px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-mist hover:text-petroleum" href={`/${service.slug}/`}>
+              {service.title}
+            </a>
+          ))}
+        </div>
+      </div>
+      {locations.map((location) => (
+        <a class="rounded-md px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum" href={`/${location.slug}/`}>
+          {location.city}
         </a>
       ))}
+      <a class="rounded-md px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum" href="/blog/">Blog</a>
+      <a class="rounded-md px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum" href="/contacto/">Contacto</a>
     </nav>
 
     <div class="hidden items-center gap-3 lg:flex">
@@ -43,12 +52,20 @@ const navItems = [
 
   <div class="hidden border-t border-slate-200 bg-white lg:hidden" data-mobile-menu>
     <nav class="container-page grid gap-1 py-4" aria-label="Navegación móvil">
-      {navItems.map((item) => (
-        <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href={item.href}>
-          {item.label}
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href="/">Inicio</a>
+      {services.map((service) => (
+        <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href={`/${service.slug}/`}>
+          {service.title}
         </a>
       ))}
-      <a class="btn-primary mt-2" href={site.whatsapp} target="_blank" rel="noreferrer">Consultar por WhatsApp</a>
+      {locations.map((location) => (
+        <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href={`/${location.slug}/`}>
+          {location.city}
+        </a>
+      ))}
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href="/blog/">Blog</a>
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href="/contacto/">Contacto</a>
+      <a class="btn-primary mt-2" href={site.whatsapp} target="_blank" rel="noreferrer">Solicitar evaluación legal</a>
     </nav>
   </div>
 </header>

@@ -1,0 +1,184 @@
+---
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import CTASection from "@components/CTASection.astro";
+import FAQ from "@components/FAQ.astro";
+import ProcessSteps from "@components/ProcessSteps.astro";
+import ServiceCard from "@components/ServiceCard.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { locationServices, locations, type LocationLanding } from "@data/locations";
+import { services, type Service } from "@data/services";
+import { site } from "@data/site";
+import { breadcrumbSchema, faqPageSchema, legalServiceSchema, localBusinessSchema } from "@utils/schema";
+import { buildCanonical } from "@utils/seo";
+
+type PageProps =
+  | { kind: "service"; item: Service }
+  | { kind: "location"; item: LocationLanding };
+
+export function getStaticPaths() {
+  return [
+    ...services.map((service) => ({
+      params: { slug: service.slug },
+      props: { kind: "service", item: service }
+    })),
+    ...locations.map((location) => ({
+      params: { slug: location.slug },
+      props: { kind: "location", item: location }
+    }))
+  ];
+}
+
+const props = Astro.props as PageProps;
+const isService = props.kind === "service";
+const item = props.item;
+const path = `/${item.slug}/`;
+const pageTitle = isService ? item.title : item.h1;
+const description = isService ? item.metaDescription : item.metaDescription;
+const crumbs = [
+  { label: "Inicio", href: "/" },
+  { label: pageTitle }
+];
+const schema = [
+  isService ? legalServiceSchema() : localBusinessSchema(),
+  faqPageSchema(item.faqs),
+  breadcrumbSchema([
+    { name: "Inicio", url: buildCanonical("/") },
+    { name: pageTitle, url: buildCanonical(path) }
+  ])
+];
+
+const relatedServices = isService
+  ? services.filter((service) => service.slug !== item.slug).slice(0, 3)
+  : locationServices;
+---
+
+<MainLayout title={pageTitle} description={description} path={path} schema={schema}>
+  <section class="bg-mist py-14">
+    <div class="container-page">
+      <Breadcrumbs items={crumbs} />
+      <p class="eyebrow mt-6">{isService ? item.keyword : item.keyword}</p>
+      <h1 class="mt-4 max-w-4xl font-serif text-4xl font-semibold text-night sm:text-5xl">{pageTitle}</h1>
+      <p class="section-copy">{isService ? item.intro : item.summary}</p>
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a class="btn-primary" href={site.whatsapp} target="_blank" rel="noreferrer">Solicitar evaluación legal</a>
+        <a class="btn-outline" href="/contacto/">Contactar a Cancino Abogados</a>
+      </div>
+    </div>
+  </section>
+
+  {isService ? (
+    <section class="py-20">
+      <div class="container-page grid gap-12 lg:grid-cols-[0.72fr_0.28fr]">
+        <article>
+          <h2 class="font-serif text-3xl font-semibold text-night">{item.specializedHeading}</h2>
+          <p class="mt-5 text-base leading-8 text-slate-600">{item.intro}</p>
+
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl font-semibold text-night">¿En qué casos puede necesitar este servicio?</h2>
+            <ul class="mt-5 grid gap-3 text-sm leading-7 text-slate-600 md:grid-cols-2">
+              {item.cases.map((caseItem) => <li class="border-l-2 border-gold pl-4">{caseItem}</li>)}
+            </ul>
+          </section>
+
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl font-semibold text-night">Cómo trabaja Cancino Abogados este tipo de casos</h2>
+            <div class="mt-6">
+              <ProcessSteps />
+            </div>
+            <ul class="mt-6 grid gap-3 text-sm leading-7 text-slate-600 md:grid-cols-2">
+              {item.approach.map((step) => <li class="rounded-md bg-mist p-4">{step}</li>)}
+            </ul>
+          </section>
+
+          <section class="mt-12 rounded-md bg-mist p-7">
+            <h2 class="font-serif text-2xl font-semibold text-night">Beneficios de contar con asesoría legal oportuna</h2>
+            <ul class="mt-5 grid gap-3 text-sm leading-7 text-slate-600 md:grid-cols-3">
+              {item.benefits.map((benefit) => <li>{benefit}</li>)}
+            </ul>
+          </section>
+
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl font-semibold text-night">Servicios relacionados</h2>
+            <div class="mt-6 grid gap-5 md:grid-cols-3">
+              {relatedServices.map((service) => (
+                <ServiceCard title={service.title} summary={service.summary} href={`/${service.slug}/`} />
+              ))}
+            </div>
+          </section>
+
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl font-semibold text-night">Preguntas frecuentes sobre {item.title.toLowerCase()}</h2>
+            <div class="mt-6">
+              <FAQ items={item.faqs} />
+            </div>
+          </section>
+        </article>
+
+        <aside class="lg:sticky lg:top-28 lg:self-start">
+          <div class="rounded-md border border-slate-200 bg-white p-6 shadow-soft">
+            <h2 class="font-serif text-xl font-semibold text-night">Solicite una evaluación legal</h2>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Comparta sus antecedentes para evaluar riesgos, alternativas y próximos pasos.
+            </p>
+            <a class="btn-primary mt-5 w-full" href={site.whatsapp} target="_blank" rel="noreferrer">Hablar con un abogado</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  ) : (
+    <section class="py-20">
+      <div class="container-page grid gap-12 lg:grid-cols-[0.72fr_0.28fr]">
+        <article>
+          <h2 class="font-serif text-3xl font-semibold text-night">Asesoría legal en {item.city} para empresas y personas</h2>
+          <p class="mt-5 text-base leading-8 text-slate-600">{item.audience}</p>
+
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl font-semibold text-night">Servicios legales disponibles en {item.city}</h2>
+            <div class="mt-6 grid gap-5 md:grid-cols-2">
+              {locationServices.map((service) => (
+                <article class="rounded-md border border-slate-200 bg-white p-5 shadow-soft">
+                  <h3 class="font-serif text-xl font-semibold text-night">{service.title} en {item.city}</h3>
+                  <p class="mt-3 text-sm leading-7 text-slate-600">{service.summary}</p>
+                  <a class="mt-4 inline-flex text-sm font-bold text-petroleum hover:text-gold" href={`/${service.slug}/`}>Ver servicio</a>
+                </article>
+              ))}
+            </div>
+          </section>
+
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl font-semibold text-night">¿Cuándo debería contactar a un abogado en {item.city}?</h2>
+            <ul class="mt-5 grid gap-3 text-sm leading-7 text-slate-600 md:grid-cols-2">
+              {item.highlights.map((highlight) => <li class="border-l-2 border-gold pl-4">{highlight}</li>)}
+            </ul>
+          </section>
+
+          <section class="mt-12 rounded-md bg-mist p-7">
+            <h2 class="font-serif text-2xl font-semibold text-night">Por qué elegir Cancino Abogados</h2>
+            <p class="mt-5 text-sm leading-7 text-slate-600">
+              El estudio combina alto estándar técnico, atención personalizada y una mirada estratégica orientada a prevenir riesgos, ordenar antecedentes y tomar decisiones con respaldo legal.
+            </p>
+          </section>
+
+          <section class="mt-12">
+            <h2 class="font-serif text-2xl font-semibold text-night">Preguntas frecuentes sobre abogados en {item.city}</h2>
+            <div class="mt-6">
+              <FAQ items={item.faqs} />
+            </div>
+          </section>
+        </article>
+
+        <aside class="lg:sticky lg:top-28 lg:self-start">
+          <div class="rounded-md border border-slate-200 bg-white p-6 shadow-soft">
+            <h2 class="font-serif text-xl font-semibold text-night">Contacte a un abogado en {item.city}</h2>
+            <p class="mt-3 text-sm leading-7 text-slate-600">
+              Coordine una consulta para revisar antecedentes y definir alternativas.
+            </p>
+            <a class="btn-primary mt-5 w-full" href={site.whatsapp} target="_blank" rel="noreferrer">Agendar una consulta</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+  )}
+
+  <CTASection title={isService ? "Solicite una evaluación legal" : `Contacte a un abogado en ${item.city}`} />
+</MainLayout>

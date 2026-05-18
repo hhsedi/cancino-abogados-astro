@@ -10,15 +10,15 @@ const schema = [
   legalServiceSchema(),
   breadcrumbSchema([
     { name: "Inicio", url: buildCanonical("/") },
-    { name: "Blog", url: buildCanonical("/blog") }
+    { name: "Blog", url: buildCanonical("/blog/") }
   ])
 ];
 ---
 
 <MainLayout
   title="Blog legal"
-  description="Artículos simulados de Cancino Abogados sobre contratos, compraventa inmobiliaria, derecho laboral y prevención legal en empresas."
-  path="/blog"
+  description="Artículos simulados de Cancino Abogados sobre contratos, compraventa inmobiliaria, derecho laboral para empleadores y prevención legal en empresas."
+  path="/blog/"
   schema={schema}
 >
   <section class="bg-mist py-14">
@@ -44,5 +44,5 @@ const schema = [
     </div>
   </section>
 
-  <CTASection title="¿Un artículo se parece a tu situación?" text="Escríbenos para revisar tus antecedentes concretos y evaluar alternativas." />
+  <CTASection title="¿Un artículo se parece a su situación?" text="Escríbanos para revisar sus antecedentes concretos y evaluar alternativas." />
 </MainLayout>

@@ -3,8 +3,8 @@ export const posts = [
     title: "Qué considerar antes de firmar un contrato comercial",
     slug: "que-considerar-antes-de-firmar-un-contrato-comercial",
     excerpt:
-      "Una guía práctica para revisar obligaciones, plazos, responsabilidades y mecanismos de salida antes de comprometer a tu empresa.",
-    category: "Derecho Comercial",
+      "Una guía práctica para revisar obligaciones, plazos, responsabilidades y mecanismos de salida antes de comprometer a una empresa.",
+    category: "Contratos",
     date: "2026-01-12"
   },
   {
@@ -12,15 +12,15 @@ export const posts = [
     slug: "cuando-conviene-asesorarse-en-una-compraventa-inmobiliaria",
     excerpt:
       "La revisión de promesas, títulos y condiciones de pago puede prevenir conflictos relevantes en operaciones inmobiliarias.",
-    category: "Derecho Inmobiliario",
+    category: "Derecho inmobiliario",
     date: "2026-01-26"
   },
   {
-    title: "Aspectos básicos de un despido injustificado",
-    slug: "aspectos-basicos-de-un-despido-injustificado",
+    title: "Aspectos clave para empleadores ante un conflicto laboral",
+    slug: "aspectos-clave-para-empleadores-ante-un-conflicto-laboral",
     excerpt:
-      "Qué documentos conservar, qué plazos observar y por qué conviene evaluar los antecedentes antes de firmar.",
-    category: "Derecho Laboral",
+      "Documentación, comunicaciones y decisiones preventivas que pueden ayudar a reducir riesgos laborales en una empresa.",
+    category: "Laboral empleador",
     date: "2026-02-08"
   },
   {
