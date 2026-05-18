@@ -1,7 +1,7 @@
 ---
-import Breadcrumbs from "@components/Breadcrumbs.astro";
 import CTASection from "@components/CTASection.astro";
 import FAQ from "@components/FAQ.astro";
+import PageHero from "@components/PageHero.astro";
 import ProcessSteps from "@components/ProcessSteps.astro";
 import ServiceCard from "@components/ServiceCard.astro";
 import MainLayout from "@layouts/MainLayout.astro";
@@ -50,21 +50,60 @@ const schema = [
 const relatedServices = isService
   ? services.filter((service) => service.slug !== item.slug).slice(0, 3)
   : locationServices;
+
+// TODO: Reemplazar estas URLs temporales por imágenes definitivas en /public/images/.
+// Ejemplo: "/images/servicios/derecho-inmobiliario-hero.jpg"
+const serviceHeroImages: Record<string, string> = {
+  "derecho-inmobiliario":
+    "https://images.pexels.com/photos/8293778/pexels-photo-8293778.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "litigacion-civil-comercial":
+    "https://images.pexels.com/photos/5668473/pexels-photo-5668473.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "defensa-laboral-empleador":
+    "https://images.pexels.com/photos/7841466/pexels-photo-7841466.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "redaccion-revision-contratos":
+    "https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "asesoria-legal-empresas":
+    "https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "constitucion-modificacion-sociedades":
+    "https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "estudio-de-titulos":
+    "https://images.pexels.com/photos/7821702/pexels-photo-7821702.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "compliance-corporativo":
+    "https://images.pexels.com/photos/8296981/pexels-photo-8296981.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "negociacion-resolucion-conflictos":
+    "https://images.pexels.com/photos/3183197/pexels-photo-3183197.jpeg?auto=compress&cs=tinysrgb&w=1800"
+};
+
+const locationHeroImages: Record<string, string> = {
+  "abogado-san-felipe":
+    "https://images.pexels.com/photos/323780/pexels-photo-323780.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "abogado-los-andes":
+    "https://images.pexels.com/photos/4254555/pexels-photo-4254555.jpeg?auto=compress&cs=tinysrgb&w=1800",
+  "abogado-vina-del-mar":
+    "https://images.pexels.com/photos/2104152/pexels-photo-2104152.jpeg?auto=compress&cs=tinysrgb&w=1800"
+};
+
+const defaultHeroImage =
+  "https://images.pexels.com/photos/7841466/pexels-photo-7841466.jpeg?auto=compress&cs=tinysrgb&w=1800";
+
+const heroImage = isService
+  ? serviceHeroImages[item.slug] ?? defaultHeroImage
+  : locationHeroImages[item.slug] ?? defaultHeroImage;
 ---
 
 <MainLayout title={pageTitle} description={description} path={path} schema={schema}>
-  <section class="bg-mist py-14">
-    <div class="container-page">
-      <Breadcrumbs items={crumbs} />
-      <p class="eyebrow mt-6">{isService ? item.keyword : item.keyword}</p>
-      <h1 class="mt-4 max-w-4xl font-serif text-4xl font-semibold text-night sm:text-5xl">{pageTitle}</h1>
-      <p class="section-copy">{isService ? item.intro : item.summary}</p>
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
-        <a class="btn-primary" href={site.whatsapp} target="_blank" rel="noreferrer">Solicitar evaluación legal</a>
-        <a class="btn-outline" href="/contacto/">Contactar a Cancino Abogados</a>
-      </div>
-    </div>
-  </section>
+  <PageHero
+    breadcrumbs={crumbs}
+    eyebrow={item.keyword}
+    title={pageTitle}
+    subtitle={isService ? item.intro : item.summary}
+    backgroundImage={heroImage}
+    ctaText="Solicitar evaluación legal"
+    ctaHref={site.whatsapp}
+    ctaExternal
+    secondaryCtaText="Contactar a Cancino Abogados"
+    secondaryCtaHref="/contacto/"
+  />
 
   {isService ? (
     <section class="py-20">

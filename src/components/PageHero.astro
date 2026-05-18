@@ -1,0 +1,96 @@
+---
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+
+type Crumb = {
+  label: string;
+  href?: string;
+};
+
+type Props = {
+  eyebrow?: string;
+  title: string;
+  subtitle?: string;
+  backgroundImage: string;
+  breadcrumbs?: Crumb[];
+  ctaText?: string;
+  ctaHref?: string;
+  ctaExternal?: boolean;
+  secondaryCtaText?: string;
+  secondaryCtaHref?: string;
+};
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  backgroundImage,
+  breadcrumbs,
+  ctaText = "Solicitar evaluación legal",
+  ctaHref = "/contacto/",
+  ctaExternal = false,
+  secondaryCtaText,
+  secondaryCtaHref
+} = Astro.props;
+---
+
+<section
+  class="page-hero relative overflow-hidden bg-primary py-16 text-white sm:py-20 lg:py-24"
+  style={`--page-hero-bg: url("${backgroundImage}");`}
+>
+  <div class="absolute inset-0 bg-[linear-gradient(110deg,rgba(15,39,82,0.94),rgba(37,38,43,0.76)_52%,rgba(15,39,82,0.5))]"></div>
+  <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(215,117,52,0.18),transparent_34%)]"></div>
+  <div class="absolute inset-x-0 bottom-0 h-px bg-accent/45"></div>
+
+  <div class="container-page relative">
+    {breadcrumbs && <Breadcrumbs items={breadcrumbs} />}
+
+    <div class="mt-8 max-w-4xl">
+      {eyebrow && <p class="text-xs font-bold uppercase tracking-[0.24em] text-accent">{eyebrow}</p>}
+      <h1 class="mt-5 font-serif text-4xl font-semibold leading-tight tracking-normal text-white sm:text-5xl lg:text-6xl">
+        {title}
+      </h1>
+      {subtitle && <p class="mt-6 max-w-3xl text-base leading-8 text-white/78 sm:text-lg sm:leading-9">{subtitle}</p>}
+
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+        {ctaText && (
+          <a
+            class="btn-primary"
+            href={ctaHref}
+            target={ctaExternal ? "_blank" : undefined}
+            rel={ctaExternal ? "noreferrer" : undefined}
+          >
+            {ctaText}
+          </a>
+        )}
+        {secondaryCtaText && secondaryCtaHref && (
+          <a class="btn-secondary" href={secondaryCtaHref}>{secondaryCtaText}</a>
+        )}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .page-hero {
+    background-image: var(--page-hero-bg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .page-hero :global(nav[aria-label="Breadcrumb"]) {
+    color: rgba(255, 255, 255, 0.74);
+  }
+
+  .page-hero :global(nav[aria-label="Breadcrumb"] a) {
+    color: rgba(255, 255, 255, 0.78);
+  }
+
+  .page-hero :global(nav[aria-label="Breadcrumb"] a:hover) {
+    color: #ffffff;
+  }
+
+  .page-hero :global(nav[aria-label="Breadcrumb"] span) {
+    color: rgba(255, 255, 255, 0.88);
+  }
+</style>
