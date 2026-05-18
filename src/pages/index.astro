@@ -2,6 +2,7 @@
 import AttorneyProfile from "@components/AttorneyProfile.astro";
 import CTASection from "@components/CTASection.astro";
 import FAQ from "@components/FAQ.astro";
+import FAQSection from "@components/FAQSection.astro";
 import Hero from "@components/Hero.astro";
 import LocationCard from "@components/LocationCard.astro";
 import ProcessSteps from "@components/ProcessSteps.astro";
@@ -110,6 +111,8 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
       <FAQ items={faqs} />
     </div>
   </section>
+
+  <FAQSection />
 
   <CTASection
     title="Solicite una evaluación legal"

@@ -1,0 +1,108 @@
+---
+const faqs = [
+  {
+    question: "¿Cuándo debería contratar a un abogado?",
+    answer:
+      "Conviene contactar a un abogado cuando tienes que tomar una decisión legal importante, firmar un contrato, responder una demanda, comprar una propiedad, resolver un conflicto o proteger tu empresa. Muchas personas esperan hasta que el problema ya está avanzado, pero en la práctica suele ser más conveniente asesorarse antes. Una revisión oportuna puede evitar errores costosos, conflictos innecesarios o decisiones tomadas sin conocer los riesgos."
+  },
+  {
+    question: "¿Qué tipo de casos ve Cancino Abogados?",
+    answer:
+      "Cancino Abogados trabaja principalmente en asuntos civiles, comerciales, inmobiliarios, contratos, sociedades, defensa laboral para empleadores, compliance corporativo y resolución de conflictos. Esto significa que puede apoyar tanto a personas como a empresas que necesitan tomar decisiones legales con respaldo, prevenir riesgos o enfrentar un problema legal ya iniciado."
+  },
+  {
+    question: "¿Cancino Abogados atiende en San Felipe, Los Andes y Viña del Mar?",
+    answer:
+      "Sí. Cancino Abogados enfoca su atención en clientes de San Felipe, Los Andes y Viña del Mar, especialmente empresas, empleadores, propietarios, inversionistas, profesionales y personas que necesitan asesoría legal en temas civiles, comerciales, laborales o inmobiliarios. También puede atender ciertos asuntos de forma remota cuando el caso lo permita."
+  },
+  {
+    question: "¿Puedo contratar un abogado solo para revisar un contrato antes de firmar?",
+    answer:
+      "Sí, y de hecho es una de las decisiones más recomendables. Revisar un contrato antes de firmarlo permite detectar cláusulas riesgosas, obligaciones poco claras, multas, plazos desfavorables o responsabilidades que quizás no habías considerado. Esto aplica para contratos comerciales, arriendos, compraventas, promesas, acuerdos entre socios, prestación de servicios y documentos relacionados con empresas o propiedades."
+  },
+  {
+    question: "¿Necesito un abogado para comprar una propiedad, terreno o parcela?",
+    answer:
+      "No siempre es obligatorio, pero sí es muy recomendable. Antes de comprar una propiedad, terreno o parcela, un abogado puede revisar los títulos, inscripciones, gravámenes, prohibiciones, hipotecas, deudas, antecedentes de dominio y otros documentos relevantes. Esto ayuda a evitar problemas como comprar un inmueble con conflictos pendientes, limitaciones legales o antecedentes que podrían afectar la operación."
+  },
+  {
+    question: "¿Qué hace un abogado para empresas?",
+    answer:
+      "Un abogado para empresas ayuda a ordenar y proteger legalmente el negocio. Puede revisar contratos, apoyar en temas laborales, asesorar en conflictos con clientes o proveedores, preparar documentos societarios, prevenir riesgos legales y acompañar decisiones importantes. En el caso de Cancino Abogados, el enfoque está en entregar una asesoría estratégica, no solo resolver problemas cuando ya existe una demanda."
+  },
+  {
+    question: "¿Cancino Abogados defiende trabajadores o empresas en temas laborales?",
+    answer:
+      "El enfoque principal es la defensa laboral para empleadores y empresas. Esto puede incluir asesoría ante demandas laborales, revisión de despidos, finiquitos, cumplimiento de obligaciones laborales, prevención de riesgos y acompañamiento para tomar decisiones correctas como empleador. La idea es ayudar a la empresa a actuar con respaldo legal y reducir riesgos futuros."
+  },
+  {
+    question: "¿Qué pasa si ya recibí una demanda o notificación judicial?",
+    answer:
+      "Lo primero es no dejar pasar los plazos. Cuando recibes una demanda, carta, citación o notificación judicial, es importante que un abogado revise el documento cuanto antes para entender el riesgo, los plazos y las opciones de defensa. Mientras antes se evalúe el caso, más margen existe para preparar una estrategia, reunir antecedentes y evitar responder de forma improvisada."
+  },
+  {
+    question: "¿Qué diferencia a Cancino Abogados de otros estudios jurídicos?",
+    answer:
+      "Cancino Abogados busca combinar un estándar técnico alto con una atención personalizada. El estudio está enfocado en asesoría estratégica para empresas y personas, con especial dedicación a litigación civil, derecho comercial, derecho inmobiliario y defensa laboral. Además, su enfoque apunta a prevenir riesgos, estructurar jurídicamente negocios y resolver conflictos de forma eficiente, con atención en español e inglés."
+  },
+  {
+    question: "¿Cómo puedo saber si mi caso necesita una asesoría legal?",
+    answer:
+      "Una buena señal es preguntarte: “¿puedo perder dinero, tiempo, una propiedad, un contrato, un cliente, un socio o exponer mi empresa si tomo mal esta decisión?”. Si la respuesta es sí, probablemente conviene pedir una evaluación legal. No siempre significa iniciar un juicio; muchas veces basta con revisar documentos, aclarar riesgos y definir el mejor camino antes de actuar."
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((item) => ({
+    "@type": "Question",
+    name: item.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: item.answer
+    }
+  }))
+};
+---
+
+<section class="bg-white py-20 lg:py-24" aria-labelledby="faq-abogado-title">
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+  <div class="container-page">
+    <div class="grid gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+      <div>
+        <p class="eyebrow">Guía para tomar mejores decisiones</p>
+        <h2 id="faq-abogado-title" class="section-title">Preguntas frecuentes sobre contratar un abogado</h2>
+        <p class="section-copy">
+          Antes de tomar una decisión legal importante, es normal tener dudas. Aquí respondemos algunas preguntas frecuentes de personas, empresas y empleadores que buscan asesoría legal en San Felipe, Los Andes y Viña del Mar.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <div class="divide-y divide-slate-200 overflow-hidden rounded-md border border-slate-200 bg-white shadow-soft">
+          {faqs.map((item) => (
+            <details class="group">
+              <summary class="flex cursor-pointer list-none items-start justify-between gap-5 p-6 transition hover:bg-mist/70">
+                <h3 class="text-base font-semibold leading-7 text-night">{item.question}</h3>
+                <span class="mt-1 inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full border border-gold/40 text-gold transition group-open:rotate-45" aria-hidden="true">
+                  +
+                </span>
+              </summary>
+              <div class="px-6 pb-6">
+                <p class="text-sm leading-7 text-slate-600">{item.answer}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+
+        <div class="rounded-md border border-petroleum/10 bg-mist p-6 sm:flex sm:items-center sm:justify-between sm:gap-6">
+          <p class="text-sm font-semibold leading-7 text-night">
+            ¿Tiene una duda legal específica? Cuéntenos su caso y reciba una orientación clara antes de tomar una decisión importante.
+          </p>
+          <a class="btn-primary mt-5 shrink-0 sm:mt-0" href="/contacto/">Solicitar evaluación legal</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
