@@ -1,7 +1,6 @@
 ---
 import AttorneyProfile from "@components/AttorneyProfile.astro";
 import CTASection from "@components/CTASection.astro";
-import FAQ from "@components/FAQ.astro";
 import FAQSection from "@components/FAQSection.astro";
 import Hero from "@components/Hero.astro";
 import LocationCard from "@components/LocationCard.astro";
@@ -99,16 +98,6 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
           <ReviewCard {...review} />
         ))}
       </div>
-    </div>
-  </section>
-
-  <section class="py-20 lg:py-24">
-    <div class="container-page grid gap-10 lg:grid-cols-[0.8fr_1.2fr]">
-      <div>
-        <p class="eyebrow">Preguntas frecuentes</p>
-        <h2 class="section-title">Dudas habituales antes de consultar</h2>
-      </div>
-      <FAQ items={faqs} />
     </div>
   </section>
 
