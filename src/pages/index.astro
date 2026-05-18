@@ -6,7 +6,7 @@ import Hero from "@components/Hero.astro";
 import LocationCard from "@components/LocationCard.astro";
 import ProcessSteps from "@components/ProcessSteps.astro";
 import ReviewCard from "@components/ReviewCard.astro";
-import ServiceCard from "@components/ServiceCard.astro";
+import ServicesCarousel from "@components/ServicesCarousel.astro";
 import TrustSection from "@components/TrustSection.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { faqs } from "@data/faqs";
@@ -38,10 +38,8 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
           Cada servicio está pensado para ayudarle a identificar riesgos, ordenar antecedentes y tomar decisiones legales con mayor claridad.
         </p>
       </div>
-      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {services.map((service) => (
-          <ServiceCard title={service.title} summary={service.summary} href={`/${service.slug}/`} />
-        ))}
+      <div class="mt-12">
+        <ServicesCarousel services={services} />
       </div>
     </div>
   </section>

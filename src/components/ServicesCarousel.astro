@@ -1,0 +1,260 @@
+---
+import ServiceCard from "@components/ServiceCard.astro";
+import type { Service } from "@data/services";
+
+type Props = {
+  services: Service[];
+  ariaLabel?: string;
+  autoplay?: boolean;
+};
+
+const {
+  services,
+  ariaLabel = "Servicios principales de Cancino Abogados",
+  autoplay = true
+} = Astro.props;
+---
+
+<div class="services-carousel" data-services-carousel data-autoplay={autoplay ? "true" : "false"} aria-label={ariaLabel}>
+  <div class="mb-5 flex items-center justify-between gap-4">
+    <p class="text-sm font-semibold text-slate-500">
+      Deslice o use las flechas para revisar las áreas de práctica.
+    </p>
+    <div class="flex shrink-0 gap-2">
+      <button
+        class="services-carousel__control"
+        type="button"
+        data-carousel-prev
+        aria-label="Ver servicios anteriores"
+      >
+        <span aria-hidden="true">←</span>
+      </button>
+      <button
+        class="services-carousel__control"
+        type="button"
+        data-carousel-next
+        aria-label="Ver servicios siguientes"
+      >
+        <span aria-hidden="true">→</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="services-carousel__viewport" data-carousel-track tabindex="0">
+    {services.map((service) => (
+      <div class="services-carousel__slide" data-carousel-slide>
+        <ServiceCard title={service.title} summary={service.summary} href={`/${service.slug}/`} />
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-6 flex justify-center gap-2" aria-label="Indicadores de servicios">
+    {services.map((service, index) => (
+      <button
+        class="services-carousel__dot"
+        type="button"
+        data-carousel-dot={index}
+        aria-label={`Ir a ${service.title}`}
+      >
+        <span class="sr-only">{service.title}</span>
+      </button>
+    ))}
+  </div>
+</div>
+
+<style>
+  .services-carousel {
+    --carousel-gap: 1.25rem;
+    --items-visible: 1;
+  }
+
+  @media (min-width: 768px) {
+    .services-carousel {
+      --items-visible: 2;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-carousel {
+      --items-visible: 4;
+    }
+  }
+
+  .services-carousel__viewport {
+    display: flex;
+    gap: var(--carousel-gap);
+    overflow-x: auto;
+    padding: 0.25rem 0.125rem 1.25rem;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .services-carousel__viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .services-carousel__slide {
+    display: flex;
+    flex: 0 0 calc((100% - (var(--carousel-gap) * (var(--items-visible) - 1))) / var(--items-visible));
+    min-width: 0;
+    scroll-snap-align: start;
+  }
+
+  .services-carousel__slide :global(article) {
+    min-height: 100%;
+  }
+
+  .services-carousel__control {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.75rem;
+    height: 2.75rem;
+    border: 1px solid rgba(15, 45, 58, 0.14);
+    border-radius: 0.375rem;
+    background: #ffffff;
+    color: #0f2d3a;
+    font-weight: 800;
+    transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease;
+  }
+
+  .services-carousel__control:hover {
+    transform: translateY(-1px);
+    border-color: rgba(201, 164, 92, 0.7);
+    color: #071a24;
+    background: #f4f6f8;
+  }
+
+  .services-carousel__dot {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 999px;
+    background: rgba(15, 45, 58, 0.22);
+    transition: width 180ms ease, background-color 180ms ease, transform 180ms ease;
+  }
+
+  .services-carousel__dot[aria-current="true"] {
+    width: 1.55rem;
+    background: #c9a45c;
+  }
+
+  .services-carousel__dot:hover {
+    transform: translateY(-1px);
+    background: #0f2d3a;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .services-carousel__viewport {
+      scroll-behavior: auto;
+    }
+
+    .services-carousel__control,
+    .services-carousel__dot {
+      transition: none;
+    }
+  }
+</style>
+
+<script>
+  const carousels = document.querySelectorAll("[data-services-carousel]");
+
+  carousels.forEach((carousel) => {
+    const track = carousel.querySelector("[data-carousel-track]");
+    const slides = Array.from(carousel.querySelectorAll("[data-carousel-slide]"));
+    const prev = carousel.querySelector("[data-carousel-prev]");
+    const next = carousel.querySelector("[data-carousel-next]");
+    const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+    const shouldAutoplay = carousel.getAttribute("data-autoplay") === "true";
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (!(track instanceof HTMLElement) || slides.length === 0) return;
+
+    let timer;
+    let isPaused = false;
+
+    const getSlideStep = () => {
+      const firstSlide = slides[0];
+      const secondSlide = slides[1];
+      if (!(firstSlide instanceof HTMLElement)) return track.clientWidth;
+      if (secondSlide instanceof HTMLElement) {
+        return secondSlide.offsetLeft - firstSlide.offsetLeft;
+      }
+      return firstSlide.offsetWidth;
+    };
+
+    const getActiveIndex = () => {
+      const step = getSlideStep();
+      return Math.max(0, Math.round(track.scrollLeft / step));
+    };
+
+    const updateDots = () => {
+      const activeIndex = getActiveIndex();
+      dots.forEach((dot, index) => {
+        if (dot instanceof HTMLElement) {
+          dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
+        }
+      });
+    };
+
+    const scrollToIndex = (index) => {
+      const normalizedIndex = (index + slides.length) % slides.length;
+      const slide = slides[normalizedIndex];
+      if (slide instanceof HTMLElement) {
+        track.scrollTo({ left: slide.offsetLeft, behavior: reduceMotion ? "auto" : "smooth" });
+      }
+    };
+
+    const stopAutoplay = () => {
+      window.clearInterval(timer);
+      timer = undefined;
+    };
+
+    const startAutoplay = () => {
+      if (!shouldAutoplay || reduceMotion || timer || isPaused) return;
+      timer = window.setInterval(() => {
+        scrollToIndex(getActiveIndex() + 1);
+      }, 5200);
+    };
+
+    const pauseForInteraction = () => {
+      isPaused = true;
+      stopAutoplay();
+    };
+
+    prev?.addEventListener("click", () => {
+      pauseForInteraction();
+      scrollToIndex(getActiveIndex() - 1);
+    });
+
+    next?.addEventListener("click", () => {
+      pauseForInteraction();
+      scrollToIndex(getActiveIndex() + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        pauseForInteraction();
+        const index = Number((dot instanceof HTMLElement && dot.dataset.carouselDot) || 0);
+        scrollToIndex(index);
+      });
+    });
+
+    carousel.addEventListener("mouseenter", () => {
+      isPaused = true;
+      stopAutoplay();
+    });
+
+    carousel.addEventListener("mouseleave", () => {
+      isPaused = false;
+      startAutoplay();
+    });
+
+    track.addEventListener("pointerdown", pauseForInteraction, { passive: true });
+    track.addEventListener("focusin", pauseForInteraction);
+    track.addEventListener("scroll", updateDots, { passive: true });
+
+    updateDots();
+    startAutoplay();
+  });
+</script>
