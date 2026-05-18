@@ -2,61 +2,63 @@
 import { site } from "@data/site";
 ---
 
-<section class="bg-white">
-  <div class="container-page grid min-h-[calc(100vh-4.75rem)] gap-10 py-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center lg:py-16">
+<section class="relative overflow-hidden bg-night text-white">
+  <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(7,26,36,1),rgba(15,45,58,0.94)_55%,rgba(7,26,36,1))]"></div>
+  <div class="absolute inset-x-0 bottom-0 h-px bg-gold/30"></div>
+
+  <div class="container-page relative grid min-h-[calc(100vh-4.75rem)] items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
     <div class="max-w-4xl">
-      <p class="eyebrow">San Felipe · Los Andes · Viña del Mar</p>
-      <h1 class="mt-5 font-serif text-4xl font-semibold leading-tight tracking-normal text-night sm:text-5xl lg:text-6xl">
+      <div class="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/78">
+        <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
+        San Felipe · Los Andes · Viña del Mar
+      </div>
+      <h1 class="mt-7 font-serif text-4xl font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
         Cancino Abogados | Asesoría legal estratégica para empresas y personas
       </h1>
-      <p class="mt-6 max-w-2xl text-lg leading-9 text-slate-600">
+      <p class="mt-6 max-w-2xl text-lg leading-9 text-white/75">
         Prevenga riesgos, proteja su patrimonio y resuelva conflictos civiles, comerciales, laborales e inmobiliarios con respaldo profesional y comunicación clara.
       </p>
 
-      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row">
         <a class="btn-primary" href={site.whatsapp} target="_blank" rel="noreferrer">Solicitar evaluación legal</a>
-        <a class="btn-outline" href="/contacto/">Contactar a Cancino Abogados</a>
+        <a class="btn-secondary" href="/contacto/">Contactar a Cancino Abogados</a>
       </div>
 
-      <div class="mt-10 grid gap-0 overflow-hidden rounded-md border border-slate-200 bg-white shadow-soft sm:grid-cols-3">
+      <div class="mt-10 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-3">
         {[
-          ["Para empresas", "Contratos, riesgos, socios, proveedores y decisiones de administración."],
-          ["Para propietarios", "Compraventas, arriendos, títulos, terrenos, parcelas e inmuebles."],
-          ["Para empleadores", "Defensa laboral, despidos, finiquitos y prevención de contingencias."]
+          ["Empresas", "Contratos, socios, proveedores y decisiones de administración."],
+          ["Propiedades", "Compraventas, arriendos, títulos, terrenos e inmuebles."],
+          ["Empleadores", "Defensa laboral, despidos y prevención de contingencias."]
         ].map(([title, text]) => (
-          <div class="border-b border-slate-200 p-5 last:border-b-0 sm:border-b-0 sm:border-r sm:last:border-r-0">
-            <p class="text-sm font-bold text-petroleum">{title}</p>
-            <p class="mt-2 text-sm leading-6 text-slate-600">{text}</p>
+          <div>
+            <p class="text-sm font-bold text-white">{title}</p>
+            <p class="mt-1 text-xs leading-6 text-white/58">{text}</p>
           </div>
         ))}
       </div>
     </div>
 
-    <aside class="relative">
-      <div class="absolute -inset-4 rounded-md bg-mist"></div>
-      <div class="relative overflow-hidden rounded-md border border-slate-200 bg-night text-white shadow-[0_24px_80px_rgba(7,26,36,0.18)]">
-        <div class="grid gap-0 md:grid-cols-[0.9fr_1.1fr] lg:grid-cols-1 xl:grid-cols-[0.86fr_1.14fr]">
-          <div class="flex min-h-72 items-center justify-center bg-white/[0.06] p-8">
-            <div class="text-center">
-              <p class="font-serif text-5xl font-semibold text-gold">SC</p>
-              <p class="mt-4 text-sm leading-7 text-white/65">
-                Fotografía profesional pendiente de incorporación.
-              </p>
-            </div>
+    <aside class="dark-panel p-6 sm:p-8">
+      <div class="grid gap-6 sm:grid-cols-[0.72fr_1.28fr] lg:grid-cols-1 xl:grid-cols-[0.72fr_1.28fr]">
+        <div class="flex min-h-52 items-center justify-center rounded-md border border-white/10 bg-white/[0.06] p-6">
+          <div class="text-center">
+            <p class="font-serif text-4xl font-semibold text-gold">SC</p>
+            <p class="mt-3 text-xs leading-6 text-white/55">Foto profesional pendiente</p>
           </div>
-          <div class="p-7 sm:p-8">
-            <p class="eyebrow">Abogado director</p>
-            <h2 class="mt-3 font-serif text-3xl font-semibold text-white">{site.lawyer.name}</h2>
-            <p class="mt-4 text-sm leading-7 text-white/70">{site.lawyer.education}</p>
-            <div class="mt-7 space-y-4 border-t border-white/10 pt-6">
-              <div>
-                <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Reconocimiento</p>
-                <p class="mt-2 text-sm leading-6 text-white/80">{site.lawyer.recognition}</p>
-              </div>
-              <div>
-                <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Atención</p>
-                <p class="mt-2 text-sm leading-6 text-white/80">Español e inglés, con foco en orientación estratégica.</p>
-              </div>
+        </div>
+
+        <div>
+          <p class="eyebrow">Abogado director</p>
+          <h2 class="mt-3 font-serif text-3xl font-semibold text-white">{site.lawyer.name}</h2>
+          <p class="mt-4 text-sm leading-7 text-white/70">{site.lawyer.education}</p>
+          <div class="mt-6 space-y-4 border-t border-white/10 pt-6">
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Reconocimiento</p>
+              <p class="mt-2 text-sm leading-6 text-white/80">{site.lawyer.recognition}</p>
+            </div>
+            <div>
+              <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Atención</p>
+              <p class="mt-2 text-sm leading-6 text-white/80">Español e inglés, con enfoque estratégico y comunicación clara.</p>
             </div>
           </div>
         </div>
