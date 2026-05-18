@@ -27,18 +27,18 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
 >
   <Hero />
 
-  <section class="py-20 lg:py-24">
+  <section class="bg-mist py-20 lg:py-24">
     <div class="container-page">
-      <div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
+      <div class="grid gap-8 border-b border-slate-300/60 pb-10 lg:grid-cols-[0.78fr_1.22fr] lg:items-end">
         <div>
           <p class="eyebrow">Servicios principales</p>
-          <h2 class="section-title">Asesoría legal técnica, preventiva y estratégica</h2>
+          <h2 class="section-title">Áreas de práctica orientadas a decisiones concretas</h2>
         </div>
         <p class="text-base leading-8 text-slate-600 lg:max-w-2xl">
-          Cancino Abogados asesora a empresas, empleadores, propietarios, inversionistas y personas que necesitan revisar contratos, prevenir riesgos o resolver conflictos con respaldo profesional.
+          Cada servicio está pensado para ayudarle a identificar riesgos, ordenar antecedentes y tomar decisiones legales con mayor claridad.
         </p>
       </div>
-      <div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      <div class="mt-4 grid gap-x-10 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <ServiceCard title={service.title} summary={service.summary} href={`/${service.slug}/`} />
         ))}
@@ -69,14 +69,16 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
 
   <section class="py-20 lg:py-24">
     <div class="container-page">
-      <div class="max-w-3xl">
-        <p class="eyebrow">Proceso de atención</p>
-        <h2 class="section-title">Un método claro desde la primera conversación</h2>
+      <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div>
+          <p class="eyebrow">Proceso de atención</p>
+          <h2 class="section-title">Un método claro desde la primera conversación</h2>
+        </div>
         <p class="section-copy">
-          Cada consulta se aborda con una secuencia simple: entender el caso, ordenar antecedentes y definir una ruta de acción proporcional al objetivo.
+          La asesoría busca reducir incertidumbre: primero entendemos el problema, luego evaluamos alternativas y finalmente definimos una ruta de acción proporcional al caso.
         </p>
       </div>
-      <div class="mt-10">
+      <div class="mt-12">
         <ProcessSteps />
       </div>
     </div>

@@ -1,28 +1,28 @@
 ---
 const steps = [
   {
-    title: "Consulta inicial",
-    text: "Revisión del contexto, objetivos y antecedentes disponibles."
+    title: "Cuéntenos su situación",
+    text: "Recibimos el contexto inicial, los documentos disponibles y el objetivo que necesita resolver."
   },
   {
-    title: "Diagnóstico jurídico",
-    text: "Identificación de riesgos, alternativas y próximos pasos razonables."
+    title: "Revisamos opciones legales",
+    text: "Ordenamos antecedentes, identificamos riesgos y explicamos alternativas con lenguaje claro."
   },
   {
-    title: "Estrategia y ejecución",
-    text: "Preparación de documentos, negociación o acciones aplicables según el caso."
+    title: "Definimos próximos pasos",
+    text: "Proponemos una estrategia razonable: prevención, negociación, redacción documental o defensa."
   }
 ];
 ---
 
-<div class="grid gap-5 md:grid-cols-3">
-  {steps.map((step, index) => (
-    <article class="rounded-md border border-slate-200 bg-white p-6 shadow-soft">
-      <span class="inline-flex h-10 w-10 items-center justify-center rounded-md bg-petroleum text-sm font-semibold text-white">
-        {index + 1}
-      </span>
-      <h3 class="mt-5 font-serif text-xl font-semibold text-night">{step.title}</h3>
-      <p class="mt-3 text-sm leading-7 text-slate-600">{step.text}</p>
-    </article>
-  ))}
+<div class="overflow-hidden rounded-md border border-slate-200 bg-white shadow-soft">
+  <div class="grid md:grid-cols-3">
+    {steps.map((step, index) => (
+      <article class="relative border-b border-slate-200 p-6 last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0 lg:p-8">
+        <span class="text-xs font-bold uppercase tracking-[0.22em] text-gold">Paso {index + 1}</span>
+        <h3 class="mt-4 font-serif text-2xl font-semibold leading-tight text-night">{step.title}</h3>
+        <p class="mt-4 text-sm leading-7 text-slate-600">{step.text}</p>
+      </article>
+    ))}
+  </div>
 </div>
