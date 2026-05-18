@@ -17,7 +17,7 @@ const {
 
 <div class="services-carousel" data-services-carousel data-autoplay={autoplay ? "true" : "false"} aria-label={ariaLabel}>
   <div class="mb-5 flex items-center justify-between gap-4">
-    <p class="text-sm font-semibold text-slate-500">
+    <p class="text-sm font-semibold text-primary-soft">
       Deslice o use las flechas para revisar las áreas de práctica.
     </p>
     <div class="flex shrink-0 gap-2">
@@ -111,37 +111,37 @@ const {
     justify-content: center;
     width: 2.75rem;
     height: 2.75rem;
-    border: 1px solid rgba(15, 45, 58, 0.14);
+    border: 1px solid rgba(163, 181, 194, 0.45);
     border-radius: 0.375rem;
     background: #ffffff;
-    color: #0f2d3a;
+    color: #0f2752;
     font-weight: 800;
     transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease;
   }
 
   .services-carousel__control:hover {
     transform: translateY(-1px);
-    border-color: rgba(201, 164, 92, 0.7);
-    color: #071a24;
-    background: #f4f6f8;
+    border-color: rgba(215, 117, 52, 0.7);
+    color: #a25226;
+    background: #f6f8fa;
   }
 
   .services-carousel__dot {
     width: 0.55rem;
     height: 0.55rem;
     border-radius: 999px;
-    background: rgba(15, 45, 58, 0.22);
+    background: rgba(81, 113, 143, 0.28);
     transition: width 180ms ease, background-color 180ms ease, transform 180ms ease;
   }
 
   .services-carousel__dot[aria-current="true"] {
     width: 1.55rem;
-    background: #c9a45c;
+    background: #d77534;
   }
 
   .services-carousel__dot:hover {
     transform: translateY(-1px);
-    background: #0f2d3a;
+    background: #0f2752;
   }
 
   @media (prefers-reduced-motion: reduce) {

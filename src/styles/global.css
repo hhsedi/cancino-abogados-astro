@@ -3,6 +3,14 @@
 @tailwind utilities;
 
 :root {
+  --color-primary: #0f2752;
+  --color-primary-soft: #51718f;
+  --color-muted-blue: #a3b5c2;
+  --color-text: #25262b;
+  --color-accent: #d77534;
+  --color-accent-dark: #a25226;
+  --color-background: #ffffff;
+  --color-background-soft: #f6f8fa;
   color-scheme: light;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -16,8 +24,8 @@ html {
 
 body {
   margin: 0;
-  background: #fbfcfd;
-  color: #1f2933;
+  background: var(--color-background);
+  color: var(--color-text);
 }
 
 a {
@@ -25,8 +33,8 @@ a {
 }
 
 ::selection {
-  background: #c9a45c;
-  color: #071a24;
+  background: var(--color-accent);
+  color: #ffffff;
 }
 
 .container-page {
@@ -42,11 +50,11 @@ a {
 }
 
 .section-copy {
-  @apply mt-5 max-w-3xl text-base leading-8 text-slate-600;
+  @apply mt-5 max-w-3xl text-base leading-8 text-primary-soft;
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-md bg-gold px-6 py-3.5 text-sm font-bold text-night shadow-[0_14px_34px_rgba(201,164,92,0.24)] transition hover:-translate-y-0.5 hover:bg-[#d7b76d] focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+  @apply inline-flex items-center justify-center rounded-md bg-primary px-6 py-3.5 text-sm font-bold text-white shadow-[0_14px_34px_rgba(15,39,82,0.22)] transition hover:-translate-y-0.5 hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
 }
 
 .btn-secondary {
@@ -54,11 +62,11 @@ a {
 }
 
 .btn-outline {
-  @apply inline-flex items-center justify-center rounded-md border border-petroleum/15 bg-white px-6 py-3.5 text-sm font-bold text-petroleum shadow-sm transition hover:-translate-y-0.5 hover:border-gold hover:text-night focus:outline-none focus:ring-2 focus:ring-gold focus:ring-offset-2;
+  @apply inline-flex items-center justify-center rounded-md border border-primary/20 bg-white px-6 py-3.5 text-sm font-bold text-primary shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:bg-mist hover:text-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
 }
 
 .premium-panel {
-  @apply rounded-md border border-slate-200/80 bg-white shadow-soft;
+  @apply rounded-md border border-muted-blue/35 bg-white shadow-soft;
 }
 
 .dark-panel {

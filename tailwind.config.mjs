@@ -4,18 +4,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        petroleum: "#0F2D3A",
-        night: "#071A24",
-        gold: "#C9A45C",
-        mist: "#F4F6F8",
-        ink: "#1F2933"
+        primary: "#0F2752",
+        "primary-soft": "#51718F",
+        "muted-blue": "#A3B5C2",
+        "text-dark": "#25262B",
+        accent: "#D77534",
+        "accent-dark": "#A25226",
+        background: "#FFFFFF",
+        "background-soft": "#F6F8FA",
+        petroleum: "#0F2752",
+        night: "#0F2752",
+        gold: "#D77534",
+        mist: "#F6F8FA",
+        ink: "#25262B"
       },
       fontFamily: {
         sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
         serif: ["Georgia", "Cambria", "Times New Roman", "serif"]
       },
       boxShadow: {
-        soft: "0 18px 50px rgba(7, 26, 36, 0.08)"
+        soft: "0 18px 50px rgba(15, 39, 82, 0.08)"
       }
     }
   },

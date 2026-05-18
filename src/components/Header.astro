@@ -4,26 +4,41 @@ import { services } from "@data/services";
 import { site } from "@data/site";
 
 const navItem =
-  "inline-flex items-center gap-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold";
+  "inline-flex items-center gap-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-text-dark transition hover:bg-mist hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
 
 const dropdownPanel =
   "invisible absolute top-full z-50 pt-3 opacity-0 translate-y-1 transition duration-200 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100";
 
 const dropdownLink =
-  "group/link flex items-start justify-between gap-4 rounded-md px-3 py-3 text-sm font-semibold text-slate-700 transition hover:bg-mist hover:text-petroleum focus-visible:bg-mist focus-visible:text-petroleum focus-visible:outline-none";
+  "group/link flex items-start justify-between gap-4 rounded-md px-3 py-3 text-sm font-semibold text-text-dark transition hover:bg-mist hover:text-primary focus-visible:bg-mist focus-visible:text-primary focus-visible:outline-none";
 ---
 
-<header class="sticky top-0 z-40 border-b border-slate-200/70 bg-white/95 shadow-[0_10px_35px_rgba(15,45,58,0.07)] backdrop-blur-xl">
+<header class="sticky top-0 z-40 border-b border-muted-blue/35 bg-white/95 shadow-[0_10px_35px_rgba(15,39,82,0.07)] backdrop-blur-xl">
   <div class="container-page flex min-h-[5rem] items-center justify-between gap-5">
-    <a href="/" class="group flex min-w-max flex-col" aria-label="Ir al inicio">
-      <span class="font-serif text-[1.7rem] font-semibold leading-none tracking-[-0.01em] text-night transition group-hover:text-petroleum">
-        {site.name}
+    <a href="/" class="group flex min-w-max items-center gap-3" aria-label="Ir al inicio de Cancino Abogados">
+      <span class="flex h-12 w-12 items-center justify-center overflow-hidden rounded-md border border-muted-blue/35 bg-white shadow-sm sm:h-14 sm:w-14">
+        <img
+          class="h-full w-full object-contain p-1.5"
+          src="/images/logo-cancino-abogados.png"
+          alt="Cancino Abogados"
+          width="112"
+          height="112"
+          loading="eager"
+          decoding="async"
+          onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden');"
+        />
+        <span class="hidden font-serif text-lg font-semibold text-primary" aria-hidden="true">CA</span>
       </span>
-      <span class="mt-1.5 text-[0.68rem] font-bold uppercase tracking-[0.28em] text-gold">Estudio jurídico</span>
+      <span class="flex flex-col">
+        <span class="font-serif text-[1.45rem] font-semibold leading-none tracking-[-0.01em] text-primary transition group-hover:text-accent-dark sm:text-[1.7rem]">
+          {site.name}
+        </span>
+        <span class="mt-1.5 text-[0.68rem] font-bold uppercase tracking-[0.28em] text-accent">Estudio jurídico</span>
+      </span>
     </a>
 
     <nav
-      class="hidden items-center gap-1 rounded-md border border-slate-200/80 bg-white/90 p-1.5 shadow-[0_16px_40px_rgba(15,45,58,0.08)] lg:flex"
+      class="hidden items-center gap-1 rounded-md border border-muted-blue/35 bg-white/90 p-1.5 shadow-[0_16px_40px_rgba(15,39,82,0.08)] lg:flex"
       aria-label="Navegación principal"
     >
       <a class={navItem} href="/">Inicio</a>
@@ -31,18 +46,18 @@ const dropdownLink =
       <div class="group relative">
         <button class={navItem} type="button" aria-haspopup="true">
           Servicios
-          <span class="text-[0.7rem] text-gold transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
+          <span class="text-[0.7rem] text-accent transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
         </button>
 
         <div class={`${dropdownPanel} left-0 w-[22rem]`}>
-          <div class="rounded-md border border-slate-200/90 bg-white p-2 shadow-[0_24px_60px_rgba(15,45,58,0.18)] ring-1 ring-white/70">
-            <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-gold">
+          <div class="rounded-md border border-muted-blue/35 bg-white p-2 shadow-[0_24px_60px_rgba(15,39,82,0.18)] ring-1 ring-white/70">
+            <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-accent">
               Áreas de práctica
             </p>
             {services.map((service) => (
               <a class={dropdownLink} href={`/${service.slug}/`}>
                 <span>{service.title}</span>
-                <span class="mt-0.5 text-gold opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
+                <span class="mt-0.5 text-accent opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
                   →
                 </span>
               </a>
@@ -54,18 +69,18 @@ const dropdownLink =
       <div class="group relative">
         <button class={navItem} type="button" aria-haspopup="true">
           Dónde atendemos
-          <span class="text-[0.7rem] text-gold transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
+          <span class="text-[0.7rem] text-accent transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
         </button>
 
         <div class={`${dropdownPanel} left-0 w-64`}>
-          <div class="rounded-md border border-slate-200/90 bg-white p-2 shadow-[0_24px_60px_rgba(15,45,58,0.18)] ring-1 ring-white/70">
-            <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-gold">
+          <div class="rounded-md border border-muted-blue/35 bg-white p-2 shadow-[0_24px_60px_rgba(15,39,82,0.18)] ring-1 ring-white/70">
+            <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-accent">
               Atención local
             </p>
             {locations.map((location) => (
               <a class={dropdownLink} href={`/${location.slug}/`}>
                 <span>{location.city}</span>
-                <span class="mt-0.5 text-gold opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
+                <span class="mt-0.5 text-accent opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
                   →
                 </span>
               </a>
@@ -84,7 +99,7 @@ const dropdownLink =
     </div>
 
     <button
-      class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-slate-200 bg-white text-night shadow-[0_10px_25px_rgba(15,45,58,0.08)] transition hover:border-gold/60 hover:text-petroleum lg:hidden"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-muted-blue/40 bg-white text-primary shadow-[0_10px_25px_rgba(15,39,82,0.08)] transition hover:border-accent/60 hover:text-accent-dark lg:hidden"
       type="button"
       data-menu-toggle
       aria-label="Abrir menú"
@@ -94,38 +109,38 @@ const dropdownLink =
     </button>
   </div>
 
-  <div class="hidden border-t border-slate-200 bg-white lg:hidden" data-mobile-menu>
+  <div class="hidden border-t border-muted-blue/35 bg-white lg:hidden" data-mobile-menu>
     <nav class="container-page grid gap-2 py-4" aria-label="Navegación móvil">
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href="/">Inicio</a>
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/">Inicio</a>
 
-      <details class="rounded-md border border-slate-200/80 bg-white">
-        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-slate-800 marker:hidden">
+      <details class="rounded-md border border-muted-blue/35 bg-white">
+        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-text-dark marker:hidden">
           Servicios
         </summary>
-        <div class="grid border-t border-slate-200/70 p-2">
+        <div class="grid border-t border-muted-blue/30 p-2">
           {services.map((service) => (
-            <a class="rounded-md px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-mist" href={`/${service.slug}/`}>
+            <a class="rounded-md px-3 py-2.5 text-sm font-semibold text-text-dark hover:bg-mist hover:text-primary" href={`/${service.slug}/`}>
               {service.title}
             </a>
           ))}
         </div>
       </details>
 
-      <details class="rounded-md border border-slate-200/80 bg-white">
-        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-slate-800 marker:hidden">
+      <details class="rounded-md border border-muted-blue/35 bg-white">
+        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-text-dark marker:hidden">
           Dónde atendemos
         </summary>
-        <div class="grid border-t border-slate-200/70 p-2">
+        <div class="grid border-t border-muted-blue/30 p-2">
           {locations.map((location) => (
-            <a class="rounded-md px-3 py-2.5 text-sm font-semibold text-slate-700 hover:bg-mist" href={`/${location.slug}/`}>
+            <a class="rounded-md px-3 py-2.5 text-sm font-semibold text-text-dark hover:bg-mist hover:text-primary" href={`/${location.slug}/`}>
               {location.city}
             </a>
           ))}
         </div>
       </details>
 
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href="/blog/">Blog</a>
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-slate-700 hover:bg-mist" href="/contacto/">Contacto</a>
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/blog/">Blog</a>
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/contacto/">Contacto</a>
       <a class="btn-primary mt-2" href={site.whatsapp} target="_blank" rel="noreferrer">Solicitar evaluación legal</a>
     </nav>
   </div>
