@@ -1,68 +1,78 @@
 ---
 import { site } from "@data/site";
+
+const focusAreas = [
+  ["Empresas", "Contratos, socios y decisiones de administración."],
+  ["Propiedades", "Compraventas, arriendos, títulos e inmuebles."],
+  ["Empleadores", "Defensa laboral y prevención de contingencias."]
+];
 ---
 
-<section class="relative overflow-hidden bg-night text-white">
-  <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,39,82,1),rgba(81,113,143,0.88)_58%,rgba(15,39,82,1))]"></div>
-  <div class="absolute inset-x-0 bottom-0 h-px bg-gold/30"></div>
+<section class="relative overflow-hidden bg-primary text-white">
+  <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,39,82,1),rgba(15,39,82,0.96)_52%,rgba(37,38,43,0.92))]"></div>
+  <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_58%_35%,rgba(215,117,52,0.18),transparent_34%)] lg:block"></div>
+  <div class="absolute inset-x-0 bottom-0 h-px bg-accent/35"></div>
 
-  <div class="container-page relative grid min-h-[calc(100vh-4.75rem)] items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-    <div class="max-w-4xl">
-      <div class="hero-reveal inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/78">
-        <span class="h-1.5 w-1.5 rounded-full bg-gold"></span>
-        San Felipe · Los Andes · Viña del Mar
+  <div class="container-page relative grid min-h-[calc(100vh-5rem)] items-center gap-12 py-16 lg:grid-cols-[0.95fr_1.05fr] lg:py-20">
+    <div class="max-w-3xl">
+      <div class="hero-reveal inline-flex items-center gap-3 rounded-full border border-white/14 bg-white/[0.08] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-white/82">
+        <span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
+        Asesoría jurídica estratégica
       </div>
+
       <h1 class="hero-reveal hero-reveal-delay-1 mt-7 font-serif text-4xl font-semibold leading-tight tracking-normal sm:text-5xl lg:text-6xl">
-        Cancino Abogados | Asesoría legal estratégica para empresas y personas
+        Asesoría legal estratégica para empresas y personas
       </h1>
-      <p class="hero-reveal hero-reveal-delay-2 mt-6 max-w-2xl text-lg leading-9 text-white/75">
+
+      <p class="hero-reveal hero-reveal-delay-2 mt-6 max-w-2xl text-base leading-8 text-white/76 sm:text-lg sm:leading-9">
         Prevenga riesgos, proteja su patrimonio y resuelva conflictos civiles, comerciales, laborales e inmobiliarios con respaldo profesional y comunicación clara.
       </p>
 
       <div class="hero-reveal hero-reveal-delay-3 mt-9 flex flex-col gap-3 sm:flex-row">
         <a class="btn-primary" href={site.whatsapp} target="_blank" rel="noreferrer">Solicitar evaluación legal</a>
-        <a class="btn-secondary" href="/contacto/">Contactar a Cancino Abogados</a>
+        <a class="btn-secondary" href="/contacto/">Ver servicios</a>
       </div>
 
-      <div class="hero-reveal hero-reveal-delay-4 mt-10 grid gap-4 border-t border-white/10 pt-8 sm:grid-cols-3">
-        {[
-          ["Empresas", "Contratos, socios, proveedores y decisiones de administración."],
-          ["Propiedades", "Compraventas, arriendos, títulos, terrenos e inmuebles."],
-          ["Empleadores", "Defensa laboral, despidos y prevención de contingencias."]
-        ].map(([title, text]) => (
+      <div class="hero-reveal hero-reveal-delay-4 mt-10 grid gap-4 border-t border-white/12 pt-8 sm:grid-cols-3">
+        {focusAreas.map(([title, text]) => (
           <div>
             <p class="text-sm font-bold text-white">{title}</p>
-            <p class="mt-1 text-xs leading-6 text-white/58">{text}</p>
+            <p class="mt-1 text-xs leading-6 text-white/60">{text}</p>
           </div>
         ))}
       </div>
     </div>
 
-    <aside class="hero-reveal hero-reveal-delay-2 dark-panel p-6 transition-transform duration-300 ease-out hover:-translate-y-1 sm:p-8">
-      <div class="grid gap-6 sm:grid-cols-[0.72fr_1.28fr] lg:grid-cols-1 xl:grid-cols-[0.72fr_1.28fr]">
-        <div class="flex min-h-52 items-center justify-center rounded-md border border-white/10 bg-white/[0.06] p-6">
-          <div class="text-center">
-            <p class="font-serif text-4xl font-semibold text-gold">SC</p>
-            <p class="mt-3 text-xs font-bold uppercase tracking-[0.18em] text-white/55">Cancino Abogados</p>
-          </div>
-        </div>
+    <div class="hero-reveal hero-reveal-delay-2 relative mx-auto w-full max-w-[32rem] lg:ml-auto">
+      <div class="absolute -left-5 top-8 hidden h-24 w-24 border-l border-t border-white/18 lg:block"></div>
+      <div class="absolute -right-5 -top-5 h-28 w-28 rounded-md bg-accent/14"></div>
+      <figure class="relative overflow-hidden rounded-md border border-white/14 bg-white/[0.06] shadow-[0_30px_90px_rgba(0,0,0,0.28)]">
+        <img
+          class="aspect-[4/5] w-full object-cover object-top"
+          src="/imagenes/Saul_cancino_abogado.png"
+          alt="Saúl Cancino, abogado director de Cancino Abogados"
+          width="900"
+          height="1125"
+          loading="eager"
+          decoding="async"
+          fetchpriority="high"
+        />
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/92 to-transparent px-6 pb-6 pt-16">
+          <p class="font-serif text-2xl font-semibold text-white">{site.lawyer.name}</p>
+          <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-accent">{site.lawyer.title}</p>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
 
-        <div>
-          <p class="eyebrow">Abogado director</p>
-          <h2 class="mt-3 font-serif text-3xl font-semibold text-white">{site.lawyer.name}</h2>
-          <p class="mt-4 text-sm leading-7 text-white/70">{site.lawyer.education}</p>
-          <div class="mt-6 space-y-4 border-t border-white/10 pt-6">
-            <div>
-              <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Reconocimiento</p>
-              <p class="mt-2 text-sm leading-6 text-white/80">{site.lawyer.recognition}</p>
-            </div>
-            <div>
-              <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">Atención</p>
-              <p class="mt-2 text-sm leading-6 text-white/80">Español e inglés, con enfoque estratégico y comunicación clara.</p>
-            </div>
-          </div>
+  <div class="relative border-t border-white/10 bg-white text-primary">
+    <div class="container-page grid gap-0 divide-y divide-muted-blue/30 py-5 text-center sm:grid-cols-2 sm:divide-x sm:divide-y-0 lg:grid-cols-4">
+      {site.locations.map((location) => (
+        <div class="px-4 py-4">
+          <p class="font-serif text-2xl font-semibold leading-none">{location}</p>
+          <p class="mt-2 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-primary-soft">Zona de servicio</p>
         </div>
-      </div>
-    </aside>
+      ))}
+    </div>
   </div>
 </section>
