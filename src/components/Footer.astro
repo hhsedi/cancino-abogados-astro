@@ -5,7 +5,7 @@ import { site } from "@data/site";
 ---
 
 <footer class="bg-night text-white">
-  <div class="container-page grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.25fr_1fr_0.8fr_1fr]">
+  <div class="container-page grid gap-10 py-16 md:grid-cols-2 lg:grid-cols-[1.15fr_0.9fr_0.8fr_0.95fr_1.35fr]">
     <div>
       <p class="font-serif text-2xl font-semibold">{site.name}</p>
       <p class="mt-4 max-w-md text-sm leading-7 text-white/70">{site.description}</p>
@@ -39,6 +39,23 @@ import { site } from "@data/site";
         <li><a class="hover:text-white" href={site.emailHref}>{site.email}</a></li>
         <li>{site.locations.join(" · ")}</li>
       </ul>
+    </div>
+
+    <div class="md:col-span-2 lg:col-span-1">
+      <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-gold">Mapa</h2>
+      <div class="mt-4 overflow-hidden rounded-md border border-white/10 bg-white/[0.06] shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
+        <iframe
+          title="Mapa de Cancino Abogados"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1672.9113223983659!2d-71.55102162883584!3d-33.008451033446626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x26c47ba9a5e697b%3A0x62e184e3c6026c61!2sCancino%20Abogados!5e0!3m2!1ses-419!2scl!4v1779378429717!5m2!1ses-419!2scl"
+          width="600"
+          height="450"
+          style="border:0;"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          class="h-[280px] w-full max-w-full md:h-[320px] lg:h-[260px]"
+        ></iframe>
+      </div>
     </div>
   </div>
   <div class="border-t border-white/10">

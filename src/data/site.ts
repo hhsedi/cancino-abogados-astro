@@ -2,7 +2,7 @@ export const site = {
   name: "Cancino Abogados",
   url: "https://www.cancinoabogados.cl",
   description:
-    "Estudio jurídico liderado por Saúl Cancino. Asesoría legal estratégica para empresas y personas en Santiago de Chile, Viña del Mar, San Felipe y Los Andes.",
+    "Estudio jurídico liderado por Saúl Cancino. Asesoría legal estratégica para empresas y personas en Viña del Mar, Santiago, Quillota y San Felipe.",
   tagline: "Asesoría legal estratégica para empresas y personas",
   promise: "Experiencia. Rigor. Compromiso.",
   phone: "+56 9 5607 5464",
@@ -10,7 +10,7 @@ export const site = {
   whatsapp: "https://wa.me/56956075464",
   email: "contacto@cancinoabogados.cl",
   emailHref: "mailto:contacto@cancinoabogados.cl",
-  locations: ["Santiago de Chile", "Viña del Mar", "San Felipe", "Los Andes"],
+  locations: ["Viña del Mar", "Santiago", "Quillota", "San Felipe"],
   lawyer: {
     name: "Saúl Cancino",
     title: "Abogado director",

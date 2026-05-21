@@ -57,11 +57,11 @@ export const services: Service[] = [
       {
         question: "¿Pueden revisar una propiedad ubicada fuera de Viña del Mar?",
         answer:
-          "Sí. La asesoría puede coordinarse para operaciones en San Felipe, Los Andes, Viña del Mar y otras ciudades, según los antecedentes disponibles."
+          "Sí. La asesoría puede coordinarse para operaciones en Viña del Mar, Santiago, Quillota, San Felipe y otras ciudades, según los antecedentes disponibles."
       }
     ],
     metaDescription:
-      "Abogado inmobiliario para compraventas, arriendos, estudio de títulos y conflictos sobre propiedades en San Felipe, Los Andes y Viña del Mar."
+      "Abogado inmobiliario para compraventas, arriendos, estudio de títulos y conflictos sobre propiedades en Viña del Mar, Santiago, Quillota y San Felipe."
   },
   {
     title: "Litigación civil y comercial",
