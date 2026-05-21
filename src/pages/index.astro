@@ -21,7 +21,7 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
 
 <MainLayout
   title="Asesoría legal estratégica para empresas y personas"
-  description="Cancino Abogados entrega asesoría legal estratégica para empresas, constructoras, contratistas y personas en Viña del Mar, Santiago, Quillota y San Felipe."
+  description="Cancino Abogados entrega asesoría legal estratégica para empresas, constructoras, contratistas y personas en Santiago, Quillota y San Felipe."
   path="/"
   schema={schema}
 >
@@ -46,18 +46,21 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
 
   <AttorneyProfile />
 
-  <section class="py-20 lg:py-24">
+  <section class="relative overflow-hidden bg-mist py-20 lg:py-24">
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-accent/70 to-transparent"></div>
     <div class="container-page">
-      <div class="max-w-3xl">
-        <p class="eyebrow">Atención local</p>
-        <h2 class="section-title">Abogados en Viña del Mar, Santiago, Quillota y San Felipe</h2>
-        <p class="section-copy">
-          La asesoría puede coordinarse para clientes que requieren orientación legal local, revisión documental o acompañamiento estratégico en materias civiles, comerciales, inmobiliarias y laborales para empleadores.
+      <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+        <div>
+          <p class="eyebrow">Dónde atendemos</p>
+          <h2 class="section-title">Abogados en Santiago, Quillota y San Felipe</h2>
+        </div>
+        <p class="section-copy mt-0 lg:max-w-2xl">
+          Atención legal para empresas, constructoras, contratistas, empleadores, propietarios e inversionistas que necesitan orientación estratégica, revisión documental o defensa en conflictos relevantes.
         </p>
       </div>
       <div class="mt-10 grid gap-5 md:grid-cols-3">
         {locations.map((location) => (
-          <LocationCard city={location.city} summary={location.summary} href={`/${location.slug}/`} />
+          <LocationCard city={location.city} summary={location.summary} href={`/${location.slug}/`} keyword={location.keyword} />
         ))}
       </div>
     </div>

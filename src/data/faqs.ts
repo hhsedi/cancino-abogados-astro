@@ -5,9 +5,9 @@ export const faqs = [
       "Es recomendable revisar contratos relevantes antes de firmar. Una asesoría oportuna puede detectar riesgos, obligaciones poco claras o condiciones que conviene negociar."
   },
   {
-    question: "¿Atienden en Viña del Mar, Santiago, Quillota y San Felipe?",
+    question: "¿Atienden en Santiago, Quillota y San Felipe?",
     answer:
-      "Sí. Cancino Abogados orienta a clientes en Viña del Mar, Santiago, Quillota y San Felipe, con posibilidad de coordinación online según el caso."
+      "Sí. Cancino Abogados orienta a clientes en Santiago, Quillota y San Felipe, con posibilidad de coordinación online según el caso."
   },
   {
     question: "¿Trabajan con empresas y empleadores?",

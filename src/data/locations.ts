@@ -12,100 +12,77 @@ export type LocationLanding = {
   metaDescription: string;
 };
 
-export const locations: LocationLanding[] = [
+const sharedHighlights = (city: string) => [
+  `Empresas, constructoras y contratistas que necesitan abogado en ${city} para contratos, controversias o decisiones estratégicas.`,
+  `Empleadores que requieren defensa laboral, revisión de despidos, finiquitos o prevención de riesgos.`,
+  `Propietarios, inversionistas y compradores que necesitan asesoría inmobiliaria o estudio de títulos en ${city}.`,
+  `Personas y empresas con conflictos civiles, comerciales, contractuales o societarios que requieren una estrategia legal clara.`
+];
+
+const sharedFaqs = (city: string) => [
   {
-    city: "San Felipe",
-    slug: "abogado-san-felipe",
-    keyword: "abogado San Felipe",
-    h1: "Abogado en San Felipe",
-    summary:
-      "Asesoría legal estratégica para pymes, empresas familiares, empleadores y personas naturales en San Felipe.",
-    audience:
-      "Cancino Abogados orienta a clientes de San Felipe en contratos, propiedades, terrenos, parcelas, conflictos civiles y comerciales, derecho inmobiliario y defensa laboral para empleadores.",
-    highlights: [
-      "Pymes y empresas familiares que necesitan ordenar contratos y documentos.",
-      "Propietarios o compradores de terrenos, parcelas e inmuebles.",
-      "Empleadores que requieren prevención o defensa laboral.",
-      "Personas con conflictos civiles o comerciales relevantes."
-    ],
-    faqs: [
-      {
-        question: "¿Atienden consultas legales en San Felipe?",
-        answer:
-          "Sí. La atención puede coordinarse de forma online o presencial según disponibilidad y características del caso."
-      },
-      {
-        question: "¿Qué servicios legales se ofrecen en San Felipe?",
-        answer:
-          "Derecho inmobiliario, litigación civil y comercial, contratos, asesoría para empresas y defensa laboral para empleadores."
-      }
-    ],
-    metaDescription:
-      "Abogado en San Felipe para empresas, empleadores y personas. Derecho inmobiliario, contratos, litigios civiles y comerciales."
+    question: `¿Cancino Abogados atiende clientes en ${city}?`,
+    answer:
+      `Sí. Cancino Abogados atiende clientes en ${city} y puede coordinar reuniones, revisión documental y seguimiento del caso de forma presencial o remota según la materia y disponibilidad.`
   },
   {
-    city: "Los Andes",
-    slug: "abogado-los-andes",
-    keyword: "abogado Los Andes",
-    h1: "Abogado en Los Andes",
-    summary:
-      "Asesoría legal preventiva y estratégica para empresas locales, empleadores y personas en Los Andes.",
-    audience:
-      "El estudio asesora en Los Andes a empresas, empleadores, propietarios y personas que necesitan revisar contratos, resolver conflictos o prevenir riesgos legales.",
-    highlights: [
-      "Empresas locales que requieren asesoría legal clara.",
-      "Empleadores con necesidades laborales preventivas o de defensa.",
-      "Operaciones sobre propiedades, terrenos y contratos.",
-      "Conflictos civiles, comerciales o societarios."
-    ],
-    faqs: [
-      {
-        question: "¿Puedo consultar desde Los Andes de forma online?",
-        answer:
-          "Sí. Muchas consultas pueden gestionarse por videollamada, correo y revisión digital de antecedentes."
-      },
-      {
-        question: "¿Trabajan con empresas de Los Andes?",
-        answer:
-          "Sí. La asesoría está orientada a empresas, pymes, empleadores y negocios que requieren apoyo legal estratégico."
-      }
-    ],
-    metaDescription:
-      "Abogado en Los Andes para empresas, empleadores y personas. Contratos, derecho civil y comercial, propiedades y asesoría preventiva."
+    question: `¿Qué servicios legales ofrece un abogado en ${city}?`,
+    answer:
+      "El estudio ofrece asesoría en controversias de construcción y contratación pública, asesoría legal de empresa, litigación civil y comercial, defensa laboral para empleadores, contratos, derecho inmobiliario, sociedades, estudio de títulos, compliance corporativo y negociación de conflictos."
   },
   {
-    city: "Viña del Mar",
-    slug: "abogado-vina-del-mar",
-    keyword: "abogado Viña del Mar",
-    h1: "Abogado en Viña del Mar",
-    summary:
-      "Asesoría legal para empresas de servicios, profesionales independientes, propietarios e inversionistas inmobiliarios en Viña del Mar.",
-    audience:
-      "Cancino Abogados atiende en Viña del Mar materias civiles, comerciales, inmobiliarias, contractuales y laborales para empleadores, con foco en prevención y estrategia.",
-    highlights: [
-      "Empresas de servicios y profesionales independientes.",
-      "Propietarios e inversionistas inmobiliarios.",
-      "Litigios civiles y comerciales.",
-      "Contratos, derecho inmobiliario y defensa laboral para empleadores."
-    ],
-    faqs: [
-      {
-        question: "¿Qué tipo de casos atienden en Viña del Mar?",
-        answer:
-          "Principalmente asuntos civiles, comerciales, inmobiliarios, contractuales y laborales para empleadores."
-      },
-      {
-        question: "¿La asesoría sirve para revisar contratos antes de firmar?",
-        answer:
-          "Sí. Revisar contratos antes de firmar permite detectar riesgos y negociar mejores condiciones."
-      }
-    ],
-    metaDescription:
-      "Abogado en Viña del Mar para empresas, profesionales, propietarios e inversionistas. Contratos, litigios y derecho inmobiliario."
+    question: `¿Puedo pedir una evaluación legal desde ${city} antes de iniciar un juicio?`,
+    answer:
+      "Sí. La evaluación inicial permite revisar antecedentes, identificar riesgos, ordenar documentos y definir si conviene negociar, prevenir el conflicto o preparar una estrategia judicial."
   }
 ];
 
-export const locationServices = services.slice(0, 5);
+export const locations: LocationLanding[] = [
+  {
+    city: "Santiago",
+    slug: "abogado-santiago",
+    keyword: "abogado en Santiago para empresas, construcción y litigios",
+    h1: "Abogado en Santiago para empresas, construcción y conflictos legales",
+    summary:
+      "Asesoría legal estratégica en Santiago para empresas, constructoras, contratistas, empleadores, propietarios e inversionistas.",
+    audience:
+      "Cancino Abogados asesora a clientes de Santiago que necesitan respaldo jurídico en contratos, litigios civiles y comerciales, controversias de construcción, contratación pública, derecho inmobiliario, sociedades, compliance y defensa laboral para empleadores.",
+    highlights: sharedHighlights("Santiago"),
+    faqs: sharedFaqs("Santiago"),
+    metaDescription:
+      "Abogado en Santiago para empresas, constructoras, contratistas y empleadores. Litigios, contratos, derecho inmobiliario y contratación pública."
+  },
+  {
+    city: "Quillota",
+    slug: "abogado-quillota",
+    keyword: "abogado en Quillota para empresas, contratos y derecho inmobiliario",
+    h1: "Abogado en Quillota para empresas, propiedades y conflictos legales",
+    summary:
+      "Asesoría legal en Quillota para empresas, propietarios, inversionistas, empleadores y personas que requieren tomar decisiones con respaldo jurídico.",
+    audience:
+      "Cancino Abogados orienta a clientes de Quillota en materias civiles, comerciales, inmobiliarias, laborales para empleadores, contratos, sociedades, estudio de títulos y resolución de controversias vinculadas a empresas o proyectos.",
+    highlights: sharedHighlights("Quillota"),
+    faqs: sharedFaqs("Quillota"),
+    metaDescription:
+      "Abogado en Quillota para empresas, empleadores, propietarios e inversionistas. Contratos, litigios, derecho inmobiliario y asesoría legal."
+  },
+  {
+    city: "San Felipe",
+    slug: "abogado-san-felipe",
+    keyword: "abogado en San Felipe para empresas, empleadores y propiedades",
+    h1: "Abogado en San Felipe para empresas, empleadores y conflictos legales",
+    summary:
+      "Asesoría legal estratégica en San Felipe para pymes, empresas familiares, constructoras, contratistas, empleadores y personas naturales.",
+    audience:
+      "Cancino Abogados atiende a clientes de San Felipe que necesitan asesoría en contratos, propiedades, terrenos, parcelas, litigación civil y comercial, derecho inmobiliario, sociedades, construcción, contratación pública y defensa laboral para empleadores.",
+    highlights: sharedHighlights("San Felipe"),
+    faqs: sharedFaqs("San Felipe"),
+    metaDescription:
+      "Abogado en San Felipe para empresas, empleadores, constructoras y personas. Derecho inmobiliario, contratos, litigios y asesoría legal."
+  }
+];
+
+export const locationServices = services;
 
 export const getLocationBySlug = (slug: string) =>
   locations.find((location) => location.slug === slug);
