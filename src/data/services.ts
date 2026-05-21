@@ -12,6 +12,13 @@ export type Service = {
   metaDescription: string;
 };
 
+const servicePriority = [
+  "controversias-construccion-contratacion-publica",
+  "asesoria-legal-empresas",
+  "litigacion-civil-comercial",
+  "defensa-laboral-empleador"
+];
+
 export const services: Service[] = [
   {
     title: "Derecho inmobiliario",
@@ -234,7 +241,7 @@ export const services: Service[] = [
       "Abogado para contratos. Redacción y revisión de contratos civiles, comerciales, inmobiliarios y laborales antes de firmar."
   },
   {
-    title: "Asesoría legal para empresas",
+    title: "Asesoría legal de empresa",
     slug: "asesoria-legal-empresas",
     keyword: "asesoría legal para empresas",
     summary:
@@ -448,7 +455,16 @@ export const services: Service[] = [
     metaDescription:
       "Abogado para negociación y resolución de conflictos civiles, comerciales y societarios. Acuerdos, transacciones y estrategia legal."
   }
-];
+].sort((a, b) => {
+  const aIndex = servicePriority.indexOf(a.slug);
+  const bIndex = servicePriority.indexOf(b.slug);
+
+  if (aIndex === -1 && bIndex === -1) return 0;
+  if (aIndex === -1) return 1;
+  if (bIndex === -1) return -1;
+
+  return aIndex - bIndex;
+});
 
 export const getServiceBySlug = (slug: string) =>
   services.find((service) => service.slug === slug);
