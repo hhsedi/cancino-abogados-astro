@@ -15,90 +15,122 @@ const {
 } = Astro.props;
 ---
 
-<div class="services-carousel" data-services-carousel data-autoplay={autoplay ? "true" : "false"} aria-label={ariaLabel}>
-  <div class="mb-5 flex items-center justify-between gap-4">
-    <p class="text-sm font-semibold text-primary-soft">
-      Deslice o use las flechas para revisar las áreas de práctica.
-    </p>
-    <div class="flex shrink-0 gap-2">
-      <button
-        class="services-carousel__control"
-        type="button"
-        data-carousel-prev
-        aria-label="Ver servicios anteriores"
-      >
-        <span aria-hidden="true">←</span>
+<div
+  class="services-carousel"
+  data-services-carousel
+  data-autoplay={autoplay ? "true" : "false"}
+  role="region"
+  aria-label={ariaLabel}
+>
+  <div class="services-carousel__chrome">
+    <div class="min-w-0">
+      <p class="text-xs font-bold uppercase tracking-[0.22em] text-accent">Servicios destacados</p>
+      <p class="mt-2 max-w-2xl text-sm leading-7 text-primary-soft">
+        Revise las principales áreas legales del estudio en el orden de prioridad definido para Cancino Abogados.
+      </p>
+    </div>
+
+    <div class="services-carousel__controls" aria-label="Controles del carrusel">
+      <button class="services-carousel__control" type="button" data-carousel-prev aria-label="Ver servicios anteriores">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+          <path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </button>
-      <button
-        class="services-carousel__control"
-        type="button"
-        data-carousel-next
-        aria-label="Ver servicios siguientes"
-      >
-        <span aria-hidden="true">→</span>
+      <button class="services-carousel__control" type="button" data-carousel-next aria-label="Ver servicios siguientes">
+        <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+          <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </button>
     </div>
   </div>
 
-  <div class="services-carousel__viewport" data-carousel-track tabindex="0">
-    {services.map((service) => (
-      <div class="services-carousel__slide" data-carousel-slide>
-        <ServiceCard title={service.title} summary={service.summary} href={`/${service.slug}/`} />
-      </div>
-    ))}
+  <div class="services-carousel__viewport" data-carousel-viewport tabindex="0">
+    <div class="services-carousel__track" data-carousel-track>
+      {services.map((service, index) => (
+        <div class="services-carousel__slide" data-carousel-slide>
+          <ServiceCard title={service.title} summary={service.summary} href={`/${service.slug}/`} order={index + 1} />
+        </div>
+      ))}
+    </div>
   </div>
 
-  <div class="mt-6 flex justify-center gap-2" aria-label="Indicadores de servicios">
-    {services.map((service, index) => (
-      <button
-        class="services-carousel__dot"
-        type="button"
-        data-carousel-dot={index}
-        aria-label={`Ir a ${service.title}`}
-      >
-        <span class="sr-only">{service.title}</span>
-      </button>
-    ))}
+  <div class="services-carousel__footer">
+    <p class="services-carousel__status" data-carousel-status aria-live="polite">Servicio 1 de {services.length}</p>
+    <div class="services-carousel__dots" data-carousel-dots aria-label="Indicadores de servicios"></div>
   </div>
 </div>
 
 <style>
   .services-carousel {
-    --carousel-gap: 1.25rem;
+    --carousel-gap: 1rem;
     --items-visible: 1;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(163, 181, 194, 0.34);
+    border-radius: 0.75rem;
+    background:
+      linear-gradient(135deg, rgba(15, 39, 82, 0.035), rgba(215, 117, 52, 0.045)),
+      #ffffff;
+    box-shadow: 0 26px 80px rgba(15, 39, 82, 0.1);
+    padding: 1rem;
   }
 
-  @media (min-width: 768px) {
-    .services-carousel {
-      --items-visible: 2;
-    }
+  .services-carousel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(135deg, rgba(15, 39, 82, 0.08) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.22;
+    mask-image: linear-gradient(90deg, black, transparent 72%);
   }
 
-  @media (min-width: 1024px) {
-    .services-carousel {
-      --items-visible: 4;
-    }
+  .services-carousel__chrome,
+  .services-carousel__footer {
+    position: relative;
+    z-index: 1;
+  }
+
+  .services-carousel__chrome {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.25rem 0.25rem 1rem;
+  }
+
+  .services-carousel__controls {
+    display: flex;
+    flex-shrink: 0;
+    gap: 0.5rem;
   }
 
   .services-carousel__viewport {
-    display: flex;
-    gap: var(--carousel-gap);
-    overflow-x: auto;
-    padding: 0.25rem 0.125rem 1.25rem;
-    scroll-behavior: smooth;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    padding: 0.25rem 0.125rem 0.5rem;
+    outline: none;
   }
 
-  .services-carousel__viewport::-webkit-scrollbar {
-    display: none;
+  .services-carousel__viewport:focus-visible {
+    border-radius: 0.5rem;
+    outline: 2px solid rgba(215, 117, 52, 0.7);
+    outline-offset: 4px;
+  }
+
+  .services-carousel__track {
+    display: flex;
+    gap: var(--carousel-gap);
+    will-change: transform;
+    transition: transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .services-carousel__slide {
     display: flex;
     flex: 0 0 calc((100% - (var(--carousel-gap) * (var(--items-visible) - 1))) / var(--items-visible));
     min-width: 0;
-    scroll-snap-align: start;
   }
 
   .services-carousel__slide :global(article) {
@@ -109,33 +141,63 @@ const {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 2.75rem;
-    height: 2.75rem;
-    border: 1px solid rgba(163, 181, 194, 0.45);
-    border-radius: 0.375rem;
-    background: #ffffff;
+    width: 2.9rem;
+    height: 2.9rem;
+    border: 1px solid rgba(15, 39, 82, 0.14);
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.92);
     color: #0f2752;
-    font-weight: 800;
+    box-shadow: 0 14px 34px rgba(15, 39, 82, 0.1);
     transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease;
   }
 
+  .services-carousel__control svg {
+    width: 1.1rem;
+    height: 1.1rem;
+  }
+
   .services-carousel__control:hover {
-    transform: translateY(-1px);
+    transform: translateY(-2px);
     border-color: rgba(215, 117, 52, 0.7);
-    color: #a25226;
-    background: #f6f8fa;
+    color: #ffffff;
+    background: #0f2752;
+  }
+
+  .services-carousel__footer {
+    margin-top: 1.1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-top: 1px solid rgba(163, 181, 194, 0.22);
+    padding: 1rem 0.25rem 0.1rem;
+  }
+
+  .services-carousel__status {
+    color: #51718f;
+    font-size: 0.78rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .services-carousel__dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.42rem;
   }
 
   .services-carousel__dot {
-    width: 0.55rem;
-    height: 0.55rem;
+    width: 0.6rem;
+    height: 0.6rem;
     border-radius: 999px;
-    background: rgba(81, 113, 143, 0.28);
+    background: rgba(81, 113, 143, 0.32);
     transition: width 180ms ease, background-color 180ms ease, transform 180ms ease;
   }
 
   .services-carousel__dot[aria-current="true"] {
-    width: 1.55rem;
+    width: 1.75rem;
     background: #d77534;
   }
 
@@ -144,9 +206,55 @@ const {
     background: #0f2752;
   }
 
+  @media (min-width: 768px) {
+    .services-carousel {
+      --items-visible: 2;
+      --carousel-gap: 1.125rem;
+      padding: 1.15rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .services-carousel {
+      --items-visible: 4;
+      --carousel-gap: 1.25rem;
+      padding: 1.25rem;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .services-carousel {
+      margin-inline: -0.25rem;
+      padding: 0.85rem;
+    }
+
+    .services-carousel__chrome {
+      flex-direction: column;
+    }
+
+    .services-carousel__controls {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    .services-carousel__control {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .services-carousel__footer {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .services-carousel__dots {
+      justify-content: flex-start;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
-    .services-carousel__viewport {
-      scroll-behavior: auto;
+    .services-carousel__track {
+      transition: none;
     }
 
     .services-carousel__control,
@@ -161,47 +269,45 @@ const {
 
   carousels.forEach((carousel) => {
     const track = carousel.querySelector("[data-carousel-track]");
+    const viewport = carousel.querySelector("[data-carousel-viewport]");
     const slides = Array.from(carousel.querySelectorAll("[data-carousel-slide]"));
     const prev = carousel.querySelector("[data-carousel-prev]");
     const next = carousel.querySelector("[data-carousel-next]");
-    const dots = Array.from(carousel.querySelectorAll("[data-carousel-dot]"));
+    const dotsContainer = carousel.querySelector("[data-carousel-dots]");
+    const status = carousel.querySelector("[data-carousel-status]");
     const shouldAutoplay = carousel.getAttribute("data-autoplay") === "true";
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    if (!(track instanceof HTMLElement) || slides.length === 0) return;
+    if (!(track instanceof HTMLElement) || !(viewport instanceof HTMLElement) || slides.length === 0) return;
 
     let timer;
     let isPaused = false;
+    let activeIndex = 0;
+    let itemsVisible = 1;
+    let maxIndex = 0;
+    let dots = [];
+
+    const getItemsVisible = () => {
+      const value = window.getComputedStyle(carousel).getPropertyValue("--items-visible");
+      return Math.max(1, Number.parseInt(value, 10) || 1);
+    };
 
     const getSlideStep = () => {
       const firstSlide = slides[0];
       const secondSlide = slides[1];
-      if (!(firstSlide instanceof HTMLElement)) return track.clientWidth;
-      if (secondSlide instanceof HTMLElement) {
-        return secondSlide.offsetLeft - firstSlide.offsetLeft;
-      }
+      if (!(firstSlide instanceof HTMLElement)) return viewport.clientWidth;
+      if (secondSlide instanceof HTMLElement) return secondSlide.offsetLeft - firstSlide.offsetLeft;
       return firstSlide.offsetWidth;
     };
 
-    const getActiveIndex = () => {
-      const step = getSlideStep();
-      return Math.max(0, Math.round(track.scrollLeft / step));
-    };
-
-    const updateDots = () => {
-      const activeIndex = getActiveIndex();
+    const updateControls = () => {
       dots.forEach((dot, index) => {
-        if (dot instanceof HTMLElement) {
-          dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
-        }
+        if (dot instanceof HTMLElement) dot.setAttribute("aria-current", index === activeIndex ? "true" : "false");
       });
-    };
 
-    const scrollToIndex = (index) => {
-      const normalizedIndex = (index + slides.length) % slides.length;
-      const slide = slides[normalizedIndex];
-      if (slide instanceof HTMLElement) {
-        track.scrollTo({ left: slide.offsetLeft, behavior: reduceMotion ? "auto" : "smooth" });
+      if (status instanceof HTMLElement) {
+        const endIndex = Math.min(activeIndex + itemsVisible, slides.length);
+        status.textContent = `Servicios ${activeIndex + 1}-${endIndex} de ${slides.length}`;
       }
     };
 
@@ -210,11 +316,10 @@ const {
       timer = undefined;
     };
 
-    const startAutoplay = () => {
-      if (!shouldAutoplay || reduceMotion || timer || isPaused) return;
-      timer = window.setInterval(() => {
-        scrollToIndex(getActiveIndex() + 1);
-      }, 5200);
+    const goTo = (index) => {
+      activeIndex = Math.min(Math.max(index, 0), maxIndex);
+      track.style.transform = `translate3d(-${getSlideStep() * activeIndex}px, 0, 0)`;
+      updateControls();
     };
 
     const pauseForInteraction = () => {
@@ -222,22 +327,49 @@ const {
       stopAutoplay();
     };
 
+    const renderDots = () => {
+      if (!(dotsContainer instanceof HTMLElement)) return;
+      dotsContainer.textContent = "";
+      dots = [];
+
+      for (let index = 0; index <= maxIndex; index += 1) {
+        const dot = document.createElement("button");
+        dot.className = "services-carousel__dot";
+        dot.type = "button";
+        dot.dataset.carouselDot = String(index);
+        dot.setAttribute("aria-label", `Ver servicios desde la posición ${index + 1}`);
+        dot.addEventListener("click", () => {
+          pauseForInteraction();
+          goTo(index);
+        });
+        dotsContainer.appendChild(dot);
+        dots.push(dot);
+      }
+    };
+
+    const recalculate = () => {
+      itemsVisible = Math.min(getItemsVisible(), slides.length);
+      maxIndex = Math.max(0, slides.length - itemsVisible);
+      activeIndex = Math.min(activeIndex, maxIndex);
+      renderDots();
+      goTo(activeIndex);
+    };
+
+    const startAutoplay = () => {
+      if (!shouldAutoplay || reduceMotion || timer || isPaused) return;
+      timer = window.setInterval(() => {
+        goTo(activeIndex >= maxIndex ? 0 : activeIndex + 1);
+      }, 5200);
+    };
+
     prev?.addEventListener("click", () => {
       pauseForInteraction();
-      scrollToIndex(getActiveIndex() - 1);
+      goTo(activeIndex <= 0 ? maxIndex : activeIndex - 1);
     });
 
     next?.addEventListener("click", () => {
       pauseForInteraction();
-      scrollToIndex(getActiveIndex() + 1);
-    });
-
-    dots.forEach((dot) => {
-      dot.addEventListener("click", () => {
-        pauseForInteraction();
-        const index = Number((dot instanceof HTMLElement && dot.dataset.carouselDot) || 0);
-        scrollToIndex(index);
-      });
+      goTo(activeIndex >= maxIndex ? 0 : activeIndex + 1);
     });
 
     carousel.addEventListener("mouseenter", () => {
@@ -250,11 +382,11 @@ const {
       startAutoplay();
     });
 
-    track.addEventListener("pointerdown", pauseForInteraction, { passive: true });
-    track.addEventListener("focusin", pauseForInteraction);
-    track.addEventListener("scroll", updateDots, { passive: true });
+    viewport.addEventListener("pointerdown", pauseForInteraction, { passive: true });
+    viewport.addEventListener("focusin", pauseForInteraction);
+    window.addEventListener("resize", recalculate, { passive: true });
 
-    updateDots();
+    recalculate();
     startAutoplay();
   });
 </script>

@@ -3,14 +3,22 @@ type Props = {
   title: string;
   summary: string;
   href: string;
+  order?: number;
 };
 
-const { title, summary, href } = Astro.props;
+const { title, summary, href, order } = Astro.props;
 
 const iconPaths: Record<string, string[]> = {
   "Derecho inmobiliario": ["M4 11.5 12 5l8 6.5", "M6.5 10.5V19h11v-8.5", "M10 19v-5h4v5"],
   "Litigación civil y comercial": ["M12 4v16", "M6 8h12", "M7 8l-3 6h6L7 8Z", "M17 8l-3 6h6l-3-6Z"],
-  "Resolución de Controversias en Construcción y Contratación Pública": ["M4 19h16", "M6 19V9l6-4 6 4v10", "M9 19v-5h6v5", "M8 11h.01", "M12 11h.01", "M16 11h.01"],
+  "Resolución de Controversias en Construcción y Contratación Pública": [
+    "M4 19h16",
+    "M6 19V9l6-4 6 4v10",
+    "M9 19v-5h6v5",
+    "M8 11h.01",
+    "M12 11h.01",
+    "M16 11h.01"
+  ],
   "Defensa laboral para empleadores": ["M7 8h10v11H7z", "M9 8V6h6v2", "M9.5 12h5", "M9.5 15h5"],
   "Redacción y revisión de contratos": ["M7 4h7l3 3v13H7z", "M14 4v4h4", "M9.5 12h5", "M9.5 15.5h5"],
   "Asesoría legal de empresa": ["M4.5 9h15v10h-15z", "M8 9V6h8v3", "M7 13h10", "M12 12v2"],
@@ -21,28 +29,34 @@ const iconPaths: Record<string, string[]> = {
 };
 
 const paths = iconPaths[title] ?? ["M12 5v14", "M5 12h14"];
+const orderLabel = order ? String(order).padStart(2, "0") : "Servicio";
 ---
 
-<article class="group relative flex h-full flex-col overflow-hidden rounded-md border border-muted-blue/35 bg-white p-6 shadow-soft transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-[0_26px_70px_rgba(15,39,82,0.14)]">
-  <div class="pointer-events-none absolute inset-0 opacity-[0.035] [background-image:linear-gradient(135deg,#0F2752_1px,transparent_1px)] [background-size:18px_18px]"></div>
-  <div class="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-gold/70 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+<article class="group relative flex h-full min-h-[25rem] flex-col overflow-hidden rounded-lg border border-primary/15 bg-white p-6 shadow-[0_18px_50px_rgba(15,39,82,0.09)] transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-[0_28px_72px_rgba(15,39,82,0.16)]">
+  <div class="pointer-events-none absolute inset-0 opacity-[0.04] [background-image:linear-gradient(135deg,#0F2752_1px,transparent_1px)] [background-size:18px_18px]"></div>
+  <div class="pointer-events-none absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary via-accent to-primary opacity-80"></div>
+  <div class="pointer-events-none absolute -right-16 -top-16 h-36 w-36 rounded-full border border-accent/20"></div>
 
   <div class="relative flex items-start justify-between gap-5">
-    <div class="flex h-12 w-12 items-center justify-center rounded-md border border-primary/10 bg-mist text-primary transition duration-300 group-hover:-translate-y-0.5 group-hover:border-accent/50 group-hover:bg-primary group-hover:text-accent">
-      <svg class="h-6 w-6" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
+    <div class="flex h-14 w-14 items-center justify-center rounded-lg border border-primary/12 bg-primary text-white shadow-[0_14px_32px_rgba(15,39,82,0.18)] transition duration-300 group-hover:-translate-y-0.5 group-hover:bg-accent-dark">
+      <svg class="h-7 w-7" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.65" stroke-linecap="round" stroke-linejoin="round">
         {paths.map((path) => <path d={path}></path>)}
       </svg>
     </div>
-    <span class="rounded-full border border-muted-blue/35 bg-white/80 px-3 py-1 text-[0.65rem] font-bold uppercase tracking-[0.18em] text-primary-soft transition duration-300 group-hover:border-accent/50 group-hover:text-accent">
-      Servicio
+    <span class="rounded-full border border-muted-blue/35 bg-mist px-3 py-1 text-[0.68rem] font-black uppercase tracking-[0.18em] text-primary-soft transition duration-300 group-hover:border-accent/60 group-hover:bg-white group-hover:text-accent-dark">
+      {orderLabel}
     </span>
   </div>
 
-  <h3 class="relative mt-6 font-serif text-2xl font-semibold leading-tight text-night">{title}</h3>
-  <p class="relative mt-4 flex-1 text-sm leading-7 text-primary-soft">{summary}</p>
+  <h3 class="relative mt-7 font-serif text-[1.65rem] font-semibold leading-[1.08] text-night">{title}</h3>
+  <p class="relative mt-4 flex-1 text-[0.95rem] leading-7 text-primary-soft">{summary}</p>
 
-  <a class="relative mt-7 inline-flex items-center gap-2 text-sm font-bold text-primary transition duration-300 group-hover:text-accent-dark" href={href}>
-    Revisar este servicio
-    <span aria-hidden="true" class="transition duration-300 group-hover:translate-x-1">→</span>
+  <a class="relative mt-7 inline-flex items-center justify-between gap-3 rounded-md border border-primary/12 bg-mist px-4 py-3 text-sm font-bold text-primary transition duration-300 group-hover:border-accent/45 group-hover:bg-primary group-hover:text-white" href={href}>
+    <span>Revisar servicio</span>
+    <span aria-hidden="true" class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-primary transition duration-300 group-hover:translate-x-0.5 group-hover:text-accent-dark">
+      <svg class="h-3.5 w-3.5" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
   </a>
 </article>
