@@ -100,6 +100,54 @@ export const services: Service[] = [
       "Abogado para litigios civiles y comerciales, demandas, incumplimientos de contrato y conflictos entre empresas o particulares."
   },
   {
+    title: "Resolución de Controversias en Construcción y Contratación Pública",
+    slug: "controversias-construccion-contratacion-publica",
+    keyword: "abogado construcción contratación pública",
+    summary:
+      "Asesoría y litigación para constructoras y contratistas en conflictos derivados de contratos de obra pública y privada.",
+    intro:
+      "Asesoría y litigación para constructoras y contratistas en conflictos derivados de contratos de obra pública y privada. Defensa frente a incumplimientos del mandante, estados de pago impagos, aumentos de obra, atrasos, perjuicios y desequilibrios económicos del contrato.",
+    specializedHeading:
+      "Resolución de controversias en construcción, contratos de obra y contratación pública",
+    cases: [
+      "Conflictos derivados de contratos de obra pública o privada.",
+      "Estados de pago impagos o diferencias en la liquidación del contrato.",
+      "Aumentos de obra, obras extraordinarias o modificaciones no reconocidas.",
+      "Atrasos, perjuicios y responsabilidades asociadas a la ejecución del proyecto.",
+      "Desequilibrios económicos del contrato que afectan a constructoras o contratistas."
+    ],
+    approach: [
+      "Revisión del contrato, bases, anexos, estados de pago, comunicaciones y antecedentes técnicos disponibles.",
+      "Identificación de incumplimientos, riesgos probatorios y posibles vías de reclamación o defensa.",
+      "Preparación de una estrategia legal orientada a negociación, reclamación administrativa, litigación o resolución de controversias.",
+      "Acompañamiento jurídico para ordenar antecedentes y defender la posición de la constructora o contratista."
+    ],
+    benefits: [
+      "Permite ordenar técnicamente los antecedentes antes de escalar el conflicto.",
+      "Ayuda a evaluar incumplimientos, perjuicios y alternativas de reclamación.",
+      "Entrega respaldo jurídico para negociar o litigar con una estrategia clara."
+    ],
+    faqs: [
+      {
+        question: "¿Qué tipo de conflictos de construcción puede revisar Cancino Abogados?",
+        answer:
+          "Puede revisar conflictos asociados a contratos de obra pública o privada, estados de pago impagos, aumentos de obra, atrasos, perjuicios e incumplimientos del mandante."
+      },
+      {
+        question: "¿La asesoría está dirigida a constructoras y contratistas?",
+        answer:
+          "Sí. Este servicio está pensado para constructoras, contratistas y empresas que necesitan evaluar o defender su posición en controversias contractuales."
+      },
+      {
+        question: "¿Es necesario iniciar un juicio de inmediato?",
+        answer:
+          "No necesariamente. Primero conviene revisar contrato, documentos, comunicaciones y antecedentes técnicos para definir si corresponde negociar, reclamar o preparar una estrategia litigiosa."
+      }
+    ],
+    metaDescription:
+      "Abogado construcción contratación pública. Asesoría y litigación para constructoras y contratistas en controversias de obra pública y privada."
+  },
+  {
     title: "Defensa laboral para empleadores",
     slug: "defensa-laboral-empleador",
     keyword: "abogado laboral para empleadores",
