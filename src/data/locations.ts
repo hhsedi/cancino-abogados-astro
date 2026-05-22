@@ -39,6 +39,20 @@ const sharedFaqs = (city: string) => [
 
 export const locations: LocationLanding[] = [
   {
+    city: "Viña del Mar",
+    slug: "abogado-vina-del-mar",
+    keyword: "abogado en Viña del Mar para empresas, construcción y litigios",
+    h1: "Abogado en Viña del Mar para empresas, construcción y conflictos legales",
+    summary:
+      "Asesoría legal estratégica en Viña del Mar para empresas, constructoras, contratistas, empleadores, propietarios e inversionistas.",
+    audience:
+      "Cancino Abogados asesora a clientes de Viña del Mar que necesitan respaldo jurídico en contratos, litigios civiles y comerciales, controversias de construcción, contratación pública, derecho inmobiliario, sociedades, compliance y defensa laboral para empleadores.",
+    highlights: sharedHighlights("Viña del Mar"),
+    faqs: sharedFaqs("Viña del Mar"),
+    metaDescription:
+      "Abogado en Viña del Mar para empresas, constructoras, contratistas y empleadores. Litigios, contratos, derecho inmobiliario y contratación pública."
+  },
+  {
     city: "Santiago",
     slug: "abogado-santiago",
     keyword: "abogado en Santiago para empresas, construcción y litigios",

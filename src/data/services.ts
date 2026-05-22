@@ -57,11 +57,11 @@ export const services: Service[] = [
       {
         question: "¿Pueden revisar una propiedad ubicada en otra ciudad?",
         answer:
-          "Sí. La asesoría puede coordinarse para operaciones en Santiago, Quillota, San Felipe y otras ciudades, según los antecedentes disponibles."
+          "Sí. La asesoría puede coordinarse para operaciones en Viña del Mar, Santiago, Quillota, San Felipe y otras ciudades, según los antecedentes disponibles."
       }
     ],
     metaDescription:
-      "Abogado inmobiliario para compraventas, arriendos, estudio de títulos y conflictos sobre propiedades en Santiago, Quillota y San Felipe."
+      "Abogado inmobiliario para compraventas, arriendos, estudio de títulos y conflictos sobre propiedades en Viña del Mar, Santiago, Quillota y San Felipe."
   },
   {
     title: "Litigación civil y comercial",
