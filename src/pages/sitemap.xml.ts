@@ -2,7 +2,7 @@ import { locations } from "@data/locations";
 import { services } from "@data/services";
 import { site } from "@data/site";
 
-const staticPages = ["", "blog", "contacto"];
+const staticPages = ["", "trayectoria", "blog", "contacto"];
 
 export function GET() {
   const servicePages = services.map((service) => service.slug);

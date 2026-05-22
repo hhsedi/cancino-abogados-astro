@@ -3,10 +3,9 @@ type Props = {
   city: string;
   summary: string;
   href: string;
-  keyword?: string;
 };
 
-const { city, summary, href, keyword } = Astro.props;
+const { city, summary, href } = Astro.props;
 ---
 
 <article class="group relative flex h-full flex-col overflow-hidden rounded-lg border border-primary/15 bg-white p-6 shadow-[0_18px_52px_rgba(15,39,82,0.09)] transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:shadow-[0_28px_76px_rgba(15,39,82,0.15)]">
@@ -25,12 +24,6 @@ const { city, summary, href, keyword } = Astro.props;
       </svg>
     </span>
   </div>
-
-  {keyword && (
-    <p class="relative mt-4 rounded-md border border-muted-blue/30 bg-mist px-3 py-2 text-xs font-bold uppercase tracking-[0.12em] text-primary">
-      {keyword}
-    </p>
-  )}
 
   <p class="relative mt-5 flex-1 text-sm font-medium leading-7 text-primary-soft">{summary}</p>
 

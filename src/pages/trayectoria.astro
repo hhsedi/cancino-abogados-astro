@@ -1,0 +1,331 @@
+---
+import MainLayout from "@layouts/MainLayout.astro";
+
+const academicItems = [
+  {
+    institution: "Universidad de Valparaíso",
+    year: "2014",
+    category: "Reconocimiento académico",
+    title: "Premio al Mejor Licenciado 2014",
+    description:
+      "Distinción otorgada a Saúl Cancino Ahumada por su destacado rendimiento académico durante el pregrado, examen de licenciatura y memoria de grado.",
+    links: [
+      {
+        label: "Ver publicación UV Derecho",
+        url: "https://derecho.uv.cl/en-solemne-acto-se-despidio-a-la-centesima-generacion-de-egresados-de-la-escuela-de-derecho/"
+      },
+      {
+        label: "Ver publicación Universidad de Valparaíso",
+        url: "https://uv.cl/archivo-noticias-uv/6957-en-solemne-acto-se-despidio-a-la-centesima-generacion-de-egresados-de-la-escuela-de-derecho-6957"
+      }
+    ]
+  }
+];
+
+const mediaItems = [
+  {
+    source: "24 Horas",
+    year: "Año por confirmar",
+    category: "Trayectoria académica",
+    title: "Preparación para examen de grado y formación jurídica",
+    description:
+      "Cobertura periodística sobre la preparación de Saúl Cancino para su examen de grado y su proceso de formación jurídica.",
+    url: "https://www.24horas.cl/nacional/joven-empapela-su-pieza-con-materia-de-examen-de-grado-1084405"
+  }
+];
+
+const publicMatterItems = [
+  {
+    source: "BioBioChile",
+    year: "2019",
+    category: "Asunto de relevancia pública",
+    title: "Cobertura vinculada a Everton de Viña del Mar",
+    description:
+      "Cobertura periodística relacionada con acciones judiciales derivadas de incidentes ocurridos en una actividad institucional del club.",
+    url: "https://www.biobiochile.cl/noticias/nacional/region-de-valparaiso/2019/06/29/everton-presenta-querella-contra-responsables-de-incidentes-en-gala-de-aniversario-del-club.shtml"
+  }
+];
+
+const regionalPressItems = [
+  {
+    image: "/images/prensa/prensa-regional-1.webp",
+    source: "Medio regional",
+    year: "Año por confirmar",
+    title: "Publicación regional por agregar",
+    description: "Espacio preparado para incorporar imagen o recorte autorizado de prensa regional."
+  },
+  {
+    image: "/images/prensa/prensa-regional-2.webp",
+    source: "Medio regional",
+    year: "Año por confirmar",
+    title: "Cobertura regional por agregar",
+    description: "Card preparada para agregar un archivo visual de prensa con autorización."
+  },
+  {
+    image: "/images/prensa/prensa-regional-3.webp",
+    source: "Medio regional",
+    year: "Año por confirmar",
+    title: "Archivo visual por agregar",
+    description: "Espacio editable para futuras menciones o registros de cobertura."
+  }
+];
+
+const practiceLinks = [
+  {
+    title: "Resolución de Controversias en Construcción y Contratación Pública",
+    href: "/controversias-construccion-contratacion-publica/",
+    description:
+      "Asesoría y litigación para constructoras y contratistas en conflictos derivados de contratos de obra pública y privada."
+  },
+  {
+    title: "Asesoría legal de empresa",
+    href: "/asesoria-legal-empresas/",
+    description:
+      "Acompañamiento jurídico para empresas que necesitan prevenir riesgos, ordenar decisiones y resolver conflictos."
+  },
+  {
+    title: "Litigación civil y comercial",
+    href: "/litigacion-civil-comercial/",
+    description:
+      "Representación estratégica en conflictos civiles, comerciales, contractuales y patrimoniales."
+  },
+  {
+    title: "Defensa laboral para empleadores",
+    href: "/defensa-laboral-empleador/",
+    description:
+      "Asesoría y defensa para empresas y empleadores ante conflictos laborales y riesgos asociados."
+  }
+];
+---
+
+<MainLayout
+  title="Trayectoria de Saúl Cancino | Reconocimientos, prensa y experiencia jurídica"
+  description="Conozca la trayectoria académica, apariciones en medios y experiencia profesional de Saúl Cancino, abogado enfocado en litigación, asesoría estratégica y resolución de asuntos jurídicos complejos."
+  path="/trayectoria/"
+>
+  <section class="relative overflow-hidden bg-primary text-white">
+    <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,39,82,1),rgba(15,39,82,0.95)_54%,rgba(37,38,43,0.92))]"></div>
+    <div class="absolute inset-y-0 right-0 hidden w-1/2 bg-[radial-gradient(circle_at_60%_38%,rgba(215,117,52,0.18),transparent_36%)] lg:block"></div>
+    <div class="container-page relative grid gap-12 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:py-28">
+      <div>
+        <p class="inline-flex rounded-full border border-white/14 bg-white/[0.08] px-4 py-2 text-xs font-bold uppercase tracking-[0.2em] text-white/82">
+          Trayectoria profesional
+        </p>
+        <h1 class="mt-7 font-serif text-4xl font-semibold leading-tight text-white sm:text-5xl lg:text-6xl">
+          Trayectoria jurídica, académica y profesional
+        </h1>
+        <p class="mt-6 max-w-2xl text-base leading-8 text-white/76 sm:text-lg sm:leading-9">
+          Una mirada a la formación, reconocimientos y experiencia de Saúl Cancino, abogado dedicado a la asesoría estratégica, litigación y resolución de asuntos jurídicos complejos.
+        </p>
+        <a class="btn-primary mt-9" href="/contacto/">Solicitar evaluación legal</a>
+      </div>
+
+      <div class="relative">
+        <div class="rounded-lg border border-white/12 bg-white/[0.07] p-6 shadow-[0_30px_90px_rgba(0,0,0,0.25)] backdrop-blur">
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-accent">Cancino Abogados</p>
+          <p class="mt-5 font-serif text-3xl font-semibold leading-tight text-white">
+            Validación externa, criterio técnico y experiencia aplicada a asuntos jurídicos complejos.
+          </p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-3">
+            {["Academia", "Prensa", "Litigación"].map((item) => (
+              <div class="rounded-md border border-white/10 bg-white/[0.06] p-4">
+                <p class="text-sm font-bold text-white">{item}</p>
+                <p class="mt-2 h-1 w-10 rounded-full bg-accent"></p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 lg:py-24">
+    <div class="container-page grid gap-12 lg:grid-cols-[0.95fr_1.05fr] lg:items-center">
+      <div>
+        <p class="eyebrow">Perfil profesional</p>
+        <h2 class="section-title">Sobre Saúl Cancino</h2>
+        <p class="section-copy">
+          Saúl Cancino Ahumada es abogado titulado de la Universidad de Valparaíso y Magíster en Derecho de la Empresa por la Pontificia Universidad Católica de Chile. Desde Cancino Abogados dirige una práctica enfocada en litigación, estrategia jurídica y asesoría a empresas, constructoras, contratistas, empleadores y personas que requieren resolver asuntos legales complejos con claridad y criterio empresarial.
+        </p>
+        <blockquote class="mt-8 rounded-lg border-l-4 border-accent bg-mist p-6 font-serif text-2xl font-semibold leading-tight text-primary shadow-[0_18px_50px_rgba(15,39,82,0.08)]">
+          “Combinamos litigación, estrategia y criterio empresarial para resolver asuntos jurídicos complejos con claridad.”
+        </blockquote>
+      </div>
+
+      <figure class="relative overflow-hidden rounded-lg border border-muted-blue/35 bg-primary shadow-[0_28px_78px_rgba(15,39,82,0.16)]">
+        <img
+          class="aspect-[4/5] w-full object-cover object-top"
+          src="/images/saul-cancino-abogado.jpg"
+          alt="Abogado Saúl Cancino"
+          width="900"
+          height="1125"
+          loading="lazy"
+          decoding="async"
+          onerror="this.onerror=null; this.src='/imagenes/Saul_cancino_abogado.webp';"
+        />
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/95 to-transparent px-6 pb-6 pt-16">
+          <p class="font-serif text-2xl font-semibold text-white">Saúl Cancino Ahumada</p>
+          <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-accent">Abogado director</p>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="bg-mist py-20 lg:py-24">
+    <div class="container-page">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Reconocimientos</p>
+        <h2 class="section-title">Trayectoria académica y reconocimientos</h2>
+        <p class="section-copy">
+          Durante su etapa universitaria, Saúl Cancino Ahumada fue distinguido con el Premio al Mejor Licenciado 2014 por la Universidad de Valparaíso. Esta distinción reconoció su óptimo rendimiento académico durante los años de pregrado, su examen de licenciatura rendido durante 2014 y su memoria de grado.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-6">
+        {academicItems.map((item) => (
+          <article class="overflow-hidden rounded-lg border border-primary/15 bg-white shadow-[0_24px_70px_rgba(15,39,82,0.1)]">
+            <div class="grid gap-0 lg:grid-cols-[0.34fr_0.66fr]">
+              <div class="bg-primary p-7 text-white">
+                <p class="text-xs font-black uppercase tracking-[0.22em] text-accent">{item.category}</p>
+                <p class="mt-8 font-serif text-5xl font-semibold">{item.year}</p>
+                <p class="mt-3 text-sm font-semibold text-white/72">{item.institution}</p>
+              </div>
+              <div class="p-7 lg:p-9">
+                <h3 class="font-serif text-3xl font-semibold text-night">{item.title}</h3>
+                <p class="mt-4 text-base leading-8 text-primary-soft">{item.description}</p>
+                <div class="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+                  {item.links.map((link) => (
+                    <a class="btn-outline" href={link.url} target="_blank" rel="noopener noreferrer">{link.label}</a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 lg:py-24">
+    <div class="container-page">
+      <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+        <div>
+          <p class="eyebrow">Validación externa</p>
+          <h2 class="section-title">Menciones en medios</h2>
+        </div>
+        <p class="section-copy mt-0">
+          Además de su trayectoria académica, Saúl Cancino ha sido mencionado en medios de comunicación por hitos vinculados a su formación jurídica y desempeño profesional. Estas publicaciones permiten contextualizar su recorrido desde fuentes externas.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {mediaItems.map((item) => (
+          <article class="rounded-lg border border-muted-blue/35 bg-white p-7 shadow-[0_18px_52px_rgba(15,39,82,0.09)]">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-accent">{item.category} · {item.year}</p>
+            <h3 class="mt-5 font-serif text-2xl font-semibold text-night">{item.title}</h3>
+            <p class="mt-4 text-sm font-semibold text-primary">{item.source}</p>
+            <p class="mt-3 text-sm leading-7 text-primary-soft">{item.description}</p>
+            <a class="mt-6 inline-flex text-sm font-black text-primary hover:text-accent-dark" href={item.url} target="_blank" rel="noopener noreferrer">Ver publicación →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary py-20 text-white lg:py-24">
+    <div class="container-page">
+      <div class="max-w-4xl">
+        <p class="text-xs font-black uppercase tracking-[0.22em] text-accent">Asuntos públicos</p>
+        <h2 class="mt-3 font-serif text-3xl font-semibold text-white sm:text-4xl lg:text-5xl">Experiencia y asuntos de relevancia pública</h2>
+        <p class="mt-5 text-base leading-8 text-white/72">
+          Cancino Abogados también ha estado vinculado a asuntos jurídicos que han tenido cobertura en medios regionales y nacionales. Este tipo de casos refleja experiencia práctica en escenarios donde la estrategia legal, el análisis de antecedentes y el criterio jurídico son determinantes.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {publicMatterItems.map((item) => (
+          <article class="rounded-lg border border-white/12 bg-white p-7 text-primary shadow-[0_24px_70px_rgba(0,0,0,0.18)]">
+            <p class="text-xs font-black uppercase tracking-[0.18em] text-accent">{item.category} · {item.year}</p>
+            <h3 class="mt-5 font-serif text-2xl font-semibold text-night">{item.title}</h3>
+            <p class="mt-4 text-sm font-semibold text-primary">{item.source}</p>
+            <p class="mt-3 text-sm leading-7 text-primary-soft">{item.description}</p>
+            <a class="mt-6 inline-flex text-sm font-black text-primary hover:text-accent-dark" href={item.url} target="_blank" rel="noopener noreferrer">Ver publicación →</a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-mist py-20 lg:py-24">
+    <div class="container-page">
+      <div class="max-w-3xl">
+        <p class="eyebrow">Archivo visual</p>
+        <h2 class="section-title">Prensa regional y archivos de cobertura</h2>
+        <p class="section-copy">
+          Algunas apariciones en prensa regional pueden encontrarse en medios con acceso restringido o mediante registros visuales conservados por el estudio. Esta sección quedará preparada para incorporar imágenes, recortes o capturas autorizadas de publicaciones relevantes.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-3">
+        {regionalPressItems.map((item) => (
+          <article class="overflow-hidden rounded-lg border border-muted-blue/35 bg-white shadow-[0_18px_52px_rgba(15,39,82,0.09)]">
+            <div class="relative aspect-[4/3] bg-primary">
+              <img
+                class="h-full w-full object-cover"
+                src={item.image}
+                alt={item.title}
+                loading="lazy"
+                decoding="async"
+                onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden'); this.nextElementSibling?.classList.add('flex');"
+              />
+              <div class="hidden h-full items-center justify-center px-6 text-center text-sm font-bold uppercase tracking-[0.16em] text-white/72">
+                Imagen de prensa por agregar
+              </div>
+            </div>
+            <div class="p-6">
+              <p class="text-xs font-black uppercase tracking-[0.18em] text-accent">{item.source} · {item.year}</p>
+              <h3 class="mt-4 font-serif text-xl font-semibold text-night">{item.title}</h3>
+              <p class="mt-3 text-sm leading-7 text-primary-soft">{item.description}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-white py-20 lg:py-24">
+    <div class="container-page">
+      <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
+        <div>
+          <p class="eyebrow">Experiencia aplicada</p>
+          <h2 class="section-title">Áreas vinculadas a esta trayectoria</h2>
+        </div>
+        <p class="section-copy mt-0">
+          La experiencia profesional de Cancino Abogados se vincula directamente con áreas donde el análisis jurídico, la estrategia procesal y el conocimiento del negocio son fundamentales.
+        </p>
+      </div>
+
+      <div class="mt-10 grid gap-5 md:grid-cols-2">
+        {practiceLinks.map((item) => (
+          <a class="group rounded-lg border border-muted-blue/35 bg-white p-6 shadow-[0_16px_46px_rgba(15,39,82,0.08)] transition hover:-translate-y-1 hover:border-accent/70 hover:shadow-[0_24px_68px_rgba(15,39,82,0.14)]" href={item.href}>
+            <h3 class="font-serif text-2xl font-semibold leading-tight text-night">{item.title}</h3>
+            <p class="mt-4 text-sm leading-7 text-primary-soft">{item.description}</p>
+            <span class="mt-6 inline-flex text-sm font-black text-primary transition group-hover:text-accent-dark">Ver área →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="bg-primary py-16 text-white">
+    <div class="container-page grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
+      <div>
+        <h2 class="font-serif text-3xl font-semibold text-white lg:text-4xl">¿Necesita asesoría en un asunto jurídico complejo?</h2>
+        <p class="mt-4 max-w-3xl text-base leading-8 text-white/72">
+          Conversemos sobre su caso y evaluemos el mejor camino legal con una mirada estratégica, técnica y orientada a decisiones.
+        </p>
+      </div>
+      <a class="btn-primary bg-accent hover:bg-accent-dark" href="/contacto/">Solicitar evaluación legal</a>
+    </div>
+  </section>
+</MainLayout>

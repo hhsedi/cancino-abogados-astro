@@ -52,7 +52,7 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
       <div class="grid gap-8 lg:grid-cols-[0.75fr_1.25fr] lg:items-end">
         <div>
           <p class="eyebrow">Dónde atendemos</p>
-          <h2 class="section-title">Abogados en Viña del Mar, Santiago, Quillota y San Felipe</h2>
+          <h2 class="section-title">Abogado en Viña del Mar, con atención en Santiago, Quillota y San Felipe</h2>
         </div>
         <p class="section-copy mt-0 lg:max-w-2xl">
           Atención legal para empresas, constructoras, contratistas, empleadores, propietarios e inversionistas que necesitan orientación estratégica, revisión documental o defensa en conflictos relevantes.
@@ -60,7 +60,7 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
       </div>
       <div class="mt-10 grid gap-5 md:grid-cols-3">
         {locations.map((location) => (
-          <LocationCard city={location.city} summary={location.summary} href={`/${location.slug}/`} keyword={location.keyword} />
+          <LocationCard city={location.city} summary={location.summary} href={`/${location.slug}/`} />
         ))}
       </div>
     </div>
