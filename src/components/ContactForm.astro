@@ -1,4 +1,5 @@
 ---
+import { services } from "@data/services";
 ---
 
 <form class="rounded-md border border-muted-blue/35 bg-white p-6 shadow-soft sm:p-8" aria-label="Formulario visual de contacto">
@@ -26,12 +27,7 @@
     <label class="grid gap-2 text-sm font-bold text-night">
       Área de consulta
       <select class="rounded-md border border-muted-blue/35 bg-mist/40 px-4 py-3 font-normal text-text-dark outline-none transition focus:border-accent focus:bg-white focus:ring-2 focus:ring-accent/20">
-        <option>Desarrollo inmobiliario y estructuración de proyectos</option>
-        <option>Litigación civil y comercial</option>
-        <option>Defensa laboral para empleadores</option>
-        <option>Contratos estratégicos y negociación empresarial</option>
-        <option>Asesoría legal de empresa</option>
-        <option>Gobierno corporativo y estructuras societarias</option>
+        {services.map((service) => <option>{service.title}</option>)}
       </select>
     </label>
     <label class="grid gap-2 text-sm font-bold text-night sm:col-span-2">

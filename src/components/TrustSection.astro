@@ -1,15 +1,15 @@
 ---
-import { site } from "@data/site";
-
 // TODO: Reemplazar por una imagen definitiva en /public/images/, por ejemplo:
 // const backgroundImage = "/images/cancino-abogados-confianza.jpg";
 const backgroundImage =
   "https://images.pexels.com/photos/7841466/pexels-photo-7841466.jpeg?auto=compress&cs=tinysrgb&w=1800";
 
 const benefits = [
-  "Alto estándar técnico aplicado a problemas reales.",
-  "Rigor en el análisis de antecedentes.",
-  "Comunicación clara para tomar decisiones."
+  "Magíster en Derecho de la Empresa LL.M. UC — Pontificia Universidad Católica de Chile",
+  "Mejor Licenciado 2014 — Universidad de Valparaíso",
+  "Atención personalizada: hablará directamente con el abogado, no con asistentes",
+  "Primera consulta disponible para evaluar tu caso",
+  "Atención en español e inglés para clientes internacionales"
 ];
 ---
 
@@ -17,26 +17,29 @@ const benefits = [
   class="trust-section relative overflow-hidden py-20 text-white lg:py-28"
   style={`--trust-bg-image: url("${backgroundImage}");`}
 >
-  <div class="absolute inset-0 bg-[linear-gradient(110deg,rgba(15,39,82,0.92),rgba(37,38,43,0.76)_52%,rgba(15,39,82,0.64))]"></div>
+  <div class="absolute inset-0 bg-[linear-gradient(110deg,rgba(15,39,82,0.94),rgba(37,38,43,0.8)_52%,rgba(15,39,82,0.66))]"></div>
   <div class="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(215,117,52,0.18),transparent_34%)]"></div>
 
   <div class="container-page relative grid gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:items-center">
     <div class="max-w-2xl">
-      <p class="text-xs font-bold uppercase tracking-[0.24em] text-accent">Por qué elegir el estudio</p>
+      <p class="text-xs font-bold uppercase tracking-[0.24em] text-accent">Por qué elegir a Cancino Abogados</p>
       <h2 class="mt-5 max-w-xl font-serif text-4xl font-semibold leading-tight tracking-normal text-white sm:text-5xl lg:text-6xl">
-        {site.promise}
+        Asesoría legal que entiende tu realidad
       </h2>
       <div class="mt-7 h-px w-24 bg-accent"></div>
-      <p class="mt-7 max-w-xl text-base leading-8 text-white/78">
-        Una asesoría jurídica debe entregar claridad, criterio y una ruta de acción proporcionada al caso.
+      <p class="mt-7 max-w-xl text-base leading-8 text-white/82">
+        No somos un estudio masivo donde tu caso es un número. Saúl Cancino lleva personalmente cada asunto, con el respaldo académico de la Pontificia Universidad Católica de Chile y más de una década de trabajo en la región.
+      </p>
+      <p class="mt-4 max-w-xl text-base leading-8 text-white/78">
+        Atendemos en Viña del Mar, Santiago, Quillota y San Felipe, y en todo el Valle del Aconcagua. Consultas presenciales o virtuales, en español e inglés.
       </p>
     </div>
 
-    <div class="grid gap-5 md:grid-cols-3 lg:gap-6">
+    <div class="grid gap-5 md:grid-cols-2 lg:gap-6">
       {benefits.map((item, index) => (
         <article class="group relative overflow-hidden rounded-md border border-white/45 bg-white/[0.94] p-6 text-text-dark shadow-[0_24px_70px_rgba(15,39,82,0.24)] backdrop-blur transition duration-300 hover:-translate-y-1 hover:border-accent/70 hover:bg-white lg:p-7">
           <div class="absolute inset-x-0 top-0 h-1 bg-accent/85"></div>
-          <p class="text-xs font-bold uppercase tracking-[0.22em] text-accent">Criterio {index + 1}</p>
+          <p class="text-xs font-bold uppercase tracking-[0.22em] text-accent">Diferenciador {index + 1}</p>
           <p class="mt-5 text-base font-semibold leading-8 text-primary">{item}</p>
         </article>
       ))}

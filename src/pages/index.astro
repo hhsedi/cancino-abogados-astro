@@ -19,22 +19,22 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
 ---
 
 <MainLayout
-  title="Asesoría legal estratégica para empresas y personas"
-  description="Cancino Abogados entrega asesoría legal estratégica para empresas, constructoras, contratistas y personas en Viña del Mar, Santiago, Quillota y San Felipe."
+  title="Abogado en Viña del Mar | Cancino Abogados"
+  description="Abogado en Viña del Mar con más de 10 años de experiencia. Derecho civil, comercial, inmobiliario y laboral para empresas y personas. Saúl Cancino — Magíster LL.M. UC."
   path="/"
   schema={schema}
 >
   <Hero />
 
-  <section class="py-20 lg:py-24">
+  <section id="servicios" class="scroll-mt-24 py-20 lg:py-24">
     <div class="container-page">
       <div class="grid gap-8 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
         <div>
           <p class="eyebrow">Servicios principales</p>
-          <h2 class="section-title">Áreas de práctica orientadas a decisiones concretas</h2>
+          <h2 class="section-title">Áreas de práctica orientadas a resultados concretos</h2>
         </div>
         <p class="text-base leading-8 text-primary-soft lg:max-w-2xl">
-          Cada servicio está pensado para ayudarle a identificar riesgos, ordenar antecedentes y tomar decisiones legales con mayor claridad.
+          Desde litigios complejos hasta la estructuración jurídica de tu empresa, Cancino Abogados ofrece soluciones legales a medida. Asesoría estratégica, con enfoque en resultados concretos.
         </p>
       </div>
       <div class="mt-12">
@@ -57,7 +57,7 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
           Atención legal para empresas, constructoras, contratistas, empleadores, propietarios e inversionistas que necesitan orientación estratégica, revisión documental o defensa en conflictos relevantes.
         </p>
       </div>
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
+      <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         {locations.map((location) => (
           <LocationCard city={location.city} summary={location.summary} href={`/${location.slug}/`} />
         ))}

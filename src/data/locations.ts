@@ -4,20 +4,20 @@ export type LocationLanding = {
   city: string;
   slug: string;
   keyword: string;
+  titleTag: string;
   h1: string;
   summary: string;
   audience: string;
+  contentHeading: string;
+  content: string[];
+  servicesHeading: string;
+  serviceItems: string[];
+  whyHeading?: string;
+  whyText?: string;
   highlights: string[];
   faqs: { question: string; answer: string }[];
   metaDescription: string;
 };
-
-const sharedHighlights = (city: string) => [
-  `Empresas, constructoras y contratistas que necesitan abogado en ${city} para contratos estratégicos, controversias o decisiones relevantes.`,
-  `Empleadores que requieren defensa laboral, revisión de despidos, finiquitos o prevención de riesgos.`,
-  `Inmobiliarias, inversionistas y compradores que necesitan due diligence, regularización o estructuración de proyectos en ${city}.`,
-  `Personas y empresas con conflictos civiles, comerciales, contractuales o societarios que requieren una estrategia legal clara.`
-];
 
 const sharedFaqs = (city: string) => [
   {
@@ -28,7 +28,7 @@ const sharedFaqs = (city: string) => [
   {
     question: `¿Qué servicios legales ofrece un abogado en ${city}?`,
     answer:
-      "El estudio ofrece asesoría en controversias de construcción y contratación pública, desarrollo inmobiliario y estructuración de proyectos, asesoría legal de empresa, litigación civil y comercial, defensa laboral para empleadores, contratos estratégicos y negociación empresarial, gobierno corporativo, estructuras societarias, compliance corporativo y negociación de conflictos."
+      "El estudio ofrece asesoría en litigación civil y comercial, derecho inmobiliario y desarrollo de proyectos, defensa laboral para empleadores, asesoría legal de empresa, gobierno corporativo, contratos estratégicos, compliance y resolución de controversias en construcción."
   },
   {
     question: `¿Puedo pedir una evaluación legal desde ${city} antes de iniciar un juicio?`,
@@ -39,46 +39,143 @@ const sharedFaqs = (city: string) => [
 
 export const locations: LocationLanding[] = [
   {
+    city: "Viña del Mar",
+    slug: "abogado-vina-del-mar",
+    keyword: "abogado viña del mar",
+    titleTag: "Abogado en Viña del Mar | Cancino Abogados",
+    h1: "Abogado en Viña del Mar",
+    summary:
+      "Asesoría legal estratégica para empresas, PYMES y personas desde la oficina principal de Cancino Abogados en Viña del Mar.",
+    audience:
+      "Cancino Abogados tiene su oficina principal en Avenida San Martín 1330, Viña del Mar, atendiendo a empresas, PYMES y personas de la Región de Valparaíso desde 2014.",
+    contentHeading: "Asesoría legal estratégica en Viña del Mar",
+    content: [
+      "Cancino Abogados tiene su oficina principal en Avenida San Martín 1330, Viña del Mar, atendiendo a empresas, PYMES y personas de la Región de Valparaíso desde 2014.",
+      "Desde Viña del Mar asesoro en materias de derecho civil y comercial, derecho inmobiliario, defensa laboral para empleadores, estructuración de sociedades y compliance corporativo. Cada caso recibe atención directa del abogado, sin intermediarios."
+    ],
+    servicesHeading: "Servicios disponibles en Viña del Mar",
+    serviceItems: [
+      "Litigación civil y comercial",
+      "Derecho inmobiliario y estudio de títulos",
+      "Defensa laboral para empleadores",
+      "Asesoría legal permanente a empresas",
+      "Gobierno corporativo y estructuras societarias",
+      "Contratos estratégicos",
+      "Compliance corporativo"
+    ],
+    whyHeading: "¿Por qué elegir un abogado local en Viña del Mar?",
+    whyText:
+      "Conocer el contexto local —los tribunales, los registros, las prácticas del mercado inmobiliario de la región— marca la diferencia en los resultados. Llevo más de 10 años litigando y asesorando en Viña del Mar y la Región de Valparaíso.",
+    highlights: [
+      "Empresas y PYMES que necesitan asesoría legal directa en Viña del Mar.",
+      "Propietarios e inversionistas que requieren apoyo inmobiliario en la Región de Valparaíso.",
+      "Empleadores que necesitan defensa laboral y prevención de riesgos.",
+      "Personas y empresas con conflictos civiles, comerciales o contractuales relevantes."
+    ],
+    faqs: sharedFaqs("Viña del Mar"),
+    metaDescription:
+      "Abogado en Viña del Mar especializado en derecho civil, comercial, inmobiliario y laboral. Saúl Cancino, Magíster LL.M. UC. Atención presencial y virtual."
+  },
+  {
     city: "Santiago",
     slug: "abogado-santiago",
-    keyword: "abogado en Santiago para empresas, construcción y litigios",
-    h1: "Abogado en Santiago para empresas, construcción y conflictos legales",
+    keyword: "abogado santiago",
+    titleTag: "Abogado en Santiago | Cancino Abogados",
+    h1: "Abogado en Santiago",
     summary:
-      "Asesoría legal estratégica en Santiago para empresas, constructoras, contratistas, empleadores, propietarios e inversionistas.",
+      "Asesoría legal para empresas y personas en Santiago, con foco en derecho comercial, gobierno corporativo, contratos y litigación civil.",
     audience:
-      "Cancino Abogados asesora a clientes de Santiago que necesitan respaldo jurídico en contratos estratégicos, litigios civiles y comerciales, controversias de construcción, contratación pública, desarrollo inmobiliario, gobierno corporativo, estructuras societarias, compliance y defensa laboral para empleadores.",
-    highlights: sharedHighlights("Santiago"),
+      "Cancino Abogados atiende clientes en Santiago con foco en asesoría estratégica empresarial: estructuración de negocios, contratos comerciales de alto valor, gobierno corporativo y litigación civil y mercantil.",
+    contentHeading: "Asesoría legal para empresas y personas en Santiago",
+    content: [
+      "Cancino Abogados atiende clientes en Santiago con foco en asesoría estratégica empresarial: estructuración de negocios, contratos comerciales de alto valor, gobierno corporativo y litigación civil y mercantil.",
+      "La atención en Santiago se realiza en modalidad presencial y virtual, adaptada a los tiempos y necesidades de ejecutivos, empresas y emprendedores que requieren un abogado de confianza con alto nivel técnico."
+    ],
+    servicesHeading: "Servicios en Santiago",
+    serviceItems: [
+      "Asesoría legal permanente para empresas y PYMES",
+      "Gobierno corporativo y estructuras societarias",
+      "Contratos estratégicos y negociación empresarial",
+      "Litigación civil y comercial",
+      "Compliance corporativo",
+      "Resolución de controversias en construcción y contratación pública"
+    ],
+    highlights: [
+      "Empresas que necesitan soporte legal para contratos comerciales de alto valor.",
+      "Socios, directorios y administradores que requieren gobierno corporativo.",
+      "PYMES y emprendedores que buscan asesoría jurídica con estándar técnico alto.",
+      "Personas y empresas con litigios civiles o comerciales en Santiago."
+    ],
     faqs: sharedFaqs("Santiago"),
     metaDescription:
-      "Abogado en Santiago para empresas, constructoras, contratistas y empleadores. Litigios, contratos estratégicos, desarrollo inmobiliario y contratación pública."
+      "Abogado en Santiago para empresas y personas. Derecho comercial, gobierno corporativo, contratos y litigación civil. Saúl Cancino — Magíster LL.M. UC."
   },
   {
     city: "Quillota",
     slug: "abogado-quillota",
-    keyword: "abogado en Quillota para empresas, contratos estratégicos y proyectos inmobiliarios",
-    h1: "Abogado en Quillota para empresas, propiedades y conflictos legales",
+    keyword: "abogado quillota",
+    titleTag: "Abogado en Quillota | Cancino Abogados",
+    h1: "Abogado en Quillota",
     summary:
-      "Asesoría legal en Quillota para empresas, propietarios, inversionistas, empleadores y personas que requieren tomar decisiones con respaldo jurídico.",
+      "Asesoría legal en Quillota para empresas y personas en materias civiles, inmobiliarias, laborales y comerciales.",
     audience:
-      "Cancino Abogados orienta a clientes de Quillota en materias civiles, comerciales, desarrollo inmobiliario, defensa laboral para empleadores, contratos estratégicos, gobierno corporativo, estructuras societarias y resolución de controversias vinculadas a empresas o proyectos.",
-    highlights: sharedHighlights("Quillota"),
+      "Quillota y su provincia tienen una dinámica económica propia, con creciente actividad inmobiliaria, agroindustrial y empresarial.",
+    contentHeading: "Asesoría legal en Quillota y la Región de Valparaíso",
+    content: [
+      "Quillota y su provincia tienen una dinámica económica propia, con creciente actividad inmobiliaria, agroindustrial y empresarial. Cancino Abogados asesora a empresas y personas en Quillota en materias de derecho civil, inmobiliario, laboral y comercial.",
+      "Atención presencial disponible en Quillota o en nuestra oficina principal de Viña del Mar, y de forma virtual para quienes lo prefieran."
+    ],
+    servicesHeading: "Servicios en Quillota",
+    serviceItems: [
+      "Derecho inmobiliario: compraventas, arriendos, estudio de títulos",
+      "Litigación civil y comercial",
+      "Asesoría a empresas y PYMES",
+      "Defensa laboral para empleadores",
+      "Contratos y documentación jurídica"
+    ],
+    highlights: [
+      "Empresas locales que necesitan asesoría civil, comercial o laboral.",
+      "Propietarios e inversionistas con operaciones inmobiliarias en Quillota.",
+      "Empleadores que requieren defensa laboral y documentación preventiva.",
+      "Personas con conflictos contractuales, patrimoniales o inmobiliarios."
+    ],
     faqs: sharedFaqs("Quillota"),
     metaDescription:
-      "Abogado en Quillota para empresas, empleadores, propietarios e inversionistas. Contratos estratégicos, litigios, proyectos inmobiliarios y asesoría legal."
+      "Abogado en Quillota para empresas y personas. Derecho civil, inmobiliario, laboral y comercial. Atención presencial y virtual en la Región de Valparaíso."
   },
   {
     city: "San Felipe",
     slug: "abogado-san-felipe",
-    keyword: "abogado en San Felipe para empresas, empleadores y propiedades",
-    h1: "Abogado en San Felipe para empresas, empleadores y conflictos legales",
+    keyword: "abogado san felipe",
+    titleTag: "Abogado en San Felipe | Cancino Abogados",
+    h1: "Abogado en San Felipe",
     summary:
-      "Asesoría legal estratégica en San Felipe para pymes, empresas familiares, constructoras, contratistas, empleadores y personas naturales.",
+      "Abogado en San Felipe y el Valle del Aconcagua para empresas, PYMES, propietarios, empleadores y personas naturales.",
     audience:
-      "Cancino Abogados atiende a clientes de San Felipe que necesitan asesoría en contratos estratégicos, propiedades, terrenos, parcelas, litigación civil y comercial, desarrollo inmobiliario, gobierno corporativo, estructuras societarias, construcción, contratación pública y defensa laboral para empleadores.",
-    highlights: sharedHighlights("San Felipe"),
+      "El Valle del Aconcagua —San Felipe, Los Andes y sus alrededores— es una zona con alta actividad agroindustrial, inmobiliaria y empresarial que requiere asesoría legal especializada y cercana.",
+    contentHeading: "Abogado en San Felipe y el Valle del Aconcagua",
+    content: [
+      "El Valle del Aconcagua —San Felipe, Los Andes y sus alrededores— es una zona con alta actividad agroindustrial, inmobiliaria y empresarial que requiere asesoría legal especializada y cercana. Cancino Abogados atiende a empresas y personas de esta zona con el mismo estándar técnico de un estudio metropolitano.",
+      "Ofrecemos atención presencial en San Felipe o en nuestra oficina de Viña del Mar, y consultas virtuales para quienes lo prefieran. También atendemos en Los Andes y toda la provincia de Aconcagua."
+    ],
+    servicesHeading: "Servicios en San Felipe y el Valle del Aconcagua",
+    serviceItems: [
+      "Derecho inmobiliario rural y urbano",
+      "Litigación civil y comercial",
+      "Asesoría legal para empresas agroindustriales y PYMES",
+      "Defensa laboral para empleadores",
+      "Contratos de arriendo y compraventa",
+      "Constitución de sociedades y estructuración empresarial"
+    ],
+    highlights: [
+      "Empresas agroindustriales y PYMES que requieren respaldo jurídico.",
+      "Propietarios, compradores e inversionistas en operaciones rurales o urbanas.",
+      "Empleadores que necesitan defensa laboral o prevención de contingencias.",
+      "Personas y empresas del Valle del Aconcagua con conflictos civiles o comerciales."
+    ],
     faqs: sharedFaqs("San Felipe"),
     metaDescription:
-      "Abogado en San Felipe para empresas, empleadores, constructoras y personas. Desarrollo inmobiliario, contratos estratégicos, litigios y asesoría legal."
+      "Abogado en San Felipe y el Valle del Aconcagua. Derecho civil, inmobiliario, comercial y laboral para empresas y personas. Saúl Cancino, más de 10 años de experiencia."
   }
 ];
 

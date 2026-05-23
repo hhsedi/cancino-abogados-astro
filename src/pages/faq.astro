@@ -1,0 +1,129 @@
+---
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import CTASection from "@components/CTASection.astro";
+import FAQ from "@components/FAQ.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { breadcrumbSchema, faqPageSchema, legalServiceSchema } from "@utils/schema";
+import { buildCanonical } from "@utils/seo";
+
+const faqSections = [
+  {
+    title: "Sobre el estudio y los servicios",
+    items: [
+      {
+        question: "¿Cancino Abogados atiende solo en Viña del Mar?",
+        answer:
+          "No. Atendemos en Viña del Mar (oficina principal), Santiago, Quillota y San Felipe. También asesoramos a clientes en todo el Valle del Aconcagua y en otras ciudades de Chile mediante atención virtual."
+      },
+      {
+        question: "¿Atienden en inglés?",
+        answer:
+          "Sí. Saúl Cancino ofrece atención profesional en español e inglés para clientes nacionales e internacionales, incluyendo empresas extranjeras con operaciones en Chile."
+      },
+      {
+        question: "¿Cómo puedo agendar una consulta?",
+        answer:
+          "Puedes contactarnos por WhatsApp al +56 9 5607 5464, a través del formulario de contacto en nuestro sitio web, o directamente por correo electrónico. Respondemos en el mismo día hábil."
+      }
+    ]
+  },
+  {
+    title: "Sobre costos y honorarios",
+    items: [
+      {
+        question: "¿Cuánto cobra un abogado en Viña del Mar?",
+        answer:
+          "Los honorarios dependen del tipo de servicio, la complejidad del asunto y la modalidad de atención. Ofrecemos presupuesto personalizado sin compromiso. En general, trabajamos con honorarios fijos por asunto, tarifas por hora o planes de asesoría mensual para empresas."
+      },
+      {
+        question: "¿Ofrecen primera consulta gratuita?",
+        answer:
+          "Ofrecemos una evaluación inicial del caso para determinar la viabilidad y alcance del servicio requerido. Consulta disponibilidad y condiciones directamente con nosotros."
+      }
+    ]
+  },
+  {
+    title: "Sobre plazos y procesos",
+    items: [
+      {
+        question: "¿Cuánto demora resolver un problema legal?",
+        answer:
+          "Los plazos varían enormemente según el tipo de asunto. Una negociación puede resolverse en días o semanas. Un juicio civil puede demorar entre 6 meses y 3 años. En cada consulta explicamos los plazos realistas para el caso específico y las opciones disponibles para acelerarlos."
+      },
+      {
+        question: "¿Puedo resolver mi problema sin ir a juicio?",
+        answer:
+          "En muchos casos sí. La negociación directa, la mediación o un buen acuerdo extrajudicial pueden resolver conflictos de forma más rápida y económica que el juicio. Siempre evaluamos primero las alternativas extrajudiciales antes de recomendar litigar."
+      }
+    ]
+  },
+  {
+    title: "Sobre empresas",
+    items: [
+      {
+        question: "¿Qué diferencia a Cancino Abogados de otros estudios jurídicos?",
+        answer:
+          "Atención directa del abogado titular en cada caso, sin delegarlo a pasantes. Formación académica de alto nivel (Magíster LL.M. UC). Más de 10 años de experiencia en la Región de Valparaíso y Aconcagua. Enfoque estratégico y orientado a resultados concretos, no solo al proceso."
+      }
+    ]
+  }
+];
+
+const allFaqs = faqSections.flatMap((section) => section.items);
+const schema = [
+  legalServiceSchema(),
+  faqPageSchema(allFaqs),
+  breadcrumbSchema([
+    { name: "Inicio", url: buildCanonical("/") },
+    { name: "Preguntas frecuentes", url: buildCanonical("/faq/") }
+  ])
+];
+---
+
+<MainLayout
+  title="Preguntas frecuentes | Cancino Abogados"
+  description="Preguntas frecuentes sobre asesoría legal, honorarios, atención en Viña del Mar, Santiago, Quillota, San Felipe y servicios para empresas."
+  path="/faq/"
+  schema={schema}
+>
+  <section class="bg-mist py-14">
+    <div class="container-page">
+      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Preguntas frecuentes" }]} />
+      <p class="eyebrow mt-8">FAQ</p>
+      <h1 class="mt-4 font-serif text-4xl font-semibold leading-tight text-night sm:text-5xl">
+        Preguntas frecuentes sobre asesoría legal
+      </h1>
+      <p class="section-copy">
+        Respuestas claras para empresas y personas que necesitan tomar decisiones legales con respaldo profesional.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-20">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.72fr_1.28fr]">
+      <aside class="lg:sticky lg:top-28 lg:self-start">
+        <div class="rounded-md border border-primary/10 bg-white p-6 shadow-soft">
+          <p class="text-xs font-black uppercase tracking-[0.22em] text-accent">Categorías</p>
+          <ul class="mt-5 space-y-3 text-sm font-semibold text-primary-soft">
+            {faqSections.map((section) => (
+              <li><a class="hover:text-primary" href={`#${section.title.toLowerCase().replaceAll(" ", "-")}`}>{section.title}</a></li>
+            ))}
+          </ul>
+        </div>
+      </aside>
+
+      <div class="space-y-12">
+        {faqSections.map((section) => (
+          <section id={section.title.toLowerCase().replaceAll(" ", "-")} class="scroll-mt-28">
+            <h2 class="font-serif text-3xl font-semibold text-night">{section.title}</h2>
+            <div class="mt-6">
+              <FAQ items={section.items} />
+            </div>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection title="¿Tiene otra pregunta?" text="Escríbanos para revisar sus antecedentes y orientar los próximos pasos." />
+</MainLayout>
