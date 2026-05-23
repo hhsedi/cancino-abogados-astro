@@ -9,7 +9,15 @@ type Props = {
 const { title, summary, href, order } = Astro.props;
 
 const iconPaths: Record<string, string[]> = {
-  "Derecho inmobiliario": ["M4 11.5 12 5l8 6.5", "M6.5 10.5V19h11v-8.5", "M10 19v-5h4v5"],
+  "Desarrollo inmobiliario y estructuración de proyectos": [
+    "M4 19h16",
+    "M6 19V8l6-3 6 3v11",
+    "M9 19v-5h6v5",
+    "M8.5 11h.01",
+    "M12 11h.01",
+    "M15.5 11h.01",
+    "M7 7l5-3 5 3"
+  ],
   "Litigación civil y comercial": ["M12 4v16", "M6 8h12", "M7 8l-3 6h6L7 8Z", "M17 8l-3 6h6l-3-6Z"],
   "Resolución de Controversias en Construcción y Contratación Pública": [
     "M4 19h16",
@@ -20,10 +28,9 @@ const iconPaths: Record<string, string[]> = {
     "M16 11h.01"
   ],
   "Defensa laboral para empleadores": ["M7 8h10v11H7z", "M9 8V6h6v2", "M9.5 12h5", "M9.5 15h5"],
-  "Redacción y revisión de contratos": ["M7 4h7l3 3v13H7z", "M14 4v4h4", "M9.5 12h5", "M9.5 15.5h5"],
+  "Contratos estratégicos y negociación empresarial": ["M7 4h7l3 3v13H7z", "M14 4v4h4", "M9.5 12h5", "M9.5 15.5h4", "M16 14l3 2-3 2", "M5 19h7"],
   "Asesoría legal de empresa": ["M4.5 9h15v10h-15z", "M8 9V6h8v3", "M7 13h10", "M12 12v2"],
-  "Constitución y modificación de sociedades": ["M5 19V9l7-4 7 4v10", "M8 19v-6h8v6", "M9 10h.01", "M12 10h.01", "M15 10h.01"],
-  "Estudio de títulos": ["M6 4h9l3 3v13H6z", "M15 4v4h4", "M9 12h6", "M9 15.5h6"],
+  "Gobierno corporativo y estructuras societarias": ["M5 19V8l7-4 7 4v11", "M8 19v-6h8v6", "M8.5 10h.01", "M12 10h.01", "M15.5 10h.01", "M7 6.5h10", "M9 15.5h6"],
   "Compliance corporativo": ["M12 4l7 4v4.5c0 4.5-3 7.5-7 8.5-4-1-7-4-7-8.5V8z", "M9 12.5l2 2 4-5"],
   "Negociación y resolución de conflictos": ["M6 8h7", "M11 6l3 2-3 2", "M18 16h-7", "M13 14l-3 2 3 2", "M7 19h10"]
 };

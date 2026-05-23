@@ -1,18 +1,18 @@
 export const posts = [
   {
-    title: "Qué considerar antes de firmar un contrato comercial",
-    slug: "que-considerar-antes-de-firmar-un-contrato-comercial",
+    title: "Qué considerar antes de negociar un contrato estratégico",
+    slug: "que-considerar-antes-de-negociar-un-contrato-estrategico",
     excerpt:
-      "Una guía práctica para revisar obligaciones, plazos, responsabilidades y mecanismos de salida antes de comprometer a una empresa.",
-    category: "Contratos",
+      "Una guía práctica para revisar riesgos, obligaciones, garantías, responsabilidades y mecanismos de salida antes de comprometer a una empresa.",
+    category: "Contratos estratégicos",
     date: "2026-01-12"
   },
   {
-    title: "Cuándo conviene asesorarse en una compraventa inmobiliaria",
-    slug: "cuando-conviene-asesorarse-en-una-compraventa-inmobiliaria",
+    title: "Cuándo conviene asesorarse en un proyecto inmobiliario",
+    slug: "cuando-conviene-asesorarse-en-un-proyecto-inmobiliario",
     excerpt:
-      "La revisión de promesas, títulos y condiciones de pago puede prevenir conflictos relevantes en operaciones inmobiliarias.",
-    category: "Derecho inmobiliario",
+      "El due diligence, la revisión de títulos, la estructura contractual y la regularización temprana pueden prevenir contingencias relevantes en operaciones inmobiliarias.",
+    category: "Desarrollo inmobiliario",
     date: "2026-01-26"
   },
   {

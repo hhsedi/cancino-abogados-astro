@@ -14,6 +14,7 @@ export type Service = {
 
 const servicePriority = [
   "controversias-construccion-contratacion-publica",
+  "desarrollo-inmobiliario-estructuracion-proyectos",
   "asesoria-legal-empresas",
   "litigacion-civil-comercial",
   "defensa-laboral-empleador"
@@ -21,47 +22,53 @@ const servicePriority = [
 
 export const services: Service[] = [
   {
-    title: "Derecho inmobiliario",
-    slug: "derecho-inmobiliario",
-    keyword: "abogado inmobiliario",
+    title: "Desarrollo inmobiliario y estructuración de proyectos",
+    slug: "desarrollo-inmobiliario-estructuracion-proyectos",
+    keyword: "abogado desarrollo inmobiliario estructuración de proyectos",
     summary:
-      "Asesoría en compraventas, arriendos, promesas, conflictos inmobiliarios y revisión legal de propiedades.",
+      "Asesoría legal integral para inmobiliarias, inversionistas y constructoras en compraventas, due diligence, regularización y conflictos inmobiliarios.",
     intro:
-      "Comprar, vender, arrendar o invertir en una propiedad exige revisar antecedentes legales, contratos, títulos y riesgos que pueden afectar el patrimonio. Cancino Abogados entrega asesoría inmobiliaria clara y estratégica para tomar decisiones con respaldo.",
+      "El desarrollo de un proyecto inmobiliario exige ordenar la operación desde su origen: adquisición del activo, revisión de antecedentes, estructura contractual, permisos, financiamiento, relación con inversionistas y eventuales contingencias. Cancino Abogados asesora a inmobiliarias, inversionistas y empresas constructoras con una mirada preventiva, técnica y orientada a decisiones comerciales.",
     specializedHeading:
-      "Abogado inmobiliario para compraventas, arriendos y conflictos sobre propiedades",
+      "Asesoría legal para desarrollo inmobiliario, due diligence y estructuración de proyectos",
     cases: [
-      "Compraventa de casas, departamentos, terrenos o parcelas.",
-      "Redacción o revisión de promesas de compraventa.",
-      "Contratos de arriendo y conflictos por incumplimiento.",
-      "Estudio de títulos antes de comprar una propiedad.",
-      "Conflictos con vendedores, compradores, arrendadores o arrendatarios."
+      "Inmobiliarias que evalúan comprar, vender o desarrollar terrenos, edificios o proyectos por etapas.",
+      "Inversionistas que requieren due diligence legal antes de comprometer capital o cerrar una operación.",
+      "Empresas constructoras que necesitan estructurar contratos, promesas, compraventas o acuerdos de inversión.",
+      "Proyectos con observaciones registrales, regularización pendiente, antecedentes incompletos o restricciones de dominio.",
+      "Conflictos derivados de compraventas, entregas, deslindes, servidumbres, documentación inmobiliaria o incumplimientos contractuales."
     ],
     approach: [
-      "Revisión de contratos, certificados, inscripciones y antecedentes del inmueble.",
-      "Identificación de riesgos legales antes de firmar o pagar.",
-      "Preparación de observaciones, recomendaciones y estrategia de negociación.",
-      "Acompañamiento en conflictos inmobiliarios cuando corresponde."
+      "Levantamiento jurídico del proyecto, partes involucradas, activos, plazos, documentos disponibles y riesgos críticos.",
+      "Revisión de títulos, inscripciones, certificados, gravámenes, prohibiciones, permisos y antecedentes contractuales relevantes.",
+      "Diseño o revisión de la estructura legal para compraventa, promesa, inversión, mandato, construcción o explotación del proyecto.",
+      "Preparación de observaciones, plan de regularización y estrategia de cierre, negociación o defensa según el estado del asunto.",
+      "Acompañamiento preventivo o contencioso ante conflictos asociados al desarrollo o ejecución del proyecto inmobiliario."
     ],
     benefits: [
-      "Reduce el riesgo de comprar una propiedad con problemas legales.",
-      "Permite negociar condiciones contractuales con mayor claridad.",
-      "Ayuda a prevenir conflictos costosos antes de que escalen."
+      "Permite detectar riesgos antes de adquirir, vender, financiar o estructurar un proyecto.",
+      "Ordena contratos, títulos y antecedentes para tomar decisiones de inversión con mayor respaldo.",
+      "Reduce contingencias en operaciones inmobiliarias complejas y mejora la posición negociadora del cliente."
     ],
     faqs: [
       {
-        question: "¿Cuándo conviene solicitar asesoría en derecho inmobiliario?",
+        question: "¿Cuándo conviene pedir asesoría legal en un desarrollo inmobiliario?",
         answer:
-          "Antes de firmar una promesa, contrato de arriendo, escritura o pagar una reserva relevante. La revisión temprana permite detectar riesgos a tiempo."
+          "Conviene consultar antes de comprar un terreno, firmar una promesa, estructurar una inversión, iniciar una regularización o cerrar acuerdos con socios, mandantes, contratistas o compradores. La asesoría temprana permite detectar riesgos y ordenar la operación antes de comprometer recursos relevantes."
       },
       {
-        question: "¿Pueden revisar una propiedad ubicada en otra ciudad?",
+        question: "¿El due diligence inmobiliario incluye revisión de títulos?",
         answer:
-          "Sí. La asesoría puede coordinarse para operaciones en Viña del Mar, Santiago, Quillota, San Felipe y otras ciudades, según los antecedentes disponibles."
+          "Sí. El due diligence puede incluir revisión de títulos, inscripciones, certificados, gravámenes, prohibiciones, permisos, antecedentes contractuales y otros documentos que permitan evaluar la viabilidad legal de la operación."
+      },
+      {
+        question: "¿Este servicio está dirigido solo a inmobiliarias?",
+        answer:
+          "No. También puede ser útil para inversionistas, empresas constructoras, propietarios, compradores o sociedades que necesitan estructurar, regularizar o resolver conflictos vinculados a activos y proyectos inmobiliarios."
       }
     ],
     metaDescription:
-      "Abogado inmobiliario para compraventas, arriendos, estudio de títulos y conflictos sobre propiedades en Viña del Mar, Santiago, Quillota y San Felipe."
+      "Abogado para desarrollo inmobiliario y estructuración de proyectos. Due diligence, compraventas, estudios de títulos, regularización y conflictos inmobiliarios."
   },
   {
     title: "Litigación civil y comercial",
@@ -198,47 +205,53 @@ export const services: Service[] = [
       "Abogado laboral para empleadores. Defensa ante demandas laborales, despidos, finiquitos y prevención de riesgos para empresas."
   },
   {
-    title: "Redacción y revisión de contratos",
-    slug: "redaccion-revision-contratos",
-    keyword: "abogado contratos",
+    title: "Contratos estratégicos y negociación empresarial",
+    slug: "contratos-estrategicos-negociacion-empresarial",
+    keyword: "abogado contratos estratégicos negociación empresarial",
     summary:
-      "Redacción y revisión de contratos civiles, comerciales, inmobiliarios y laborales antes de firmar.",
+      "Diseño, negociación y ejecución de contratos civiles y comerciales complejos, con foco en prevención de riesgos y protección patrimonial.",
     intro:
-      "Un contrato claro permite prevenir conflictos, distribuir riesgos y dejar constancia de obligaciones relevantes. La revisión legal antes de firmar ayuda a evitar cláusulas ambiguas, multas desproporcionadas o compromisos difíciles de cumplir.",
+      "Los contratos estratégicos no solo documentan una operación: definen responsabilidades, reparten riesgos, protegen activos y sostienen la continuidad operacional de la empresa. Cancino Abogados asesora en el diseño, negociación y ejecución de contratos civiles y comerciales complejos, con una mirada preventiva, técnica y orientada a decisiones empresariales.",
     specializedHeading:
-      "Abogado para redacción y revisión de contratos",
+      "Asesoría legal en contratos estratégicos, negociación y ejecución contractual",
     cases: [
-      "Contratos comerciales con clientes, socios o proveedores.",
-      "Promesas de compraventa, arriendos y documentos inmobiliarios.",
-      "Contratos civiles, mandatos, acuerdos y reconocimientos de deuda.",
-      "Contratos laborales, anexos y documentos internos.",
-      "Revisión de cláusulas de responsabilidad, plazos, pagos y terminación."
+      "Empresas que deben negociar contratos relevantes con clientes, proveedores, socios, mandantes o contratistas.",
+      "Operaciones civiles o comerciales que involucran obligaciones complejas, hitos de cumplimiento, pagos diferidos o garantías.",
+      "Contratos que pueden afectar continuidad operacional, responsabilidad patrimonial, flujo de caja o relaciones comerciales críticas.",
+      "Negociaciones donde se requiere definir cláusulas de incumplimiento, terminación, multas, indemnidades, confidencialidad o solución de controversias.",
+      "Ejecución de contratos en curso con diferencias interpretativas, incumplimientos, atrasos, pagos pendientes o necesidad de renegociación."
     ],
     approach: [
-      "Identificación de objetivos comerciales y riesgos jurídicos.",
-      "Revisión de cláusulas críticas y obligaciones principales.",
-      "Redacción de observaciones, ajustes o nueva versión del contrato.",
-      "Explicación clara de los puntos relevantes antes de firmar."
+      "Levantamiento de la operación, objetivos comerciales, partes involucradas, riesgos y puntos no negociables.",
+      "Diseño o revisión de la estructura contractual, obligaciones principales, garantías, plazos, responsabilidades y mecanismos de salida.",
+      "Preparación de observaciones, contrapropuestas y cláusulas orientadas a prevenir conflictos o reducir exposición patrimonial.",
+      "Acompañamiento en la negociación para alinear el contrato con la realidad operacional y financiera del negocio.",
+      "Apoyo durante la ejecución contractual cuando surgen incumplimientos, controversias, ajustes o renegociaciones."
     ],
     benefits: [
-      "Previene conflictos por cláusulas poco claras.",
-      "Permite negociar condiciones antes de asumir obligaciones.",
-      "Protege relaciones comerciales, inmobiliarias o laborales relevantes."
+      "Permite negociar desde una posición informada antes de asumir obligaciones relevantes.",
+      "Reduce riesgos derivados de cláusulas ambiguas, garantías insuficientes o responsabilidades mal distribuidas.",
+      "Protege patrimonio, continuidad operacional y relaciones comerciales estratégicas."
     ],
     faqs: [
       {
-        question: "¿Pueden revisar un contrato antes de firmarlo?",
+        question: "¿Qué se entiende por contrato estratégico?",
         answer:
-          "Sí. Es uno de los momentos más importantes para consultar, porque aún es posible corregir condiciones riesgosas."
+          "Es un contrato que puede impactar de forma relevante en la operación, patrimonio, ingresos, responsabilidades o relaciones comerciales de una empresa. Por eso requiere revisar no solo el texto, sino también los riesgos del negocio y la forma en que se ejecutará."
       },
       {
-        question: "¿Trabajan contratos para empresas?",
+        question: "¿Pueden acompañar la negociación y no solo revisar el documento?",
         answer:
-          "Sí. La asesoría incluye contratos civiles, comerciales, inmobiliarios y documentos usados por empresas."
+          "Sí. La asesoría puede incluir preparación de observaciones, contrapropuestas, cláusulas alternativas y acompañamiento estratégico durante la negociación con la contraparte."
+      },
+      {
+        question: "¿También asesoran contratos que ya están en ejecución?",
+        answer:
+          "Sí. Cuando un contrato ya se está ejecutando, es posible revisar obligaciones, incumplimientos, comunicaciones, pagos, garantías y alternativas de renegociación o defensa."
       }
     ],
     metaDescription:
-      "Abogado para contratos. Redacción y revisión de contratos civiles, comerciales, inmobiliarios y laborales antes de firmar."
+      "Abogado en contratos estratégicos y negociación empresarial. Diseño, negociación y ejecución de contratos civiles y comerciales complejos."
   },
   {
     title: "Asesoría legal de empresa",
@@ -284,90 +297,53 @@ export const services: Service[] = [
       "Asesoría legal para empresas, pymes y empleadores. Contratos, trabajadores, socios, proveedores y prevención de riesgos legales."
   },
   {
-    title: "Constitución y modificación de sociedades",
-    slug: "constitucion-modificacion-sociedades",
-    keyword: "abogado sociedades",
+    title: "Gobierno corporativo y estructuras societarias",
+    slug: "gobierno-corporativo-estructuras-societarias",
+    keyword: "abogado gobierno corporativo estructuras societarias",
     summary:
-      "Apoyo en constitución, modificación, estatutos, poderes, administración y regularización societaria.",
+      "Asesoría en constitución, reorganización y operación de sociedades, juntas de accionistas, directorios, pactos corporativos y empresas familiares.",
     intro:
-      "La estructura societaria define cómo se administra una empresa, cómo ingresan o salen socios y cómo se toman decisiones relevantes. Una asesoría adecuada permite formalizar negocios con claridad y prevenir conflictos futuros.",
+      "El gobierno corporativo permite ordenar cómo se administra una sociedad, cómo se toman decisiones relevantes, cómo se relacionan socios o accionistas y qué reglas protegen la continuidad del negocio. Cancino Abogados asesora a empresas familiares, sociedades de capital, inversionistas y administradores en la constitución, reorganización y operación societaria con enfoque preventivo y estratégico.",
     specializedHeading:
-      "Abogado para constitución y modificación de sociedades",
+      "Asesoría legal en gobierno corporativo, reorganización y estructuras societarias",
     cases: [
-      "Constitución de sociedades para nuevos negocios.",
-      "Modificación de estatutos, administración o poderes.",
-      "Entrada o salida de socios.",
-      "Regularización de documentos societarios.",
-      "Revisión de estructura legal de una empresa existente."
+      "Empresas que necesitan constituir o reorganizar sociedades para ordenar su operación.",
+      "Sociedades que requieren preparar juntas de accionistas, sesiones de directorio o acuerdos de administración.",
+      "Empresas familiares que necesitan reglas claras para continuidad, sucesión, ingreso o salida de socios.",
+      "Inversionistas o socios que requieren pactos corporativos, modificaciones estatutarias o estructuras de control.",
+      "Compañías con documentos societarios desactualizados, poderes insuficientes o decisiones que deben formalizarse correctamente."
     ],
     approach: [
-      "Identificación del objetivo del negocio y necesidades de administración.",
-      "Revisión o preparación de estatutos, poderes y documentos.",
-      "Orientación sobre riesgos de gobierno societario.",
-      "Acompañamiento en modificaciones y regularizaciones."
+      "Diagnóstico de la estructura actual, estatutos, poderes, administración, socios y necesidades de gobierno corporativo.",
+      "Diseño o revisión de sociedades, pactos, actas, juntas, sesiones de directorio y documentos de reorganización.",
+      "Identificación de riesgos en toma de decisiones, representación, mayorías, conflictos entre socios y continuidad empresarial.",
+      "Preparación de modificaciones societarias, acuerdos internos y documentación necesaria para respaldar decisiones relevantes.",
+      "Acompañamiento en la implementación legal de la estructura definida y en la operación societaria recurrente."
     ],
     benefits: [
-      "Permite ordenar responsabilidades y facultades de administración.",
-      "Reduce riesgos de conflictos entre socios.",
-      "Facilita decisiones empresariales con estructura jurídica clara."
+      "Ordena reglas de administración, representación y toma de decisiones dentro de la empresa.",
+      "Reduce riesgos de conflictos entre socios, accionistas, directores o administradores.",
+      "Entrega una estructura jurídica más clara para crecimiento, inversión, sucesión o reorganización empresarial."
     ],
     faqs: [
       {
-        question: "¿Qué sociedad conviene constituir?",
+        question: "¿Qué incluye una asesoría en gobierno corporativo?",
         answer:
-          "Depende del negocio, socios, forma de administración y objetivos. La recomendación se realiza caso a caso."
+          "Puede incluir revisión de estatutos, poderes, pactos corporativos, actas, juntas de accionistas, sesiones de directorio, reglas de administración y documentación necesaria para ordenar la operación de la sociedad."
       },
       {
-        question: "¿Pueden modificar una sociedad ya creada?",
+        question: "¿Este servicio sirve para empresas familiares?",
         answer:
-          "Sí. Se pueden revisar estatutos, poderes y necesidades de modificación según la situación actual."
+          "Sí. Las empresas familiares suelen requerir reglas claras sobre administración, continuidad, ingreso o salida de familiares, sucesión y mecanismos para prevenir conflictos internos."
+      },
+      {
+        question: "¿Pueden apoyar una reorganización societaria?",
+        answer:
+          "Sí. La asesoría puede considerar diagnóstico, diseño de estructura, modificaciones societarias, pactos, poderes y documentos necesarios para implementar una reorganización de forma ordenada."
       }
     ],
     metaDescription:
-      "Abogado para sociedades. Constitución, modificación, estatutos, poderes, administración y regularización societaria."
-  },
-  {
-    title: "Estudio de títulos",
-    slug: "estudio-de-titulos",
-    keyword: "estudio de títulos abogado",
-    summary:
-      "Revisión legal de propiedades, inscripciones, certificados y antecedentes antes de comprar inmuebles.",
-    intro:
-      "El estudio de títulos permite revisar la historia jurídica de una propiedad antes de comprar. Su objetivo es detectar riesgos, limitaciones, gravámenes o problemas documentales que podrían afectar la operación.",
-    specializedHeading:
-      "Estudio de títulos para comprar propiedades con mayor seguridad",
-    cases: [
-      "Compra de terrenos, parcelas, casas o departamentos.",
-      "Revisión de dominio, hipotecas, prohibiciones o gravámenes.",
-      "Operaciones inmobiliarias con antecedentes incompletos.",
-      "Compra mediante promesa de compraventa.",
-      "Necesidad de informe legal antes de cerrar una operación."
-    ],
-    approach: [
-      "Revisión de inscripciones, certificados y antecedentes disponibles.",
-      "Identificación de observaciones legales relevantes.",
-      "Preparación de recomendaciones antes de firmar o pagar.",
-      "Coordinación con otros documentos de la operación inmobiliaria."
-    ],
-    benefits: [
-      "Reduce el riesgo de adquirir un inmueble con problemas legales.",
-      "Entrega claridad antes de comprometer recursos importantes.",
-      "Permite solicitar correcciones o antecedentes adicionales a tiempo."
-    ],
-    faqs: [
-      {
-        question: "¿Es lo mismo revisar una promesa que hacer estudio de títulos?",
-        answer:
-          "No. La promesa regula obligaciones entre partes; el estudio de títulos revisa la situación jurídica del inmueble."
-      },
-      {
-        question: "¿Qué documentos se revisan?",
-        answer:
-          "Inscripciones, certificados, escrituras y otros antecedentes que permitan evaluar la historia legal del inmueble."
-      }
-    ],
-    metaDescription:
-      "Estudio de títulos por abogado para compra de terrenos, parcelas, casas y departamentos. Revisión legal de propiedades."
+      "Abogado en gobierno corporativo y estructuras societarias. Constitución, reorganización, juntas de accionistas, directorios, pactos y empresas familiares."
   },
   {
     title: "Compliance corporativo",

@@ -5,13 +5,12 @@ import FAQSection from "@components/FAQSection.astro";
 import Hero from "@components/Hero.astro";
 import LocationCard from "@components/LocationCard.astro";
 import ProcessSteps from "@components/ProcessSteps.astro";
-import ReviewCard from "@components/ReviewCard.astro";
 import ServicesCarousel from "@components/ServicesCarousel.astro";
+import TestimonialsCarousel from "@components/TestimonialsCarousel.astro";
 import TrustSection from "@components/TrustSection.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { faqs } from "@data/faqs";
 import { locations } from "@data/locations";
-import { reviews } from "@data/reviews";
 import { services } from "@data/services";
 import { site } from "@data/site";
 import { attorneySchema, faqPageSchema, legalServiceSchema, localBusinessSchema } from "@utils/schema";
@@ -68,6 +67,8 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
 
   <TrustSection />
 
+  <TestimonialsCarousel />
+
   <section class="py-20 lg:py-24">
     <div class="container-page">
       <div class="grid gap-8 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
@@ -81,22 +82,6 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
       </div>
       <div class="mt-12">
         <ProcessSteps />
-      </div>
-    </div>
-  </section>
-
-  <section class="bg-mist py-20 lg:py-24">
-    <div class="container-page">
-      <div class="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p class="eyebrow">Testimonios</p>
-          <h2 class="section-title">Experiencias de clientes</h2>
-        </div>
-      </div>
-      <div class="mt-10 grid gap-5 md:grid-cols-3">
-        {reviews.map((review) => (
-          <ReviewCard {...review} />
-        ))}
       </div>
     </div>
   </section>

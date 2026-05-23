@@ -10,6 +10,14 @@ type FAQItem = {
   answer: string;
 };
 
+type ServiceSchemaItem = {
+  title: string;
+  slug: string;
+  keyword: string;
+  summary: string;
+  metaDescription: string;
+};
+
 const areaServed = site.locations.map((location) => ({
   "@type": "City",
   name: location
@@ -28,6 +36,32 @@ export const legalServiceSchema = () => ({
   founder: {
     "@type": "Person",
     name: site.lawyer.name
+  }
+});
+
+export const servicePageSchema = (service: ServiceSchemaItem, path: string) => ({
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: `${service.title} | ${site.name}`,
+  url: new URL(path, site.url).toString(),
+  description: service.metaDescription || service.summary,
+  serviceType: service.title,
+  keywords: service.keyword,
+  telephone: site.phone,
+  email: site.email,
+  areaServed,
+  availableLanguage: site.lawyer.languages,
+  provider: {
+    "@type": "LegalService",
+    name: site.name,
+    url: site.url,
+    telephone: site.phone,
+    email: site.email
+  },
+  founder: {
+    "@type": "Person",
+    name: site.lawyer.name,
+    jobTitle: site.lawyer.title
   }
 });
 

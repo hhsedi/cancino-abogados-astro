@@ -1,0 +1,566 @@
+---
+import { testimonials } from "@data/reviews";
+---
+
+<section class="testimonials-section" aria-labelledby="testimonials-title">
+  <div class="container-page">
+    <div class="testimonials-heading">
+      <p class="eyebrow">Opiniones de clientes</p>
+      <h2 id="testimonials-title" class="section-title">Confianza construida en asuntos legales complejos</h2>
+      <p class="section-copy">
+        Clientes de distintas áreas destacan la claridad, estrategia y acompañamiento de Cancino Abogados en materias civiles, laborales, inmobiliarias, empresariales y de construcción.
+      </p>
+    </div>
+
+    <div class="testimonials-carousel" data-testimonials-carousel aria-label="Reseñas de clientes de Cancino Abogados">
+      <div class="testimonials-controls" aria-label="Controles del carrusel de reseñas">
+        <button class="testimonials-button" type="button" data-testimonials-prev aria-label="Ver reseñas anteriores">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+            <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+        <button class="testimonials-button" type="button" data-testimonials-next aria-label="Ver más reseñas">
+          <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
+            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </button>
+      </div>
+
+      <div class="testimonials-viewport" data-testimonials-viewport>
+        <div class="testimonials-track">
+          {testimonials.map((testimonial) => (
+            <article class="testimonial-card" data-testimonial-card>
+              <div class="testimonial-card__top">
+                <span class="testimonial-quote-mark" aria-hidden="true">
+                  <svg viewBox="0 0 32 32" fill="none">
+                    <path d="M13.4 7.2c-3.7 1.6-6 4.9-6 8.9 0 4.4 2.4 7.4 5.8 7.4 2.5 0 4.2-1.7 4.2-4 0-2.2-1.5-3.8-3.7-3.8-.8 0-1.5.2-2.1.5.3-2.5 1.7-4.4 4.4-5.8L13.4 7.2Zm11.2 0c-3.7 1.6-6 4.9-6 8.9 0 4.4 2.4 7.4 5.8 7.4 2.5 0 4.2-1.7 4.2-4 0-2.2-1.5-3.8-3.7-3.8-.8 0-1.5.2-2.1.5.3-2.5 1.7-4.4 4.4-5.8L24.6 7.2Z" fill="currentColor" />
+                  </svg>
+                </span>
+                <span class="testimonial-badge">Reseña de cliente</span>
+              </div>
+
+              <div class="testimonial-stars" aria-label={`Calificación ${testimonial.rating} de 5`}>
+                {Array.from({ length: testimonial.rating }).map(() => <span aria-hidden="true">★</span>)}
+              </div>
+
+              <p class="testimonial-quote">“{testimonial.quote}”</p>
+
+              <footer class="testimonial-footer">
+                <strong>{testimonial.name}</strong>
+                <span>{testimonial.context}</span>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="testimonials-dots" aria-label="Navegación de reseñas">
+        {testimonials.map((testimonial, index) => (
+          <button
+            type="button"
+            class="testimonials-dot"
+            data-testimonials-dot
+            data-testimonials-index={index}
+            aria-label={`Ver reseña de ${testimonial.name}`}
+          >
+            <span></span>
+          </button>
+        ))}
+      </div>
+    </div>
+
+    <div class="testimonials-cta">
+      <p>¿Necesita asesoría legal con una mirada estratégica?</p>
+      <div class="testimonials-cta__actions">
+        <a
+          class="testimonials-review-button testimonials-review-button--primary"
+          href="https://www.google.com/maps/place/Cancino+Abogados/@-33.0085545,-71.5510109,17z/data=!4m8!3m7!1s0x26c47ba9a5e697b:0x62e184e3c6026c61!8m2!3d-33.0085545!4d-71.5510109!9m1!1b1!16s%2Fg%2F11yx7vg250?hl=es-419&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Ver todas las reseñas
+        </a>
+        <a
+          class="testimonials-review-button testimonials-review-button--accent"
+          href="https://g.page/r/CWFsAsbjhOFiEBM/review"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Dejar una reseña
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const carousels = document.querySelectorAll("[data-testimonials-carousel]");
+
+  carousels.forEach((carousel) => {
+    const viewport = carousel.querySelector("[data-testimonials-viewport]");
+    const track = carousel.querySelector(".testimonials-track");
+    const cards = Array.from(carousel.querySelectorAll("[data-testimonial-card]"));
+    const previousButton = carousel.querySelector("[data-testimonials-prev]");
+    const nextButton = carousel.querySelector("[data-testimonials-next]");
+    const dots = Array.from(carousel.querySelectorAll("[data-testimonials-dot]"));
+
+    if (!(viewport instanceof HTMLElement) || !(track instanceof HTMLElement) || cards.length === 0) {
+      return;
+    }
+
+    const getStep = () => {
+      const firstCard = cards[0];
+      if (!(firstCard instanceof HTMLElement)) return viewport.clientWidth;
+
+      const gapValue = Number.parseFloat(window.getComputedStyle(track).columnGap || "0");
+      const gap = Number.isFinite(gapValue) ? gapValue : 0;
+      return firstCard.getBoundingClientRect().width + gap;
+    };
+
+    const getActiveIndex = () => {
+      const step = getStep();
+      if (step <= 0) return 0;
+      return Math.min(cards.length - 1, Math.max(0, Math.round(viewport.scrollLeft / step)));
+    };
+
+    const scrollToIndex = (index) => {
+      viewport.scrollTo({
+        left: getStep() * Math.min(cards.length - 1, Math.max(0, index)),
+        behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth"
+      });
+    };
+
+    const updateControls = () => {
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth - 2;
+      const activeIndex = getActiveIndex();
+      const step = getStep();
+      const maxIndex = step > 0 ? Math.max(0, Math.ceil((viewport.scrollWidth - viewport.clientWidth) / step)) : 0;
+      const currentIndex = Math.min(activeIndex, maxIndex);
+
+      if (previousButton instanceof HTMLButtonElement) {
+        previousButton.disabled = viewport.scrollLeft <= 2;
+      }
+
+      if (nextButton instanceof HTMLButtonElement) {
+        nextButton.disabled = viewport.scrollLeft >= maxScroll;
+      }
+
+      dots.forEach((dot, index) => {
+        if (!(dot instanceof HTMLButtonElement)) return;
+        dot.hidden = index > maxIndex;
+        dot.setAttribute("aria-current", index === currentIndex ? "true" : "false");
+      });
+    };
+
+    let ticking = false;
+    viewport.addEventListener(
+      "scroll",
+      () => {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(() => {
+          updateControls();
+          ticking = false;
+        });
+      },
+      { passive: true }
+    );
+
+    previousButton?.addEventListener("click", () => {
+      scrollToIndex(getActiveIndex() - 1);
+    });
+
+    nextButton?.addEventListener("click", () => {
+      scrollToIndex(getActiveIndex() + 1);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        if (!(dot instanceof HTMLButtonElement)) return;
+        scrollToIndex(Number(dot.dataset.testimonialsIndex || 0));
+      });
+    });
+
+    window.addEventListener("resize", updateControls, { passive: true });
+    updateControls();
+  });
+</script>
+
+<style>
+  .testimonials-section {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(135deg, rgba(15, 39, 82, 0.04), transparent 42%),
+      linear-gradient(180deg, #ffffff 0%, #f6f8fa 38%, #ffffff 100%);
+    padding: 5rem 0;
+  }
+
+  .testimonials-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background-image: linear-gradient(135deg, rgba(15, 39, 82, 0.05) 1px, transparent 1px);
+    background-size: 22px 22px;
+    opacity: 0.36;
+  }
+
+  .testimonials-heading,
+  .testimonials-carousel,
+  .testimonials-cta {
+    position: relative;
+  }
+
+  .testimonials-heading {
+    max-width: 58rem;
+  }
+
+  .testimonials-heading .section-title::after {
+    content: "";
+    display: block;
+    width: 5rem;
+    height: 0.2rem;
+    margin-top: 1.25rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #d77534, rgba(215, 117, 52, 0.12));
+  }
+
+  .testimonials-carousel {
+    margin-top: 3rem;
+  }
+
+  .testimonials-controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .testimonials-button {
+    display: inline-flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(163, 181, 194, 0.55);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0f2752;
+    box-shadow: 0 14px 34px rgba(15, 39, 82, 0.1);
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  .testimonials-button:hover:not(:disabled) {
+    transform: translateY(-1px);
+    border-color: rgba(215, 117, 52, 0.75);
+    background: #0f2752;
+    color: #ffffff;
+  }
+
+  .testimonials-button:disabled {
+    cursor: not-allowed;
+    opacity: 0.42;
+    box-shadow: none;
+  }
+
+  .testimonials-button:focus-visible,
+  .testimonials-dot:focus-visible,
+  .testimonials-review-button:focus-visible {
+    outline: 3px solid rgba(215, 117, 52, 0.35);
+    outline-offset: 3px;
+  }
+
+  .testimonials-button svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .testimonials-viewport {
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .testimonials-viewport::-webkit-scrollbar {
+    display: none;
+  }
+
+  .testimonials-track {
+    --testimonial-gap: 1rem;
+    display: flex;
+    align-items: stretch;
+    gap: var(--testimonial-gap);
+    padding: 0.25rem 0.25rem 1.25rem;
+  }
+
+  .testimonial-card {
+    position: relative;
+    display: flex;
+    min-height: 26rem;
+    flex: 0 0 100%;
+    scroll-snap-align: start;
+    flex-direction: column;
+    overflow: hidden;
+    border: 1px solid rgba(163, 181, 194, 0.46);
+    border-radius: 0.85rem;
+    background: #ffffff;
+    padding: 1.5rem;
+    box-shadow: 0 22px 60px rgba(15, 39, 82, 0.1);
+    transition: transform 220ms ease, border-color 220ms ease;
+  }
+
+  .testimonial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0 0 auto;
+    height: 0.25rem;
+    background: linear-gradient(90deg, #0f2752, #d77534, rgba(15, 39, 82, 0.24));
+  }
+
+  .testimonial-card::after {
+    content: "";
+    position: absolute;
+    right: -2rem;
+    top: -2rem;
+    width: 8rem;
+    height: 8rem;
+    border: 1px solid rgba(215, 117, 52, 0.18);
+    border-radius: 999px;
+  }
+
+  .testimonial-card__top {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .testimonial-quote-mark {
+    display: inline-flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.75rem;
+    background: rgba(15, 39, 82, 0.06);
+    color: #d77534;
+  }
+
+  .testimonial-quote-mark svg {
+    width: 1.65rem;
+    height: 1.65rem;
+  }
+
+  .testimonial-badge {
+    border: 1px solid rgba(163, 181, 194, 0.45);
+    border-radius: 999px;
+    background: #f6f8fa;
+    padding: 0.45rem 0.8rem;
+    color: #51718f;
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .testimonial-stars {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    gap: 0.16rem;
+    margin-top: 1.35rem;
+    color: #d77534;
+    font-size: 0.95rem;
+    letter-spacing: 0.03em;
+  }
+
+  .testimonial-quote {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.25rem;
+    flex: 1;
+    color: #25262b;
+    font-size: 0.98rem;
+    line-height: 1.85;
+  }
+
+  .testimonial-footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 1.6rem;
+    border-top: 1px solid rgba(163, 181, 194, 0.32);
+    padding-top: 1rem;
+  }
+
+  .testimonial-footer strong,
+  .testimonial-footer span {
+    display: block;
+  }
+
+  .testimonial-footer strong {
+    color: #0f2752;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+
+  .testimonial-footer span {
+    margin-top: 0.3rem;
+    color: #51718f;
+    font-size: 0.86rem;
+    font-weight: 700;
+    line-height: 1.55;
+  }
+
+  .testimonials-dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.45rem;
+    margin-top: 0.7rem;
+  }
+
+  .testimonials-dot {
+    display: inline-flex;
+    width: 1.35rem;
+    height: 1.35rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+  }
+
+  .testimonials-dot span {
+    width: 0.46rem;
+    height: 0.46rem;
+    border-radius: 999px;
+    background: rgba(81, 113, 143, 0.38);
+    transition: width 180ms ease, background-color 180ms ease;
+  }
+
+  .testimonials-dot[aria-current="true"] span {
+    width: 1.2rem;
+    background: #d77534;
+  }
+
+  .testimonials-cta {
+    display: grid;
+    gap: 1rem;
+    align-items: center;
+    margin-top: 2.4rem;
+    border: 1px solid rgba(15, 39, 82, 0.12);
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.82);
+    padding: 1.25rem;
+    box-shadow: 0 18px 52px rgba(15, 39, 82, 0.08);
+  }
+
+  .testimonials-cta p {
+    color: #0f2752;
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.55;
+  }
+
+  .testimonials-cta__actions {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .testimonials-review-button {
+    display: inline-flex;
+    min-height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.55rem;
+    padding: 0.85rem 1rem;
+    font-size: 0.92rem;
+    font-weight: 800;
+    line-height: 1.2;
+    text-align: center;
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  .testimonials-review-button:hover {
+    transform: translateY(-1px);
+  }
+
+  .testimonials-review-button--primary {
+    border: 1px solid rgba(15, 39, 82, 0.18);
+    background: #0f2752;
+    color: #ffffff;
+  }
+
+  .testimonials-review-button--primary:hover {
+    background: #a25226;
+  }
+
+  .testimonials-review-button--accent {
+    border: 1px solid rgba(215, 117, 52, 0.45);
+    background: rgba(215, 117, 52, 0.1);
+    color: #0f2752;
+  }
+
+  .testimonials-review-button--accent:hover {
+    border-color: rgba(215, 117, 52, 0.85);
+    background: #d77534;
+    color: #ffffff;
+  }
+
+  @media (min-width: 640px) {
+    .testimonials-cta {
+      grid-template-columns: 1fr auto;
+      padding: 1.35rem 1.5rem;
+    }
+
+    .testimonials-cta__actions {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .testimonials-track {
+      --testimonial-gap: 1.1rem;
+    }
+
+    .testimonial-card {
+      flex-basis: calc((100% - var(--testimonial-gap)) / 2);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .testimonials-section {
+      padding: 6rem 0;
+    }
+
+    .testimonials-track {
+      --testimonial-gap: 1.25rem;
+    }
+
+    .testimonial-card {
+      flex-basis: calc((100% - (var(--testimonial-gap) * 2)) / 3);
+      padding: 1.65rem;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-0.25rem);
+      border-color: rgba(215, 117, 52, 0.65);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .testimonials-viewport {
+      scroll-behavior: auto;
+    }
+
+    .testimonials-button,
+    .testimonial-card,
+    .testimonials-dot span {
+      transition: none;
+    }
+  }
+</style>

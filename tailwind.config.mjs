@@ -19,8 +19,8 @@ export default {
         ink: "#25262B"
       },
       fontFamily: {
-        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"],
-        serif: ["Georgia", "Cambria", "Times New Roman", "serif"]
+        sans: ["Montserrat", "ui-sans-serif", "system-ui", "sans-serif"],
+        serif: ["Montserrat", "ui-sans-serif", "system-ui", "sans-serif"]
       },
       boxShadow: {
         soft: "0 18px 50px rgba(15, 39, 82, 0.08)"

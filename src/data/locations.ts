@@ -13,9 +13,9 @@ export type LocationLanding = {
 };
 
 const sharedHighlights = (city: string) => [
-  `Empresas, constructoras y contratistas que necesitan abogado en ${city} para contratos, controversias o decisiones estratégicas.`,
+  `Empresas, constructoras y contratistas que necesitan abogado en ${city} para contratos estratégicos, controversias o decisiones relevantes.`,
   `Empleadores que requieren defensa laboral, revisión de despidos, finiquitos o prevención de riesgos.`,
-  `Propietarios, inversionistas y compradores que necesitan asesoría inmobiliaria o estudio de títulos en ${city}.`,
+  `Inmobiliarias, inversionistas y compradores que necesitan due diligence, regularización o estructuración de proyectos en ${city}.`,
   `Personas y empresas con conflictos civiles, comerciales, contractuales o societarios que requieren una estrategia legal clara.`
 ];
 
@@ -28,7 +28,7 @@ const sharedFaqs = (city: string) => [
   {
     question: `¿Qué servicios legales ofrece un abogado en ${city}?`,
     answer:
-      "El estudio ofrece asesoría en controversias de construcción y contratación pública, asesoría legal de empresa, litigación civil y comercial, defensa laboral para empleadores, contratos, derecho inmobiliario, sociedades, estudio de títulos, compliance corporativo y negociación de conflictos."
+      "El estudio ofrece asesoría en controversias de construcción y contratación pública, desarrollo inmobiliario y estructuración de proyectos, asesoría legal de empresa, litigación civil y comercial, defensa laboral para empleadores, contratos estratégicos y negociación empresarial, gobierno corporativo, estructuras societarias, compliance corporativo y negociación de conflictos."
   },
   {
     question: `¿Puedo pedir una evaluación legal desde ${city} antes de iniciar un juicio?`,
@@ -46,25 +46,25 @@ export const locations: LocationLanding[] = [
     summary:
       "Asesoría legal estratégica en Santiago para empresas, constructoras, contratistas, empleadores, propietarios e inversionistas.",
     audience:
-      "Cancino Abogados asesora a clientes de Santiago que necesitan respaldo jurídico en contratos, litigios civiles y comerciales, controversias de construcción, contratación pública, derecho inmobiliario, sociedades, compliance y defensa laboral para empleadores.",
+      "Cancino Abogados asesora a clientes de Santiago que necesitan respaldo jurídico en contratos estratégicos, litigios civiles y comerciales, controversias de construcción, contratación pública, desarrollo inmobiliario, gobierno corporativo, estructuras societarias, compliance y defensa laboral para empleadores.",
     highlights: sharedHighlights("Santiago"),
     faqs: sharedFaqs("Santiago"),
     metaDescription:
-      "Abogado en Santiago para empresas, constructoras, contratistas y empleadores. Litigios, contratos, derecho inmobiliario y contratación pública."
+      "Abogado en Santiago para empresas, constructoras, contratistas y empleadores. Litigios, contratos estratégicos, desarrollo inmobiliario y contratación pública."
   },
   {
     city: "Quillota",
     slug: "abogado-quillota",
-    keyword: "abogado en Quillota para empresas, contratos y derecho inmobiliario",
+    keyword: "abogado en Quillota para empresas, contratos estratégicos y proyectos inmobiliarios",
     h1: "Abogado en Quillota para empresas, propiedades y conflictos legales",
     summary:
       "Asesoría legal en Quillota para empresas, propietarios, inversionistas, empleadores y personas que requieren tomar decisiones con respaldo jurídico.",
     audience:
-      "Cancino Abogados orienta a clientes de Quillota en materias civiles, comerciales, inmobiliarias, laborales para empleadores, contratos, sociedades, estudio de títulos y resolución de controversias vinculadas a empresas o proyectos.",
+      "Cancino Abogados orienta a clientes de Quillota en materias civiles, comerciales, desarrollo inmobiliario, defensa laboral para empleadores, contratos estratégicos, gobierno corporativo, estructuras societarias y resolución de controversias vinculadas a empresas o proyectos.",
     highlights: sharedHighlights("Quillota"),
     faqs: sharedFaqs("Quillota"),
     metaDescription:
-      "Abogado en Quillota para empresas, empleadores, propietarios e inversionistas. Contratos, litigios, derecho inmobiliario y asesoría legal."
+      "Abogado en Quillota para empresas, empleadores, propietarios e inversionistas. Contratos estratégicos, litigios, proyectos inmobiliarios y asesoría legal."
   },
   {
     city: "San Felipe",
@@ -74,11 +74,11 @@ export const locations: LocationLanding[] = [
     summary:
       "Asesoría legal estratégica en San Felipe para pymes, empresas familiares, constructoras, contratistas, empleadores y personas naturales.",
     audience:
-      "Cancino Abogados atiende a clientes de San Felipe que necesitan asesoría en contratos, propiedades, terrenos, parcelas, litigación civil y comercial, derecho inmobiliario, sociedades, construcción, contratación pública y defensa laboral para empleadores.",
+      "Cancino Abogados atiende a clientes de San Felipe que necesitan asesoría en contratos estratégicos, propiedades, terrenos, parcelas, litigación civil y comercial, desarrollo inmobiliario, gobierno corporativo, estructuras societarias, construcción, contratación pública y defensa laboral para empleadores.",
     highlights: sharedHighlights("San Felipe"),
     faqs: sharedFaqs("San Felipe"),
     metaDescription:
-      "Abogado en San Felipe para empresas, empleadores, constructoras y personas. Derecho inmobiliario, contratos, litigios y asesoría legal."
+      "Abogado en San Felipe para empresas, empleadores, constructoras y personas. Desarrollo inmobiliario, contratos estratégicos, litigios y asesoría legal."
   }
 ];
 
