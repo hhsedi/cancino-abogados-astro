@@ -3,116 +3,166 @@ import { locations } from "@data/locations";
 import { services } from "@data/services";
 import { site } from "@data/site";
 
+const instagramUrl = "https://www.instagram.com/abogadosaulcancino/";
+const linkedinUrl = "https://www.linkedin.com/in/sa%C3%BAl-cancino-8689905a/";
+
 const navItem =
-  "inline-flex items-center gap-2 rounded-md px-3.5 py-2.5 text-sm font-semibold text-text-dark transition hover:bg-mist hover:text-primary focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent";
+  "inline-flex items-center gap-1.5 px-2.5 py-2 text-[0.82rem] font-extrabold text-text-dark transition hover:text-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
 const dropdownPanel =
-  "invisible absolute top-full z-50 pt-3 opacity-0 translate-y-1 transition duration-200 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100";
+  "invisible absolute top-full z-50 pt-4 opacity-0 translate-y-1 transition duration-200 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100";
 
 const dropdownLink =
-  "group/link flex items-start justify-between gap-4 rounded-md px-3 py-3 text-sm font-semibold text-text-dark transition hover:bg-mist hover:text-primary focus-visible:bg-mist focus-visible:text-primary focus-visible:outline-none";
+  "group/link flex items-start justify-between gap-4 rounded-md px-3 py-3 text-sm font-semibold text-text-dark transition hover:bg-background-soft hover:text-primary focus-visible:bg-background-soft focus-visible:text-primary focus-visible:outline-none";
 ---
 
-<header class="sticky top-0 z-40 border-b border-muted-blue/35 bg-white/95 shadow-[0_10px_35px_rgba(15,39,82,0.07)] backdrop-blur-xl">
-  <div class="container-page flex min-h-[5rem] items-center justify-between gap-5">
-    <a
-      href="/"
-      class="site-logo group flex h-16 w-[13rem] shrink-0 items-center justify-start"
-      aria-label="Ir al inicio de Cancino Abogados"
-    >
-      <img
-        class="max-h-14 w-auto max-w-full object-contain transition duration-200 group-hover:opacity-90 sm:max-h-16"
-        src="/imagenes/Logo-cancino-abogado.webp"
-        alt="Cancino Abogados"
-        width="220"
-        height="72"
-        loading="eager"
-        decoding="async"
-        onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden');"
-      />
-      <span class="hidden font-serif text-xl font-semibold leading-none text-primary">
-        Cancino Abogados
-      </span>
-    </a>
+<header class="sticky top-0 z-40 border-b border-muted-blue/30 bg-white shadow-[0_12px_34px_rgba(15,39,82,0.08)]">
+  <div class="bg-primary text-white">
+    <div class="container-page flex min-h-8 items-center justify-between gap-4">
+      <p class="text-xs font-black leading-none text-accent sm:text-sm">
+        Experiencia. Rigor. Compromiso.
+      </p>
 
-    <nav
-      class="hidden items-center gap-1 rounded-md border border-muted-blue/35 bg-white/90 p-1.5 shadow-[0_16px_40px_rgba(15,39,82,0.08)] lg:flex"
-      aria-label="Navegación principal"
-    >
-      <a class={navItem} href="/">Inicio</a>
-
-      <div class="group relative">
-        <button class={navItem} type="button" aria-haspopup="true">
-          Servicios
-          <span class="text-[0.7rem] text-accent transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
-        </button>
-
-        <div class={`${dropdownPanel} left-0 w-[22rem]`}>
-          <div class="rounded-md border border-muted-blue/35 bg-white p-2 shadow-[0_24px_60px_rgba(15,39,82,0.18)] ring-1 ring-white/70">
-            <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-accent">
-              Áreas de práctica
-            </p>
-            {services.map((service) => (
-              <a class={dropdownLink} href={`/${service.slug}/`}>
-                <span>{service.title}</span>
-                <span class="mt-0.5 text-accent opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            ))}
-          </div>
-        </div>
+      <div class="flex items-center gap-3" aria-label="Redes sociales">
+        <a
+          class="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/90 transition hover:bg-white/10 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          href={instagramUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram de Saul Cancino"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="4" width="16" height="16" rx="5"></rect>
+            <circle cx="12" cy="12" r="3.5"></circle>
+            <circle cx="17" cy="7" r="1"></circle>
+          </svg>
+        </a>
+        <a
+          class="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/90 transition hover:bg-white/10 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
+          href={linkedinUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="LinkedIn de Saul Cancino"
+        >
+          <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
+            <path d="M6.94 8.98H3.88V20h3.06V8.98ZM5.42 7.45a1.76 1.76 0 1 0 0-3.52 1.76 1.76 0 0 0 0 3.52ZM20.12 20h-3.05v-5.36c0-1.33-.03-3.03-1.84-3.03-1.85 0-2.13 1.44-2.13 2.93V20h-3.05V8.98h2.92v1.5h.04c.41-.78 1.4-1.61 2.88-1.61 3.08 0 3.65 2.03 3.65 4.67V20h.58Z"></path>
+          </svg>
+        </a>
       </div>
-
-      <div class="group relative">
-        <button class={navItem} type="button" aria-haspopup="true">
-          Dónde atendemos
-          <span class="text-[0.7rem] text-accent transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
-        </button>
-
-        <div class={`${dropdownPanel} left-0 w-64`}>
-          <div class="rounded-md border border-muted-blue/35 bg-white p-2 shadow-[0_24px_60px_rgba(15,39,82,0.18)] ring-1 ring-white/70">
-            <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-accent">
-              Atención local
-            </p>
-            {locations.map((location) => (
-              <a class={dropdownLink} href={`/${location.slug}/`}>
-                <span>{location.city}</span>
-                <span class="mt-0.5 text-accent opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
-                  →
-                </span>
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
-      <a class={navItem} href="/nosotros/">Nosotros</a>
-      <a class={navItem} href="/trayectoria/">Trayectoria</a>
-      <a class={navItem} href="/faq/">FAQ</a>
-      <a class={navItem} href="/blog/">Blog</a>
-      <a class={navItem} href="/contacto/">Contacto</a>
-    </nav>
-
-    <div class="hidden items-center gap-3 lg:flex">
-      <a class="btn-outline py-2.5" href={site.emailHref}>Correo</a>
-      <a class="btn-primary py-2.5" href={site.whatsapp} target="_blank" rel="noreferrer">WhatsApp</a>
     </div>
-
-    <button
-      class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-muted-blue/40 bg-white text-primary shadow-[0_10px_25px_rgba(15,39,82,0.08)] transition hover:border-accent/60 hover:text-accent-dark lg:hidden"
-      type="button"
-      data-menu-toggle
-      aria-label="Abrir menú"
-      aria-expanded="false"
-    >
-      <span class="h-0.5 w-5 bg-current before:block before:h-0.5 before:w-5 before:-translate-y-2 before:bg-current before:content-[''] after:block after:h-0.5 after:w-5 after:translate-y-1.5 after:bg-current after:content-['']"></span>
-    </button>
   </div>
 
-  <div class="hidden border-t border-muted-blue/35 bg-white lg:hidden" data-mobile-menu>
-    <nav class="container-page grid gap-2 py-4" aria-label="Navegación móvil">
+  <div class="bg-white">
+    <div class="container-page flex min-h-[5.65rem] items-center justify-between gap-5">
+      <a
+        href="/"
+        class="site-logo group flex h-[4.75rem] w-[13rem] shrink-0 items-center justify-start sm:w-[14.5rem] lg:w-[15.5rem]"
+        aria-label="Ir al inicio de Cancino Abogados"
+      >
+        <img
+          class="max-h-[4rem] w-auto max-w-full object-contain transition duration-200 group-hover:opacity-90 sm:max-h-[4.45rem]"
+          src="/imagenes/Logo-cancino-abogado.webp"
+          alt="Cancino Abogados"
+          width="280"
+          height="92"
+          loading="eager"
+          decoding="async"
+          onerror="this.style.display='none'; this.nextElementSibling?.classList.remove('hidden');"
+        />
+        <span class="hidden font-serif text-xl font-semibold leading-none text-primary">
+          Cancino Abogados
+        </span>
+      </a>
+
+      <nav
+        class="hidden items-center gap-3 xl:flex"
+        aria-label="Navegacion principal"
+      >
+        <a class={navItem} href="/">Inicio</a>
+        <a class={navItem} href="/nosotros/">Nosotros</a>
+        <a class={navItem} href="/trayectoria/">Trayectoria</a>
+
+        <div class="group relative">
+          <button class={navItem} type="button" aria-haspopup="true">
+            Servicios
+            <span class="text-[0.65rem] text-accent transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
+          </button>
+
+          <div class={`${dropdownPanel} left-0 w-[22rem]`}>
+            <div class="rounded-md border border-muted-blue/35 bg-white p-2 shadow-[0_24px_60px_rgba(15,39,82,0.18)] ring-1 ring-white/70">
+              <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-accent">
+                Áreas de práctica
+              </p>
+              {services.map((service) => (
+                <a class={dropdownLink} href={`/${service.slug}/`}>
+                  <span>{service.title}</span>
+                  <span class="mt-0.5 text-accent opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div class="group relative">
+          <button class={navItem} type="button" aria-haspopup="true">
+            Donde atendemos
+            <span class="text-[0.65rem] text-accent transition group-hover:translate-y-0.5" aria-hidden="true">⌄</span>
+          </button>
+
+          <div class={`${dropdownPanel} left-0 w-64`}>
+            <div class="rounded-md border border-muted-blue/35 bg-white p-2 shadow-[0_24px_60px_rgba(15,39,82,0.18)] ring-1 ring-white/70">
+              <p class="px-3 pb-2 pt-1 text-[0.68rem] font-bold uppercase tracking-[0.24em] text-accent">
+                Atención local
+              </p>
+              {locations.map((location) => (
+                <a class={dropdownLink} href={`/${location.slug}/`}>
+                  <span>{location.city}</span>
+                  <span class="mt-0.5 text-accent opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
+                    →
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <a class={navItem} href="/faq/">FAQ</a>
+        <a class={navItem} href="/blog/">Blog</a>
+        <a class={navItem} href="/contacto/">Contacto</a>
+      </nav>
+
+      <a
+        class="hidden items-center gap-2 rounded-md bg-primary px-5 py-3 text-[0.78rem] font-black uppercase tracking-[0.04em] text-white shadow-[0_12px_28px_rgba(15,39,82,0.16)] transition hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent xl:inline-flex"
+        href={site.whatsapp}
+        target="_blank"
+        rel="noreferrer"
+      >
+        <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12a8.5 8.5 0 0 1-11.84 7.82L4 21l1.18-5.02A8.5 8.5 0 1 1 21 12Z"></path>
+          <path d="M8.7 10.4h6.6M8.7 13.5h4.4"></path>
+        </svg>
+        Comunícate con nosotros
+      </a>
+
+      <button
+        class="inline-flex h-11 w-11 items-center justify-center rounded-md border border-muted-blue/40 bg-white text-primary shadow-[0_10px_25px_rgba(15,39,82,0.08)] transition hover:border-accent/60 hover:text-accent-dark xl:hidden"
+        type="button"
+        data-menu-toggle
+        aria-label="Abrir menu"
+        aria-expanded="false"
+      >
+        <span class="h-0.5 w-5 bg-current before:block before:h-0.5 before:w-5 before:-translate-y-2 before:bg-current before:content-[''] after:block after:h-0.5 after:w-5 after:translate-y-1.5 after:bg-current after:content-['']"></span>
+      </button>
+    </div>
+  </div>
+
+  <div class="hidden border-t border-muted-blue/35 bg-white xl:hidden" data-mobile-menu>
+    <nav class="container-page grid gap-2 py-4" aria-label="Navegacion movil">
       <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/">Inicio</a>
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/nosotros/">Nosotros</a>
+      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/trayectoria/">Trayectoria</a>
 
       <details class="rounded-md border border-muted-blue/35 bg-white">
         <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-text-dark marker:hidden">
@@ -129,7 +179,7 @@ const dropdownLink =
 
       <details class="rounded-md border border-muted-blue/35 bg-white">
         <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-text-dark marker:hidden">
-          Dónde atendemos
+          Donde atendemos
         </summary>
         <div class="grid border-t border-muted-blue/30 p-2">
           {locations.map((location) => (
@@ -140,12 +190,10 @@ const dropdownLink =
         </div>
       </details>
 
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/nosotros/">Nosotros</a>
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/trayectoria/">Trayectoria</a>
       <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/faq/">FAQ</a>
       <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/blog/">Blog</a>
       <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/contacto/">Contacto</a>
-      <a class="btn-primary mt-2" href={site.whatsapp} target="_blank" rel="noreferrer">Solicitar evaluación legal</a>
+      <a class="btn-primary mt-2" href={site.whatsapp} target="_blank" rel="noreferrer">Comunícate con nosotros</a>
     </nav>
   </div>
 </header>
