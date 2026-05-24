@@ -3,55 +3,17 @@ import { locations } from "@data/locations";
 import { services } from "@data/services";
 import { site } from "@data/site";
 
-const instagramUrl = "https://www.instagram.com/abogadosaulcancino/";
-const linkedinUrl = "https://www.linkedin.com/in/sa%C3%BAl-cancino-8689905a/";
-
 const navItem =
-  "inline-flex items-center gap-1.5 px-2.5 py-2 text-sm font-semibold text-text-dark transition hover:text-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
+  "inline-flex items-center gap-1.5 px-2.5 py-2 text-sm font-medium text-text-dark transition hover:text-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent";
 
 const dropdownPanel =
   "invisible absolute top-full z-50 pt-4 opacity-0 translate-y-1 transition duration-200 ease-out group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100";
 
 const dropdownLink =
-  "group/link flex items-start justify-between gap-4 rounded-md px-3 py-3 text-sm font-semibold text-text-dark transition hover:bg-background-soft hover:text-primary focus-visible:bg-background-soft focus-visible:text-primary focus-visible:outline-none";
+  "group/link flex items-start justify-between gap-4 rounded-md px-3 py-3 text-sm font-medium text-text-dark transition hover:bg-background-soft hover:text-primary focus-visible:bg-background-soft focus-visible:text-primary focus-visible:outline-none";
 ---
 
 <header class="sticky top-0 z-40 border-b border-muted-blue/30 bg-white shadow-[0_12px_34px_rgba(15,39,82,0.08)]">
-  <div class="bg-primary text-white">
-    <div class="container-page flex min-h-8 items-center justify-between gap-4">
-      <p class="text-xs font-black leading-none text-accent sm:text-sm">
-        Experiencia. Rigor. Compromiso.
-      </p>
-
-      <div class="flex items-center gap-3" aria-label="Redes sociales">
-        <a
-          class="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/90 transition hover:bg-white/10 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          href={instagramUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Instagram de Saul Cancino"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
-            <rect x="4" y="4" width="16" height="16" rx="5"></rect>
-            <circle cx="12" cy="12" r="3.5"></circle>
-            <circle cx="17" cy="7" r="1"></circle>
-          </svg>
-        </a>
-        <a
-          class="inline-flex h-7 w-7 items-center justify-center rounded-full text-white/90 transition hover:bg-white/10 hover:text-accent focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
-          href={linkedinUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="LinkedIn de Saul Cancino"
-        >
-          <svg class="h-4 w-4" viewBox="0 0 24 24" aria-hidden="true" fill="currentColor">
-            <path d="M6.94 8.98H3.88V20h3.06V8.98ZM5.42 7.45a1.76 1.76 0 1 0 0-3.52 1.76 1.76 0 0 0 0 3.52ZM20.12 20h-3.05v-5.36c0-1.33-.03-3.03-1.84-3.03-1.85 0-2.13 1.44-2.13 2.93V20h-3.05V8.98h2.92v1.5h.04c.41-.78 1.4-1.61 2.88-1.61 3.08 0 3.65 2.03 3.65 4.67V20h.58Z"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-
   <div class="bg-white">
     <div class="container-page flex min-h-[5.65rem] items-center justify-between gap-5">
       <a
@@ -134,7 +96,7 @@ const dropdownLink =
       </nav>
 
       <a
-        class="hidden items-center gap-2 rounded-md bg-primary px-5 py-3 text-[0.78rem] font-black uppercase tracking-[0.04em] text-white shadow-[0_12px_28px_rgba(15,39,82,0.16)] transition hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent xl:inline-flex"
+        class="hidden items-center gap-2 rounded-md bg-primary px-5 py-3 text-[0.78rem] font-bold uppercase tracking-[0.04em] text-white shadow-[0_12px_28px_rgba(15,39,82,0.16)] transition hover:bg-accent-dark focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent xl:inline-flex"
         href={site.whatsapp}
         target="_blank"
         rel="noreferrer"
@@ -160,17 +122,17 @@ const dropdownLink =
 
   <div class="hidden border-t border-muted-blue/35 bg-white xl:hidden" data-mobile-menu>
     <nav class="container-page grid gap-2 py-4" aria-label="Navegacion movil">
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/">Inicio</a>
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/nosotros/">Nosotros</a>
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/trayectoria/">Trayectoria</a>
+      <a class="rounded-md px-3 py-3 text-sm font-medium text-text-dark hover:bg-mist" href="/">Inicio</a>
+      <a class="rounded-md px-3 py-3 text-sm font-medium text-text-dark hover:bg-mist" href="/nosotros/">Nosotros</a>
+      <a class="rounded-md px-3 py-3 text-sm font-medium text-text-dark hover:bg-mist" href="/trayectoria/">Trayectoria</a>
 
       <details class="rounded-md border border-muted-blue/35 bg-white">
-        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-text-dark marker:hidden">
+        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-medium text-text-dark marker:hidden">
           Servicios
         </summary>
         <div class="grid border-t border-muted-blue/30 p-2">
           {services.map((service) => (
-            <a class="rounded-md px-3 py-2.5 text-sm font-semibold text-text-dark hover:bg-mist hover:text-primary" href={`/${service.slug}/`}>
+            <a class="rounded-md px-3 py-2.5 text-sm font-medium text-text-dark hover:bg-mist hover:text-primary" href={`/${service.slug}/`}>
               {service.title}
             </a>
           ))}
@@ -178,21 +140,21 @@ const dropdownLink =
       </details>
 
       <details class="rounded-md border border-muted-blue/35 bg-white">
-        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-semibold text-text-dark marker:hidden">
+        <summary class="cursor-pointer list-none px-3 py-3 text-sm font-medium text-text-dark marker:hidden">
           Donde atendemos
         </summary>
         <div class="grid border-t border-muted-blue/30 p-2">
           {locations.map((location) => (
-            <a class="rounded-md px-3 py-2.5 text-sm font-semibold text-text-dark hover:bg-mist hover:text-primary" href={`/${location.slug}/`}>
+            <a class="rounded-md px-3 py-2.5 text-sm font-medium text-text-dark hover:bg-mist hover:text-primary" href={`/${location.slug}/`}>
               {location.city}
             </a>
           ))}
         </div>
       </details>
 
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/faq/">FAQ</a>
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/blog/">Blog</a>
-      <a class="rounded-md px-3 py-3 text-sm font-semibold text-text-dark hover:bg-mist" href="/contacto/">Contacto</a>
+      <a class="rounded-md px-3 py-3 text-sm font-medium text-text-dark hover:bg-mist" href="/faq/">FAQ</a>
+      <a class="rounded-md px-3 py-3 text-sm font-medium text-text-dark hover:bg-mist" href="/blog/">Blog</a>
+      <a class="rounded-md px-3 py-3 text-sm font-medium text-text-dark hover:bg-mist" href="/contacto/">Contacto</a>
       <a class="btn-primary mt-2" href={site.whatsapp} target="_blank" rel="noreferrer">Comunícate con nosotros</a>
     </nav>
   </div>
