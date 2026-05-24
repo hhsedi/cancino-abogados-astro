@@ -86,8 +86,9 @@ const schema = [
   path="/faq/"
   schema={schema}
 >
-  <section class="bg-mist py-14">
-    <div class="container-page">
+  <section class="overflow-hidden bg-mist py-14 lg:py-16">
+    <div class="container-page grid gap-10 lg:grid-cols-[0.92fr_0.8fr] lg:items-center">
+      <div>
       <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Preguntas frecuentes" }]} />
       <p class="eyebrow mt-8">FAQ</p>
       <h1 class="mt-4 font-serif text-4xl font-semibold leading-tight text-night sm:text-5xl">
@@ -96,6 +97,26 @@ const schema = [
       <p class="section-copy">
         Respuestas claras para empresas y personas que necesitan tomar decisiones legales con respaldo profesional.
       </p>
+      </div>
+
+      <figure class="relative min-h-[18rem] overflow-hidden rounded-md border border-primary/10 bg-primary shadow-[0_28px_80px_rgba(15,39,82,0.16)] sm:min-h-[22rem]">
+        <img
+          class="absolute inset-0 h-full w-full object-cover object-center"
+          src="/imagenes/Abogado-Saul.webp"
+          alt="AsesorÃ­a legal y respuestas frecuentes de Cancino Abogados"
+          width="900"
+          height="1125"
+          loading="eager"
+          decoding="async"
+        />
+        <div class="absolute inset-0 bg-[linear-gradient(135deg,rgba(15,39,82,0.86),rgba(15,39,82,0.24)_48%,rgba(215,117,52,0.22))]"></div>
+        <figcaption class="absolute bottom-5 left-5 right-5 rounded-md border border-white/16 bg-white/92 p-5 shadow-[0_18px_50px_rgba(0,0,0,0.16)] backdrop-blur">
+          <p class="text-xs font-black uppercase tracking-[0.2em] text-accent">OrientaciÃ³n legal</p>
+          <p class="mt-2 text-lg font-extrabold leading-snug text-primary">
+            Dudas frecuentes, respuestas claras y prÃ³ximos pasos bien definidos.
+          </p>
+        </figcaption>
+      </figure>
     </div>
   </section>
 
