@@ -65,6 +65,36 @@ a {
   @apply inline-flex items-center justify-center rounded-md border border-primary/20 bg-white px-6 py-3.5 text-sm font-bold text-primary shadow-sm transition hover:-translate-y-0.5 hover:border-accent hover:bg-mist hover:text-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2;
 }
 
+.dark-section .btn-primary,
+.page-hero .btn-primary {
+  background: var(--color-accent);
+  color: #ffffff;
+  box-shadow: 0 16px 36px rgba(215, 117, 52, 0.3);
+  --tw-ring-color: #ffffff;
+  --tw-ring-offset-color: var(--color-primary);
+}
+
+.dark-section .btn-primary:hover,
+.page-hero .btn-primary:hover {
+  background: var(--color-accent-dark);
+}
+
+.dark-section .btn-secondary,
+.page-hero .btn-secondary {
+  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+  --tw-ring-color: #ffffff;
+  --tw-ring-offset-color: var(--color-primary);
+}
+
+.dark-section .btn-secondary:hover,
+.page-hero .btn-secondary:hover {
+  border-color: #ffffff;
+  background: #ffffff;
+  color: var(--color-primary);
+}
+
 .premium-panel {
   @apply rounded-md border border-muted-blue/35 bg-white shadow-soft;
 }
