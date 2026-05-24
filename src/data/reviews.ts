@@ -7,6 +7,8 @@ export const googleProfileUrl =
 
 export const googleReviewUrl = "https://g.page/r/CWFsAsbjhOFiEBM/review";
 
+export const googleReviewsLabel = "+ de 80 reseñas de Google";
+
 export type Review = {
   name: string;
   context: string;
@@ -128,6 +130,8 @@ export const averageRating =
     ? reviews.reduce((sum, review) => sum + review.rating, 0) / reviews.length
     : 0;
 
-export const totalReviews = reviews.length;
+export const featuredReviewsCount = reviews.length;
+
+export const totalReviews = 80;
 
 export const testimonials = reviews;
