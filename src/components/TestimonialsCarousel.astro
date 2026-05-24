@@ -1,104 +1,167 @@
 ---
-import { testimonials } from "@data/reviews";
+import {
+  averageRating,
+  businessName,
+  googleProfileUrl,
+  googleReviewUrl,
+  reviews,
+  siteUrl,
+  totalReviews
+} from "@data/reviews";
+
+const formattedAverageRating = averageRating.toFixed(1).replace(".0", "");
+
+const getInitials = (name: string) =>
+  name
+    .split(" ")
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => Array.from(part)[0])
+    .join("")
+    .toUpperCase();
+
+const reviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "LegalService",
+  name: businessName,
+  url: siteUrl,
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: Number(averageRating.toFixed(1)),
+    reviewCount: totalReviews,
+    bestRating: 5,
+    worstRating: 1
+  },
+  review: reviews.map((review) => ({
+    "@type": "Review",
+    author: {
+      "@type": "Person",
+      name: review.name
+    },
+    datePublished: review.datePublished,
+    reviewBody: review.quote,
+    publisher: {
+      "@type": "Organization",
+      name: review.source
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: review.rating,
+      bestRating: 5,
+      worstRating: 1
+    }
+  }))
+};
 ---
 
-<section class="testimonials-section" aria-labelledby="testimonials-title">
+<section class="reviews-section" aria-labelledby="reviews-title">
   <div class="container-page">
-    <div class="testimonials-heading">
+    <div class="reviews-heading">
       <p class="eyebrow">Opiniones de clientes</p>
-      <h2 id="testimonials-title" class="section-title">Lo que dicen quienes ya trabajaron con nosotros</h2>
+      <h2 id="reviews-title" class="section-title">Lo que dicen quienes ya trabajaron con nosotros</h2>
       <p class="section-copy">
-        Clientes de distintas áreas destacan la claridad, estrategia y acompañamiento de Cancino Abogados en materias civiles, laborales, inmobiliarias, empresariales y de construcción.
+        Reseñas reales tomadas desde la ficha de Google de Cancino Abogados. Clientes de distintas áreas destacan la claridad, estrategia y acompañamiento en materias civiles, laborales, inmobiliarias, empresariales y de construcción.
       </p>
     </div>
 
-    <div class="testimonials-carousel" data-testimonials-carousel aria-label="Reseñas de clientes de Cancino Abogados">
-      <div class="testimonials-controls" aria-label="Controles del carrusel de reseñas">
-        <button class="testimonials-button" type="button" data-testimonials-prev aria-label="Ver reseñas anteriores">
+    <div class="reviews-widget" data-testimonials-carousel aria-label="Reseñas de clientes de Cancino Abogados">
+      <aside class="reviews-summary" aria-label="Resumen de reseñas de Google">
+        <div class="reviews-summary__logo">
+          <img src="/imagenes/Logo-cancino-abogado.webp" alt="Cancino Abogados" loading="lazy" decoding="async" />
+        </div>
+        <h3>{businessName}</h3>
+        <div class="reviews-summary__rating">
+          <strong>{formattedAverageRating}</strong>
+          <div class="reviews-stars" aria-label={`Calificación promedio ${formattedAverageRating} de 5`}>
+            {Array.from({ length: 5 }).map(() => <span aria-hidden="true">★</span>)}
+          </div>
+        </div>
+        <p>{totalReviews} reseñas destacadas de Google</p>
+        <div class="reviews-summary__actions">
+          <a href={googleReviewUrl} target="_blank" rel="noopener noreferrer">Escribe una reseña</a>
+          <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer">Ver todas las reseñas</a>
+        </div>
+      </aside>
+
+      <div class="reviews-carousel">
+        <button class="reviews-arrow reviews-arrow--prev" type="button" data-testimonials-prev aria-label="Ver reseñas anteriores">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
             <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
-        <button class="testimonials-button" type="button" data-testimonials-next aria-label="Ver más reseñas">
+
+        <div class="reviews-viewport" data-testimonials-viewport>
+          <div class="reviews-track">
+            {reviews.map((review) => (
+              <article class="review-card" data-testimonial-card>
+                <header class="review-card__header">
+                  <div class="review-card__avatar" aria-hidden="true">{getInitials(review.name)}</div>
+                  <div class="review-card__person">
+                    <h3>{review.name}</h3>
+                    <p>{review.date}</p>
+                  </div>
+                  <span class="review-card__google" aria-label={`Fuente: ${review.source}`}>
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path fill="#4285F4" d="M21.35 12.2c0-.72-.06-1.24-.18-1.78H12v3.25h5.38c-.1.81-.7 2.04-2.02 2.86l-.02.11 2.93 2.14.2.02c1.86-1.62 2.88-4 2.88-6.6Z" />
+                      <path fill="#34A853" d="M12 21c2.66 0 4.9-.83 6.53-2.25l-3.11-2.28c-.83.55-1.95.94-3.42.94-2.61 0-4.83-1.62-5.62-3.87l-.12.01-3.05 2.22-.04.1C4.78 18.9 8.12 21 12 21Z" />
+                      <path fill="#FBBC05" d="M6.38 13.54A5.24 5.24 0 0 1 6.1 12c0-.54.1-1.06.27-1.54l-.01-.12-3.1-2.26-.1.05A8.56 8.56 0 0 0 2.25 12c0 1.39.34 2.7.92 3.87l3.21-2.33Z" />
+                      <path fill="#EA4335" d="M12 6.59c1.85 0 3.1.75 3.81 1.38l2.78-2.56C16.88 3.9 14.66 3 12 3 8.12 3 4.78 5.1 3.17 8.13l3.2 2.33C7.18 8.21 9.39 6.59 12 6.59Z" />
+                    </svg>
+                  </span>
+                </header>
+
+                <div class="review-card__rating">
+                  <div class="reviews-stars" aria-label={`Calificación ${review.rating} de 5`}>
+                    {Array.from({ length: 5 }).map((_, index) => (
+                      <span class={index < review.rating ? "is-filled" : ""} aria-hidden="true">★</span>
+                    ))}
+                  </div>
+                  <span>{review.source}</span>
+                </div>
+
+                <p class="review-card__quote">{review.quote}</p>
+
+                <footer class="review-card__footer">
+                  <span>{review.context}</span>
+                  <a href={googleProfileUrl} target="_blank" rel="noopener noreferrer">Leer más</a>
+                </footer>
+              </article>
+            ))}
+          </div>
+        </div>
+
+        <button class="reviews-arrow reviews-arrow--next" type="button" data-testimonials-next aria-label="Ver más reseñas">
           <svg viewBox="0 0 24 24" aria-hidden="true" fill="none">
             <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
         </button>
-      </div>
 
-      <div class="testimonials-viewport" data-testimonials-viewport>
-        <div class="testimonials-track">
-          {testimonials.map((testimonial) => (
-            <article class="testimonial-card" data-testimonial-card>
-              <div class="testimonial-card__top">
-                <span class="testimonial-quote-mark" aria-hidden="true">
-                  <svg viewBox="0 0 32 32" fill="none">
-                    <path d="M13.4 7.2c-3.7 1.6-6 4.9-6 8.9 0 4.4 2.4 7.4 5.8 7.4 2.5 0 4.2-1.7 4.2-4 0-2.2-1.5-3.8-3.7-3.8-.8 0-1.5.2-2.1.5.3-2.5 1.7-4.4 4.4-5.8L13.4 7.2Zm11.2 0c-3.7 1.6-6 4.9-6 8.9 0 4.4 2.4 7.4 5.8 7.4 2.5 0 4.2-1.7 4.2-4 0-2.2-1.5-3.8-3.7-3.8-.8 0-1.5.2-2.1.5.3-2.5 1.7-4.4 4.4-5.8L24.6 7.2Z" fill="currentColor" />
-                  </svg>
-                </span>
-                <span class="testimonial-badge">Reseña de cliente</span>
-              </div>
-
-              <div class="testimonial-stars" aria-label={`Calificación ${testimonial.rating} de 5`}>
-                {Array.from({ length: testimonial.rating }).map(() => <span aria-hidden="true">★</span>)}
-              </div>
-
-              <p class="testimonial-quote">“{testimonial.quote}”</p>
-
-              <footer class="testimonial-footer">
-                <strong>{testimonial.name}</strong>
-                <span>{testimonial.context}</span>
-              </footer>
-            </article>
+        <div class="reviews-dots" aria-label="Navegación de reseñas">
+          {reviews.map((review, index) => (
+            <button
+              type="button"
+              class="reviews-dot"
+              data-testimonials-dot
+              data-testimonials-index={index}
+              aria-label={`Ver reseña de ${review.name}`}
+            >
+              <span></span>
+            </button>
           ))}
         </div>
-      </div>
-
-      <div class="testimonials-dots" aria-label="Navegación de reseñas">
-        {testimonials.map((testimonial, index) => (
-          <button
-            type="button"
-            class="testimonials-dot"
-            data-testimonials-dot
-            data-testimonials-index={index}
-            aria-label={`Ver reseña de ${testimonial.name}`}
-          >
-            <span></span>
-          </button>
-        ))}
-      </div>
-    </div>
-
-    <div class="testimonials-cta">
-      <p>¿Necesita asesoría legal con una mirada estratégica?</p>
-      <div class="testimonials-cta__actions">
-        <a
-          class="testimonials-review-button testimonials-review-button--primary"
-          href="https://www.google.com/maps/place/Cancino+Abogados/@-33.0085545,-71.5510109,17z/data=!4m8!3m7!1s0x26c47ba9a5e697b:0x62e184e3c6026c61!8m2!3d-33.0085545!4d-71.5510109!9m1!1b1!16s%2Fg%2F11yx7vg250?hl=es-419&entry=ttu&g_ep=EgoyMDI2MDUyMC4wIKXMDSoASAFQAw%3D%3D"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Ver todas las reseñas
-        </a>
-        <a
-          class="testimonials-review-button testimonials-review-button--accent"
-          href="https://g.page/r/CWFsAsbjhOFiEBM/review"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Dejar una reseña
-        </a>
       </div>
     </div>
   </div>
 </section>
+
+<script type="application/ld+json" set:html={JSON.stringify(reviewSchema)} />
 
 <script>
   const carousels = document.querySelectorAll("[data-testimonials-carousel]");
 
   carousels.forEach((carousel) => {
     const viewport = carousel.querySelector("[data-testimonials-viewport]");
-    const track = carousel.querySelector(".testimonials-track");
+    const track = carousel.querySelector(".reviews-track");
     const cards = Array.from(carousel.querySelectorAll("[data-testimonial-card]"));
     const previousButton = carousel.querySelector("[data-testimonials-prev]");
     const nextButton = carousel.querySelector("[data-testimonials-next]");
@@ -187,36 +250,35 @@ import { testimonials } from "@data/reviews";
 </script>
 
 <style>
-  .testimonials-section {
+  .reviews-section {
     position: relative;
     overflow: hidden;
     background:
-      linear-gradient(135deg, rgba(15, 39, 82, 0.04), transparent 42%),
-      linear-gradient(180deg, #ffffff 0%, #f6f8fa 38%, #ffffff 100%);
+      linear-gradient(135deg, rgba(15, 39, 82, 0.035), transparent 42%),
+      linear-gradient(180deg, #ffffff 0%, #f6f8fa 48%, #ffffff 100%);
     padding: 5rem 0;
   }
 
-  .testimonials-section::before {
+  .reviews-section::before {
     content: "";
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background-image: linear-gradient(135deg, rgba(15, 39, 82, 0.05) 1px, transparent 1px);
+    background-image: linear-gradient(135deg, rgba(15, 39, 82, 0.045) 1px, transparent 1px);
     background-size: 22px 22px;
-    opacity: 0.36;
+    opacity: 0.34;
   }
 
-  .testimonials-heading,
-  .testimonials-carousel,
-  .testimonials-cta {
+  .reviews-heading,
+  .reviews-widget {
     position: relative;
   }
 
-  .testimonials-heading {
-    max-width: 58rem;
+  .reviews-heading {
+    max-width: 62rem;
   }
 
-  .testimonials-heading .section-title::after {
+  .reviews-heading .section-title::after {
     content: "";
     display: block;
     width: 5rem;
@@ -226,203 +288,312 @@ import { testimonials } from "@data/reviews";
     background: linear-gradient(90deg, #d77534, rgba(215, 117, 52, 0.12));
   }
 
-  .testimonials-carousel {
+  .reviews-widget {
+    display: grid;
+    gap: 1.5rem;
     margin-top: 3rem;
   }
 
-  .testimonials-controls {
+  .reviews-summary {
     display: flex;
-    justify-content: flex-end;
-    gap: 0.75rem;
-    margin-bottom: 1rem;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid rgba(163, 181, 194, 0.46);
+    border-radius: 0.85rem;
+    background: rgba(255, 255, 255, 0.92);
+    padding: 1.5rem;
+    box-shadow: 0 22px 60px rgba(15, 39, 82, 0.08);
   }
 
-  .testimonials-button {
+  .reviews-summary__logo {
+    display: flex;
+    width: 8.5rem;
+    min-height: 3.2rem;
+    align-items: center;
+  }
+
+  .reviews-summary__logo img {
+    max-height: 3rem;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+  }
+
+  .reviews-summary h3 {
+    margin-top: 1.15rem;
+    color: #0f2752;
+    font-size: 1.15rem;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .reviews-summary__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 0.85rem;
+  }
+
+  .reviews-summary__rating strong {
+    color: #25262b;
+    font-size: 1.35rem;
+    font-weight: 900;
+  }
+
+  .reviews-summary p {
+    margin-top: 0.65rem;
+    color: #25262b;
+    font-size: 0.96rem;
+    font-weight: 800;
+    line-height: 1.45;
+  }
+
+  .reviews-summary__actions {
+    display: grid;
+    gap: 0.65rem;
+    margin-top: 1.35rem;
+  }
+
+  .reviews-summary__actions a {
     display: inline-flex;
-    width: 3rem;
-    height: 3rem;
+    min-height: 2.9rem;
     align-items: center;
     justify-content: center;
-    border: 1px solid rgba(163, 181, 194, 0.55);
-    border-radius: 999px;
+    border-radius: 0.55rem;
+    border: 1px solid rgba(15, 39, 82, 0.18);
     background: #ffffff;
     color: #0f2752;
-    box-shadow: 0 14px 34px rgba(15, 39, 82, 0.1);
+    font-size: 0.88rem;
+    font-weight: 900;
+    text-align: center;
     transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
   }
 
-  .testimonials-button:hover:not(:disabled) {
-    transform: translateY(-1px);
-    border-color: rgba(215, 117, 52, 0.75);
+  .reviews-summary__actions a:first-child {
     background: #0f2752;
     color: #ffffff;
   }
 
-  .testimonials-button:disabled {
-    cursor: not-allowed;
-    opacity: 0.42;
-    box-shadow: none;
+  .reviews-summary__actions a:hover {
+    transform: translateY(-1px);
+    border-color: rgba(215, 117, 52, 0.72);
+    background: #d77534;
+    color: #ffffff;
   }
 
-  .testimonials-button:focus-visible,
-  .testimonials-dot:focus-visible,
-  .testimonials-review-button:focus-visible {
-    outline: 3px solid rgba(215, 117, 52, 0.35);
-    outline-offset: 3px;
+  .reviews-carousel {
+    position: relative;
+    min-width: 0;
   }
 
-  .testimonials-button svg {
-    width: 1.15rem;
-    height: 1.15rem;
-  }
-
-  .testimonials-viewport {
+  .reviews-viewport {
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
 
-  .testimonials-viewport::-webkit-scrollbar {
+  .reviews-viewport::-webkit-scrollbar {
     display: none;
   }
 
-  .testimonials-track {
-    --testimonial-gap: 1rem;
+  .reviews-track {
+    --review-gap: 1rem;
     display: flex;
     align-items: stretch;
-    gap: var(--testimonial-gap);
+    gap: var(--review-gap);
     padding: 0.25rem 0.25rem 1.25rem;
   }
 
-  .testimonial-card {
+  .review-card {
     position: relative;
     display: flex;
-    min-height: 26rem;
     flex: 0 0 100%;
     scroll-snap-align: start;
     flex-direction: column;
     overflow: hidden;
-    border: 1px solid rgba(163, 181, 194, 0.46);
+    border: 1px solid rgba(163, 181, 194, 0.56);
     border-radius: 0.85rem;
     background: #ffffff;
-    padding: 1.5rem;
-    box-shadow: 0 22px 60px rgba(15, 39, 82, 0.1);
-    transition: transform 220ms ease, border-color 220ms ease;
+    padding: 1.35rem;
+    box-shadow: 0 22px 58px rgba(15, 39, 82, 0.09);
+    transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
   }
 
-  .testimonial-card::before {
+  .review-card::before {
     content: "";
     position: absolute;
     inset: 0 0 auto;
-    height: 0.25rem;
-    background: linear-gradient(90deg, #0f2752, #d77534, rgba(15, 39, 82, 0.24));
+    height: 0.22rem;
+    background: linear-gradient(90deg, #0f2752, #d77534, rgba(15, 39, 82, 0.18));
   }
 
-  .testimonial-card::after {
-    content: "";
-    position: absolute;
-    right: -2rem;
-    top: -2rem;
-    width: 8rem;
-    height: 8rem;
-    border: 1px solid rgba(215, 117, 52, 0.18);
-    border-radius: 999px;
-  }
-
-  .testimonial-card__top {
-    position: relative;
-    z-index: 1;
-    display: flex;
+  .review-card__header {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 0.8rem;
     align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
   }
 
-  .testimonial-quote-mark {
+  .review-card__avatar {
     display: inline-flex;
-    width: 3rem;
-    height: 3rem;
+    width: 3.15rem;
+    height: 3.15rem;
     align-items: center;
     justify-content: center;
-    border-radius: 0.75rem;
-    background: rgba(15, 39, 82, 0.06);
-    color: #d77534;
-  }
-
-  .testimonial-quote-mark svg {
-    width: 1.65rem;
-    height: 1.65rem;
-  }
-
-  .testimonial-badge {
-    border: 1px solid rgba(163, 181, 194, 0.45);
     border-radius: 999px;
-    background: #f6f8fa;
-    padding: 0.45rem 0.8rem;
+    background: linear-gradient(135deg, #0f2752, #51718f);
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 900;
+    letter-spacing: 0.02em;
+  }
+
+  .review-card__person h3 {
+    color: #0f2752;
+    font-size: 0.98rem;
+    font-weight: 900;
+    line-height: 1.2;
+  }
+
+  .review-card__person p {
+    margin-top: 0.25rem;
+    color: #51718f;
+    font-size: 0.85rem;
+    font-weight: 700;
+  }
+
+  .review-card__google {
+    display: inline-flex;
+    width: 1.45rem;
+    height: 1.45rem;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .review-card__google svg {
+    width: 1.35rem;
+    height: 1.35rem;
+  }
+
+  .review-card__rating {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    margin-top: 1.1rem;
+  }
+
+  .review-card__rating > span {
+    border-radius: 999px;
+    background: rgba(15, 39, 82, 0.06);
+    padding: 0.2rem 0.55rem;
     color: #51718f;
     font-size: 0.68rem;
-    font-weight: 800;
-    letter-spacing: 0.14em;
+    font-weight: 900;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
   }
 
-  .testimonial-stars {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    gap: 0.16rem;
-    margin-top: 1.35rem;
-    color: #d77534;
-    font-size: 0.95rem;
-    letter-spacing: 0.03em;
-  }
-
-  .testimonial-quote {
-    position: relative;
-    z-index: 1;
-    margin-top: 1.25rem;
-    flex: 1;
-    color: #25262b;
-    font-size: 0.98rem;
-    line-height: 1.85;
-  }
-
-  .testimonial-footer {
-    position: relative;
-    z-index: 1;
-    margin-top: 1.6rem;
-    border-top: 1px solid rgba(163, 181, 194, 0.32);
-    padding-top: 1rem;
-  }
-
-  .testimonial-footer strong,
-  .testimonial-footer span {
-    display: block;
-  }
-
-  .testimonial-footer strong {
-    color: #0f2752;
+  .reviews-stars {
+    display: inline-flex;
+    gap: 0.13rem;
+    color: #f5b301;
     font-size: 1rem;
-    font-weight: 800;
+    line-height: 1;
   }
 
-  .testimonial-footer span {
-    margin-top: 0.3rem;
+  .reviews-stars span:not(.is-filled) {
+    color: #f5b301;
+  }
+
+  .review-card__quote {
+    margin-top: 1.1rem;
+    flex: 1;
+    color: #111827;
+    font-size: 0.96rem;
+    line-height: 1.72;
+  }
+
+  .review-card__footer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.8rem;
+    margin-top: 1.35rem;
+    border-top: 1px solid rgba(163, 181, 194, 0.34);
+    padding-top: 0.95rem;
+  }
+
+  .review-card__footer span {
     color: #51718f;
-    font-size: 0.86rem;
-    font-weight: 700;
-    line-height: 1.55;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.45;
   }
 
-  .testimonials-dots {
+  .review-card__footer a {
+    color: #a25226;
+    font-size: 0.84rem;
+    font-weight: 900;
+  }
+
+  .review-card__footer a:hover {
+    color: #0f2752;
+  }
+
+  .reviews-arrow {
+    position: absolute;
+    top: 50%;
+    z-index: 2;
+    display: inline-flex;
+    width: 2.85rem;
+    height: 2.85rem;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(163, 181, 194, 0.6);
+    border-radius: 999px;
+    background: #ffffff;
+    color: #0f2752;
+    box-shadow: 0 14px 34px rgba(15, 39, 82, 0.13);
+    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
+  }
+
+  .reviews-arrow--prev {
+    left: -0.85rem;
+    transform: translateY(-50%);
+  }
+
+  .reviews-arrow--next {
+    right: -0.85rem;
+    transform: translateY(-50%);
+  }
+
+  .reviews-arrow:hover:not(:disabled) {
+    border-color: rgba(215, 117, 52, 0.75);
+    background: #0f2752;
+    color: #ffffff;
+  }
+
+  .reviews-arrow:disabled {
+    cursor: not-allowed;
+    opacity: 0.4;
+    box-shadow: none;
+  }
+
+  .reviews-arrow svg {
+    width: 1.15rem;
+    height: 1.15rem;
+  }
+
+  .reviews-dots {
     display: flex;
     justify-content: center;
     gap: 0.45rem;
-    margin-top: 0.7rem;
+    margin-top: 0.45rem;
   }
 
-  .testimonials-dot {
+  .reviews-dot {
     display: inline-flex;
     width: 1.35rem;
     height: 1.35rem;
@@ -431,135 +602,94 @@ import { testimonials } from "@data/reviews";
     border-radius: 999px;
   }
 
-  .testimonials-dot span {
+  .reviews-dot span {
     width: 0.46rem;
     height: 0.46rem;
     border-radius: 999px;
-    background: rgba(81, 113, 143, 0.38);
+    background: rgba(81, 113, 143, 0.36);
     transition: width 180ms ease, background-color 180ms ease;
   }
 
-  .testimonials-dot[aria-current="true"] span {
+  .reviews-dot[aria-current="true"] span {
     width: 1.2rem;
     background: #d77534;
   }
 
-  .testimonials-cta {
-    display: grid;
-    gap: 1rem;
-    align-items: center;
-    margin-top: 2.4rem;
-    border: 1px solid rgba(15, 39, 82, 0.12);
-    border-radius: 0.85rem;
-    background: rgba(255, 255, 255, 0.82);
-    padding: 1.25rem;
-    box-shadow: 0 18px 52px rgba(15, 39, 82, 0.08);
-  }
-
-  .testimonials-cta p {
-    color: #0f2752;
-    font-size: 1.08rem;
-    font-weight: 800;
-    line-height: 1.55;
-  }
-
-  .testimonials-cta__actions {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-  }
-
-  .testimonials-review-button {
-    display: inline-flex;
-    min-height: 3rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.55rem;
-    padding: 0.85rem 1rem;
-    font-size: 0.92rem;
-    font-weight: 800;
-    line-height: 1.2;
-    text-align: center;
-    transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease, color 180ms ease;
-  }
-
-  .testimonials-review-button:hover {
-    transform: translateY(-1px);
-  }
-
-  .testimonials-review-button--primary {
-    border: 1px solid rgba(15, 39, 82, 0.18);
-    background: #0f2752;
-    color: #ffffff;
-  }
-
-  .testimonials-review-button--primary:hover {
-    background: #a25226;
-  }
-
-  .testimonials-review-button--accent {
-    border: 1px solid rgba(215, 117, 52, 0.45);
-    background: rgba(215, 117, 52, 0.1);
-    color: #0f2752;
-  }
-
-  .testimonials-review-button--accent:hover {
-    border-color: rgba(215, 117, 52, 0.85);
-    background: #d77534;
-    color: #ffffff;
-  }
-
-  @media (min-width: 640px) {
-    .testimonials-cta {
-      grid-template-columns: 1fr auto;
-      padding: 1.35rem 1.5rem;
-    }
-
-    .testimonials-cta__actions {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
+  .reviews-arrow:focus-visible,
+  .reviews-dot:focus-visible,
+  .reviews-summary__actions a:focus-visible,
+  .review-card__footer a:focus-visible {
+    outline: 3px solid rgba(215, 117, 52, 0.34);
+    outline-offset: 3px;
   }
 
   @media (min-width: 768px) {
-    .testimonials-track {
-      --testimonial-gap: 1.1rem;
+    .reviews-track {
+      --review-gap: 1.1rem;
     }
 
-    .testimonial-card {
-      flex-basis: calc((100% - var(--testimonial-gap)) / 2);
+    .review-card {
+      flex-basis: calc((100% - var(--review-gap)) / 2);
     }
   }
 
   @media (min-width: 1024px) {
-    .testimonials-section {
+    .reviews-section {
       padding: 6rem 0;
     }
 
-    .testimonials-track {
-      --testimonial-gap: 1.25rem;
+    .reviews-widget {
+      grid-template-columns: minmax(15.5rem, 0.34fr) minmax(0, 1fr);
+      align-items: center;
+      gap: 2rem;
     }
 
-    .testimonial-card {
-      flex-basis: calc((100% - (var(--testimonial-gap) * 2)) / 3);
-      padding: 1.65rem;
+    .reviews-track {
+      --review-gap: 1.25rem;
     }
 
-    .testimonial-card:hover {
+    .review-card {
+      flex-basis: calc((100% - (var(--review-gap) * 2)) / 3);
+      padding: 1.5rem;
+    }
+
+    .review-card:hover {
       transform: translateY(-0.25rem);
       border-color: rgba(215, 117, 52, 0.65);
+      box-shadow: 0 26px 68px rgba(15, 39, 82, 0.13);
+    }
+  }
+
+  @media (max-width: 767px) {
+    .reviews-arrow {
+      top: auto;
+      bottom: -0.25rem;
+    }
+
+    .reviews-arrow--prev {
+      left: 0;
+      transform: none;
+    }
+
+    .reviews-arrow--next {
+      right: 0;
+      transform: none;
+    }
+
+    .reviews-dots {
+      padding-inline: 3.1rem;
     }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .testimonials-viewport {
+    .reviews-viewport {
       scroll-behavior: auto;
     }
 
-    .testimonials-button,
-    .testimonial-card,
-    .testimonials-dot span {
+    .reviews-arrow,
+    .review-card,
+    .reviews-dot span,
+    .reviews-summary__actions a {
       transition: none;
     }
   }
