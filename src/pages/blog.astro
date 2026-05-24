@@ -2,9 +2,12 @@
 import Breadcrumbs from "@components/Breadcrumbs.astro";
 import CTASection from "@components/CTASection.astro";
 import MainLayout from "@layouts/MainLayout.astro";
-import { posts } from "@data/posts";
+import { getPosts } from "@lib/blog";
 import { breadcrumbSchema, legalServiceSchema } from "@utils/schema";
 import { buildCanonical } from "@utils/seo";
+
+const posts = await getPosts();
+const fallbackImage = "/imagenes/Abogado-cancino.webp";
 
 const schema = [
   legalServiceSchema(),
@@ -13,36 +16,85 @@ const schema = [
     { name: "Blog", url: buildCanonical("/blog/") }
   ])
 ];
+
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString("es-CL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
 ---
 
 <MainLayout
-  title="Blog legal"
-  description="Artículos simulados de Cancino Abogados sobre contratos estratégicos, desarrollo inmobiliario, derecho laboral para empleadores y prevención legal en empresas."
+  title="Centro de Conocimiento Legal"
+  description="Artículos prácticos sobre derecho empresarial, litigios, contratación pública, construcción y defensa laboral para empleadores."
   path="/blog/"
   schema={schema}
 >
-  <section class="bg-mist py-14">
+  <section class="bg-mist py-14 sm:py-16">
     <div class="container-page">
       <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Blog" }]} />
-      <h1 class="mt-6 font-serif text-4xl font-semibold text-night sm:text-5xl">Blog legal</h1>
-      <p class="section-copy">
-        Contenidos generales para comprender riesgos frecuentes y preparar mejor una consulta jurídica.
-      </p>
+      <div class="mt-8 max-w-4xl">
+        <p class="eyebrow">Blog legal</p>
+        <h1 class="mt-4 text-4xl font-extrabold tracking-normal text-night sm:text-5xl lg:text-6xl">
+          Centro de Conocimiento Legal
+        </h1>
+        <p class="mt-6 max-w-3xl text-base leading-8 text-primary-soft sm:text-lg">
+          Artículos prácticos sobre derecho empresarial, litigios, contratación pública, construcción y defensa laboral
+          para empleadores. Información clara para tomar mejores decisiones legales.
+        </p>
+      </div>
     </div>
   </section>
 
-  <section class="py-20">
-    <div class="container-page grid gap-5 md:grid-cols-2">
-      {posts.map((post) => (
-        <article class="rounded-md border border-muted-blue/35 bg-white p-6 shadow-soft">
-          <p class="text-xs font-semibold uppercase tracking-[0.18em] text-gold">{post.category}</p>
-          <h2 class="mt-4 font-serif text-2xl font-semibold text-night">{post.title}</h2>
-          <p class="mt-4 text-sm leading-7 text-primary-soft">{post.excerpt}</p>
-          <p class="mt-6 text-xs text-primary-soft">{new Date(post.date).toLocaleDateString("es-CL", { year: "numeric", month: "long", day: "numeric" })}</p>
-        </article>
-      ))}
+  <section class="py-16 sm:py-20">
+    <div class="container-page">
+      <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+        {
+          posts.map((post) => (
+            <article class="group flex min-h-full flex-col overflow-hidden rounded-md border border-muted-blue/35 bg-white shadow-soft transition duration-300 hover:-translate-y-1 hover:border-accent/50 hover:shadow-[0_24px_70px_rgba(15,39,82,0.16)]">
+              <a href={`/blog/${post.slug}/`} class="block overflow-hidden" aria-label={`Leer artículo: ${post.title}`}>
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  loading="lazy"
+                  decoding="async"
+                  class="h-48 w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  onerror={`this.onerror=null;this.src='${fallbackImage}';`}
+                />
+              </a>
+              <div class="flex flex-1 flex-col p-6">
+                <div class="flex items-center justify-between gap-4">
+                  <p class="text-[0.68rem] font-extrabold uppercase tracking-[0.22em] text-accent">
+                    {post.category}
+                  </p>
+                  <time class="shrink-0 text-xs font-semibold text-primary-soft" datetime={post.date}>
+                    {formatDate(post.date)}
+                  </time>
+                </div>
+                <h2 class="mt-4 text-2xl font-extrabold leading-tight text-night">
+                  <a href={`/blog/${post.slug}/`} class="transition hover:text-accent-dark">
+                    {post.title}
+                  </a>
+                </h2>
+                <p class="mt-4 flex-1 text-sm leading-7 text-primary-soft">{post.excerpt}</p>
+                <a
+                  href={`/blog/${post.slug}/`}
+                  class="mt-6 inline-flex items-center justify-between rounded-md bg-primary px-5 py-3 text-sm font-bold text-white transition hover:-translate-y-0.5 hover:bg-accent-dark focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2"
+                >
+                  Leer artículo
+                  <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </article>
+          ))
+        }
+      </div>
     </div>
   </section>
 
-  <CTASection title="¿Un artículo se parece a su situación?" text="Escríbanos para revisar sus antecedentes concretos y evaluar alternativas." />
+  <CTASection
+    title="¿Un artículo se parece a su situación?"
+    text="Escríbanos para revisar sus antecedentes concretos y evaluar alternativas con una mirada estratégica."
+  />
 </MainLayout>

@@ -1,0 +1,140 @@
+---
+import Breadcrumbs from "@components/Breadcrumbs.astro";
+import MainLayout from "@layouts/MainLayout.astro";
+import { getPostBySlug, getPosts, type BlogPost } from "@lib/blog";
+import { breadcrumbSchema, legalServiceSchema } from "@utils/schema";
+import { buildCanonical } from "@utils/seo";
+
+export async function getStaticPaths() {
+  const posts = await getPosts();
+
+  const paths = [];
+
+  for (const item of posts) {
+    const post = await getPostBySlug(item.slug);
+
+    if (post) {
+      paths.push({
+        params: { slug: post.slug },
+        props: { post }
+      });
+    }
+  }
+
+  return paths;
+}
+
+type Props = {
+  post: BlogPost;
+};
+
+const { post } = Astro.props;
+const fallbackImage = "/imagenes/Abogado-cancino.webp";
+const articlePath = `/blog/${post.slug}/`;
+const articleUrl = buildCanonical(articlePath);
+const articleImage = post.image.startsWith("http") ? post.image : buildCanonical(post.image);
+
+const formatDate = (date: string) =>
+  new Date(date).toLocaleDateString("es-CL", {
+    year: "numeric",
+    month: "long",
+    day: "numeric"
+  });
+
+const schema = [
+  legalServiceSchema(),
+  breadcrumbSchema([
+    { name: "Inicio", url: buildCanonical("/") },
+    { name: "Blog", url: buildCanonical("/blog/") },
+    { name: post.title, url: articleUrl }
+  ]),
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: post.title,
+    description: post.seoDescription,
+    datePublished: post.date,
+    author: {
+      "@type": "Organization",
+      name: "Cancino Abogados"
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Cancino Abogados"
+    },
+    image: articleImage,
+    url: articleUrl,
+    mainEntityOfPage: articleUrl
+  }
+];
+---
+
+<MainLayout title={post.seoTitle} description={post.seoDescription} path={articlePath} schema={schema}>
+  <section class="bg-mist py-12 sm:py-16">
+    <div class="container-page">
+      <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Blog", href: "/blog/" }, { label: post.title }]} />
+      <div class="mt-8 grid gap-10 lg:grid-cols-[minmax(0,0.95fr)_minmax(360px,0.65fr)] lg:items-end">
+        <div>
+          <p class="eyebrow">{post.category}</p>
+          <h1 class="mt-4 text-4xl font-extrabold leading-tight tracking-normal text-night sm:text-5xl lg:text-6xl">
+            {post.title}
+          </h1>
+          <time class="mt-6 block text-sm font-semibold text-primary-soft" datetime={post.date}>
+            {formatDate(post.date)}
+          </time>
+        </div>
+        <div class="overflow-hidden rounded-md border border-muted-blue/35 bg-white shadow-[0_24px_80px_rgba(15,39,82,0.14)]">
+          <img
+            src={post.image}
+            alt={post.title}
+            loading="eager"
+            decoding="async"
+            class="h-72 w-full object-cover sm:h-80 lg:h-96"
+            onerror={`this.onerror=null;this.src='${fallbackImage}';`}
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 sm:py-20">
+    <div class="container-page">
+      <div class="mx-auto max-w-4xl">
+        <article
+          class="blog-content text-base leading-8 text-primary-soft sm:text-lg"
+          set:html={post.content}
+        />
+
+        <div class="mt-12 rounded-md border border-muted-blue/35 bg-mist p-6 shadow-soft sm:p-8">
+          <p class="text-lg font-semibold leading-8 text-night">{post.cta}</p>
+          <div class="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a class="btn-primary" href="/contacto/">Solicitar asesoría</a>
+            <a class="btn-outline" href="/blog/">Volver al blog</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</MainLayout>
+
+<style>
+  .blog-content :global(p + h2) {
+    margin-top: 2.5rem;
+  }
+
+  .blog-content :global(h2) {
+    color: var(--color-primary);
+    font-size: clamp(1.65rem, 2.2vw, 2.25rem);
+    font-weight: 800;
+    line-height: 1.2;
+    letter-spacing: 0;
+  }
+
+  .blog-content :global(h2 + p) {
+    margin-top: 1rem;
+  }
+
+  .blog-content :global(p + p) {
+    margin-top: 1.25rem;
+  }
+</style>

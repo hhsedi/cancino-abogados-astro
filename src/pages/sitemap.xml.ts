@@ -1,13 +1,15 @@
 import { locations } from "@data/locations";
 import { services } from "@data/services";
 import { site } from "@data/site";
+import { getPosts } from "@lib/blog";
 
 const staticPages = ["", "nosotros", "trayectoria", "faq", "blog", "contacto"];
 
-export function GET() {
+export async function GET() {
   const servicePages = services.map((service) => service.slug);
   const locationPages = locations.map((location) => location.slug);
-  const pages = [...staticPages, ...servicePages, ...locationPages];
+  const blogPages = (await getPosts()).map((post) => `blog/${post.slug}`);
+  const pages = [...staticPages, ...servicePages, ...locationPages, ...blogPages];
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 ${pages

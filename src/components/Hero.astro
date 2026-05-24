@@ -9,7 +9,7 @@ const focusAreas = [
 
 const trustMetrics = [
   ["+10", "años de experiencia en derecho civil y comercial"],
-  ["+60", "reseñas de 5 estrellas en Google"],
+  ["+80", "de reseñas de 5 estrellas en Google"],
   ["4", "ciudades de atención: Viña del Mar, Santiago, Quillota y San Felipe"],
   ["ES/EN", "atención profesional en español e inglés"]
 ];
@@ -64,9 +64,11 @@ const trustMetrics = [
           decoding="async"
           fetchpriority="high"
         />
-        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-primary/92 to-transparent px-6 pb-6 pt-16">
-          <p class="font-serif text-2xl font-semibold text-white">{site.lawyer.name}</p>
-          <p class="mt-1 text-xs font-bold uppercase tracking-[0.18em] text-accent">{site.lawyer.title}</p>
+        <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-night/96 via-primary/78 to-transparent px-5 pb-5 pt-20 sm:px-6 sm:pb-6">
+          <div class="max-w-max rounded-md border border-white/18 bg-primary/86 px-4 py-3 shadow-[0_18px_45px_rgba(0,0,0,0.32)] backdrop-blur-sm">
+            <p class="font-serif text-2xl font-semibold leading-none text-white drop-shadow">{site.lawyer.name}</p>
+            <p class="mt-2 text-xs font-bold uppercase tracking-[0.18em] text-accent">{site.lawyer.title}</p>
+          </div>
         </figcaption>
       </figure>
     </div>
