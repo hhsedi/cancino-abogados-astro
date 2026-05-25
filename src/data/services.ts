@@ -374,54 +374,54 @@ export const services: Service[] = [
     titleTag: "Abogado inmobiliario en Viña del Mar | Cancino Abogados",
     h1: "Abogado inmobiliario en Viña del Mar",
     summary:
-      "Compraventas, arriendos, estudio de títulos, regularización y estructuración jurídica de proyectos inmobiliarios.",
+      "Asesoría a inmobiliarias, desarrolladores y empresas constructoras en adquisición, estructuración y ejecución de proyectos.",
     intro:
-      "Comprar, vender o arrendar un inmueble implica decisiones de alto valor económico. Un error jurídico en el proceso puede derivar en pérdidas significativas, conflictos prolongados o incluso la pérdida de la propiedad. Cancino Abogados acompaña cada operación inmobiliaria con rigor técnico y visión estratégica.",
+      "Cancino Abogados asesora a inmobiliarias, desarrolladores y empresas constructoras en la adquisición, estructuración y ejecución de proyectos inmobiliarios. El foco está en ordenar antecedentes, anticipar riesgos y dar soporte jurídico a decisiones de alto impacto económico.",
     coverage:
-      "Atendemos a personas naturales, inversionistas, constructoras y empresas inmobiliarias en Viña del Mar, Valparaíso, Quillota, San Felipe y el Valle del Aconcagua. Este servicio también puede ser solicitado por clientes de Santiago mediante atención remota o coordinación presencial según la naturaleza de la operación.",
-    specializedHeading: "Seguridad jurídica en cada operación inmobiliaria",
+      "Atendemos a inmobiliarias, desarrolladores, inversionistas y empresas constructoras en Viña del Mar, Santiago, Quillota, San Felipe y la Región de Valparaíso, con apoyo presencial o remoto según la naturaleza del proyecto.",
+    specializedHeading: "Seguridad jurídica para estructurar y ejecutar proyectos inmobiliarios",
     casesHeading: "Servicios inmobiliarios",
     cases: [
+      "Adquisición de terrenos, inmuebles o activos para proyectos inmobiliarios",
+      "Estructuración legal de proyectos para inmobiliarias, desarrolladores y constructoras",
       "Estudio de títulos: análisis de dominio, hipotecas, gravámenes y prohibiciones",
       "Redacción de contratos de compraventa y promesas",
       "Contratos de arriendo residencial y comercial",
-      "Estructuración jurídica de proyectos de desarrollo inmobiliario",
       "Regularización de propiedades y saneamiento de títulos",
       "Subdivisiones y loteos",
-      "Asesoría en operaciones con crédito hipotecario",
-      "Negociación y resolución de conflictos entre compradores, vendedores y constructoras"
+      "Negociación y resolución de conflictos vinculados a la ejecución de proyectos"
     ],
-    approachHeading: "Cómo se revisa una operación inmobiliaria",
+    approachHeading: "Cómo se estructura jurídicamente un proyecto inmobiliario",
     approach: [
-      "Levantamiento de antecedentes de la operación, propiedad, partes y documentos disponibles.",
+      "Levantamiento de antecedentes del proyecto, inmueble, partes, permisos y documentos disponibles.",
       "Revisión de títulos, certificados, contratos, gravámenes, prohibiciones y riesgos relevantes.",
-      "Preparación de observaciones, cláusulas, documentos o plan de regularización.",
-      "Acompañamiento hasta el cierre de la operación o resolución del conflicto."
+      "Preparación de observaciones, cláusulas, contratos o estructura jurídica para la ejecución del proyecto.",
+      "Acompañamiento hasta la adquisición, cierre, ejecución o resolución del conflicto."
     ],
     benefits: [
-      "Reduce riesgos antes de adquirir, vender, arrendar o estructurar un proyecto.",
+      "Reduce riesgos antes de adquirir, estructurar o ejecutar un proyecto.",
       "Ordena títulos, contratos y antecedentes para tomar decisiones con respaldo.",
-      "Permite anticipar problemas registrales, contractuales o patrimoniales."
+      "Permite anticipar problemas registrales, contractuales, societarios o patrimoniales."
     ],
     sections: [
       {
-        heading: "Seguridad jurídica en cada operación inmobiliaria",
+        heading: "Seguridad jurídica para estructurar y ejecutar proyectos inmobiliarios",
         body: [
-          "Atendemos a personas naturales, inversionistas, constructoras y empresas inmobiliarias en Viña del Mar, Valparaíso, Quillota, San Felipe y el Valle del Aconcagua.",
-          "Este servicio también puede ser solicitado por clientes de Santiago mediante atención remota o coordinación presencial según la naturaleza de la operación."
+          "Asesoría a inmobiliarias, desarrolladores y empresas constructoras en adquisición, estructuración y ejecución de proyectos.",
+          "El servicio está disponible para clientes en Viña del Mar, Santiago, Quillota, San Felipe y la Región de Valparaíso, con revisión documental, coordinación de antecedentes y acompañamiento jurídico según la etapa del proyecto."
         ]
       },
       {
         heading: "Servicios inmobiliarios",
         items: [
+          "Adquisición de terrenos, inmuebles o activos para proyectos inmobiliarios",
+          "Estructuración legal de proyectos para inmobiliarias, desarrolladores y constructoras",
           "Estudio de títulos: análisis de dominio, hipotecas, gravámenes y prohibiciones",
           "Redacción de contratos de compraventa y promesas",
           "Contratos de arriendo residencial y comercial",
-          "Estructuración jurídica de proyectos de desarrollo inmobiliario",
           "Regularización de propiedades y saneamiento de títulos",
           "Subdivisiones y loteos",
-          "Asesoría en operaciones con crédito hipotecario",
-          "Negociación y resolución de conflictos entre compradores, vendedores y constructoras"
+          "Negociación y resolución de conflictos vinculados a la ejecución de proyectos"
         ]
       }
     ],
@@ -442,13 +442,13 @@ export const services: Service[] = [
           "La promesa es un contrato que obliga a ambas partes a celebrar la compraventa en un plazo determinado, bajo ciertas condiciones. La escritura definitiva transfiere el dominio real de la propiedad y debe inscribirse en el Conservador de Bienes Raíces."
       },
       {
-        question: "¿Atienden proyectos inmobiliarios en el Valle del Aconcagua?",
+        question: "¿Atienden proyectos inmobiliarios en San Felipe y la Región de Valparaíso?",
         answer:
-          "Sí. Tenemos experiencia en operaciones inmobiliarias en San Felipe, Los Andes, Quillota y toda la Región de Valparaíso. Conocer el mercado local y los registros de la zona es una ventaja concreta en este tipo de asesorías."
+          "Sí. Asesoramos proyectos inmobiliarios en San Felipe, Quillota, Viña del Mar y la Región de Valparaíso, incluyendo adquisición, estructuración y ejecución de proyectos para inmobiliarias, desarrolladores y empresas constructoras."
       }
     ],
     metaDescription:
-      "Asesoría en derecho inmobiliario en Viña del Mar: compraventas, arriendos, estudio de títulos y estructuración de proyectos de desarrollo. Seguridad jurídica en cada operación."
+      "Asesoría a inmobiliarias, desarrolladores y empresas constructoras en adquisición, estructuración y ejecución de proyectos inmobiliarios."
   },
   {
     title: "Gobierno corporativo y estructuras societarias",

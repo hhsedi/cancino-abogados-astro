@@ -1,5 +1,7 @@
 import { services } from "./services";
 
+const allServiceItems = services.map((service) => service.title);
+
 export type LocationLanding = {
   city: string;
   slug: string;
@@ -54,15 +56,7 @@ export const locations: LocationLanding[] = [
       "Desde Viña del Mar asesoro en materias de derecho civil y comercial, derecho inmobiliario, defensa laboral para empleadores, estructuración de sociedades y compliance corporativo. Cada caso recibe atención directa del abogado, sin intermediarios."
     ],
     servicesHeading: "Servicios disponibles en Viña del Mar",
-    serviceItems: [
-      "Litigación civil y comercial",
-      "Derecho inmobiliario y estudio de títulos",
-      "Defensa laboral para empleadores",
-      "Asesoría legal permanente a empresas",
-      "Gobierno corporativo y estructuras societarias",
-      "Contratos estratégicos",
-      "Compliance corporativo"
-    ],
+    serviceItems: allServiceItems,
     whyHeading: "¿Por qué elegir un abogado local en Viña del Mar?",
     whyText:
       "Conocer el contexto local —los tribunales, los registros, las prácticas del mercado inmobiliario de la región— marca la diferencia en los resultados. Llevo más de 10 años litigando y asesorando en Viña del Mar y la Región de Valparaíso.",
@@ -92,14 +86,7 @@ export const locations: LocationLanding[] = [
       "La atención en Santiago se realiza en modalidad presencial y virtual, adaptada a los tiempos y necesidades de ejecutivos, empresas y emprendedores que requieren un abogado de confianza con alto nivel técnico."
     ],
     servicesHeading: "Servicios en Santiago",
-    serviceItems: [
-      "Asesoría legal permanente para empresas y PYMES",
-      "Gobierno corporativo y estructuras societarias",
-      "Contratos estratégicos y negociación empresarial",
-      "Litigación civil y comercial",
-      "Compliance corporativo",
-      "Resolución de controversias en construcción y contratación pública"
-    ],
+    serviceItems: allServiceItems,
     highlights: [
       "Empresas que necesitan soporte legal para contratos comerciales de alto valor.",
       "Socios, directorios y administradores que requieren gobierno corporativo.",
@@ -126,13 +113,7 @@ export const locations: LocationLanding[] = [
       "Atención presencial disponible en Quillota o en nuestra oficina principal de Viña del Mar, y de forma virtual para quienes lo prefieran."
     ],
     servicesHeading: "Servicios en Quillota",
-    serviceItems: [
-      "Derecho inmobiliario: compraventas, arriendos, estudio de títulos",
-      "Litigación civil y comercial",
-      "Asesoría a empresas y PYMES",
-      "Defensa laboral para empleadores",
-      "Contratos y documentación jurídica"
-    ],
+    serviceItems: allServiceItems,
     highlights: [
       "Empresas locales que necesitan asesoría civil, comercial o laboral.",
       "Propietarios e inversionistas con operaciones inmobiliarias en Quillota.",
@@ -150,32 +131,25 @@ export const locations: LocationLanding[] = [
     titleTag: "Abogado en San Felipe | Cancino Abogados",
     h1: "Abogado en San Felipe",
     summary:
-      "Abogado en San Felipe y el Valle del Aconcagua para empresas, PYMES, propietarios, empleadores y personas naturales.",
+      "Abogado en San Felipe para empresas, PYMES, propietarios, empleadores y personas naturales.",
     audience:
-      "El Valle del Aconcagua —San Felipe, Los Andes y sus alrededores— es una zona con alta actividad agroindustrial, inmobiliaria y empresarial que requiere asesoría legal especializada y cercana.",
-    contentHeading: "Abogado en San Felipe y el Valle del Aconcagua",
+      "San Felipe es una zona con actividad agroindustrial, inmobiliaria y empresarial que requiere asesoría legal especializada y cercana.",
+    contentHeading: "Abogado en San Felipe",
     content: [
-      "El Valle del Aconcagua —San Felipe, Los Andes y sus alrededores— es una zona con alta actividad agroindustrial, inmobiliaria y empresarial que requiere asesoría legal especializada y cercana. Cancino Abogados atiende a empresas y personas de esta zona con el mismo estándar técnico de un estudio metropolitano.",
-      "Ofrecemos atención presencial en San Felipe o en nuestra oficina de Viña del Mar, y consultas virtuales para quienes lo prefieran. También atendemos en Los Andes y toda la provincia de Aconcagua."
+      "San Felipe es una zona con actividad agroindustrial, inmobiliaria y empresarial que requiere asesoría legal especializada y cercana. Cancino Abogados atiende a empresas y personas de esta ciudad con el mismo estándar técnico de un estudio metropolitano.",
+      "Ofrecemos atención presencial en San Felipe o en nuestra oficina de Viña del Mar, y consultas virtuales para quienes lo prefieran."
     ],
-    servicesHeading: "Servicios en San Felipe y el Valle del Aconcagua",
-    serviceItems: [
-      "Derecho inmobiliario rural y urbano",
-      "Litigación civil y comercial",
-      "Asesoría legal para empresas agroindustriales y PYMES",
-      "Defensa laboral para empleadores",
-      "Contratos de arriendo y compraventa",
-      "Constitución de sociedades y estructuración empresarial"
-    ],
+    servicesHeading: "Servicios en San Felipe",
+    serviceItems: allServiceItems,
     highlights: [
       "Empresas agroindustriales y PYMES que requieren respaldo jurídico.",
       "Propietarios, compradores e inversionistas en operaciones rurales o urbanas.",
       "Empleadores que necesitan defensa laboral o prevención de contingencias.",
-      "Personas y empresas del Valle del Aconcagua con conflictos civiles o comerciales."
+      "Personas y empresas de San Felipe con conflictos civiles o comerciales."
     ],
     faqs: sharedFaqs("San Felipe"),
     metaDescription:
-      "Abogado en San Felipe y el Valle del Aconcagua. Derecho civil, inmobiliario, comercial y laboral para empresas y personas. Saúl Cancino, más de 10 años de experiencia."
+      "Abogado en San Felipe. Derecho civil, inmobiliario, comercial y laboral para empresas y personas. Saúl Cancino, más de 10 años de experiencia."
   }
 ];
 
