@@ -10,7 +10,6 @@ import {
   totalReviews
 } from "@data/reviews";
 
-const formattedAverageRating = averageRating.toFixed(1).replace(".0", "");
 const previewLimit = 145;
 
 const getInitials = (name: string) =>
@@ -58,16 +57,14 @@ const reviewSchema = {
 };
 ---
 
-<section class="reviews-section" aria-labelledby="reviews-title">
+<section class="reviews-section" aria-label="Reseñas de Google de Cancino Abogados">
   <div class="reviews-container">
     <aside class="reviews-summary" aria-label="Resumen de reseñas de Google">
-      <h2 id="reviews-title">{businessName}</h2>
       <div class="reviews-summary__logo">
         <img src="/imagenes/Logo-cancino-abogado.webp" alt="Cancino Abogados" loading="lazy" decoding="async" />
       </div>
       <div class="reviews-summary__rating">
-        <span class="reviews-summary__average">{formattedAverageRating}</span>
-        <div class="reviews-stars" aria-label={`Calificación promedio ${formattedAverageRating} de 5`}>
+        <div class="reviews-stars" aria-label="Calificación promedio de 5 estrellas en Google">
           {Array.from({ length: 5 }).map(() => <span aria-hidden="true">★</span>)}
         </div>
       </div>
@@ -323,23 +320,15 @@ const reviewSchema = {
     padding: 0.25rem;
   }
 
-  .reviews-summary h2 {
-    color: #000000;
-    font-size: 1.05rem;
-    font-weight: 900;
-    line-height: 1.2;
-  }
-
   .reviews-summary__logo {
     display: flex;
-    width: 7rem;
-    min-height: 2.45rem;
+    width: 9.35rem;
+    min-height: 3.05rem;
     align-items: center;
-    margin-top: 0.65rem;
   }
 
   .reviews-summary__logo img {
-    max-height: 2.35rem;
+    max-height: 3rem;
     width: auto;
     max-width: 100%;
     object-fit: contain;
@@ -349,13 +338,7 @@ const reviewSchema = {
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0.55rem;
-  }
-
-  .reviews-summary__average {
-    color: #000000;
-    font-size: 1rem;
-    font-weight: 900;
+    margin-top: 0.7rem;
   }
 
   .reviews-stars {
@@ -370,7 +353,7 @@ const reviewSchema = {
     margin-top: 0.45rem;
     color: #000000;
     font-size: 1rem;
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.35;
   }
 
@@ -386,7 +369,7 @@ const reviewSchema = {
     padding: 0.75rem 1.45rem;
     color: #000000;
     font-size: 0.95rem;
-    font-weight: 900;
+    font-weight: 700;
     text-align: center;
     transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease;
   }
@@ -453,7 +436,7 @@ const reviewSchema = {
     background: #0f2752;
     color: #ffffff;
     font-size: 1.05rem;
-    font-weight: 900;
+    font-weight: 800;
   }
 
   .review-card__person {
@@ -465,7 +448,7 @@ const reviewSchema = {
     overflow: hidden;
     color: #000000;
     font-size: 1rem;
-    font-weight: 900;
+    font-weight: 700;
     line-height: 1.2;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -507,7 +490,7 @@ const reviewSchema = {
     margin-top: 0.9rem;
     color: #000000;
     font-size: 1rem;
-    font-weight: 500;
+    font-weight: 400;
     line-height: 1.45;
   }
 
@@ -524,7 +507,7 @@ const reviewSchema = {
     padding-top: 0.75rem;
     color: #7a7a7a;
     font-size: 0.98rem;
-    font-weight: 700;
+    font-weight: 600;
     transition: color 180ms ease;
   }
 

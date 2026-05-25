@@ -10,7 +10,7 @@ export const site = {
   whatsapp: "https://wa.me/56956075464",
   email: "contacto@cancinoabogados.cl",
   emailHref: "mailto:contacto@cancinoabogados.cl",
-  locations: ["Viña del Mar", "Santiago", "Quillota", "San Felipe", "Valle del Aconcagua"],
+  locations: ["Viña del Mar", "Santiago", "Quillota", "San Felipe"],
   lawyer: {
     name: "Saúl Cancino",
     title: "Abogado director",
