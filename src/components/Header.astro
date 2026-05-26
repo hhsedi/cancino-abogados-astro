@@ -79,7 +79,7 @@ const dropdownLink =
                 Atención local
               </p>
               {locations.map((location) => (
-                <a class={dropdownLink} href={`/${location.slug}/`}>
+                <a class={dropdownLink} href={location.href ?? `/${location.slug}/`}>
                   <span>{location.city}</span>
                   <span class="mt-0.5 text-accent opacity-0 transition group-hover/link:translate-x-0.5 group-hover/link:opacity-100" aria-hidden="true">
                     →
@@ -145,7 +145,7 @@ const dropdownLink =
         </summary>
         <div class="grid border-t border-muted-blue/30 p-2">
           {locations.map((location) => (
-            <a class="rounded-md px-3 py-2.5 text-sm font-medium text-text-dark hover:bg-mist hover:text-primary" href={`/${location.slug}/`}>
+            <a class="rounded-md px-3 py-2.5 text-sm font-medium text-text-dark hover:bg-mist hover:text-primary" href={location.href ?? `/${location.slug}/`}>
               {location.city}
             </a>
           ))}

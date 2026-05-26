@@ -59,7 +59,7 @@ const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), f
       </div>
       <div class="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
         {locations.map((location) => (
-          <LocationCard city={location.city} summary={location.summary} href={`/${location.slug}/`} />
+          <LocationCard city={location.city} summary={location.summary} href={location.href ?? `/${location.slug}/`} />
         ))}
       </div>
     </div>

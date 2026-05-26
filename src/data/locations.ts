@@ -5,6 +5,8 @@ const allServiceItems = services.map((service) => service.title);
 export type LocationLanding = {
   city: string;
   slug: string;
+  href?: string;
+  isPrimaryMarket?: boolean;
   keyword: string;
   titleTag: string;
   h1: string;
@@ -42,10 +44,12 @@ const sharedFaqs = (city: string) => [
 export const locations: LocationLanding[] = [
   {
     city: "Viña del Mar",
-    slug: "abogado-vina-del-mar",
-    keyword: "abogado viña del mar",
-    titleTag: "Abogado en Viña del Mar | Cancino Abogados",
-    h1: "Abogado en Viña del Mar",
+    slug: "home",
+    href: "/",
+    isPrimaryMarket: true,
+    keyword: "asesor legal en viña del mar",
+    titleTag: "Asesor legal en Viña del Mar | Cancino Abogados",
+    h1: "Asesor legal en Viña del Mar",
     summary:
       "Asesoría legal estratégica para empresas, PYMES y personas desde la oficina principal de Cancino Abogados en Viña del Mar.",
     audience:
@@ -68,7 +72,7 @@ export const locations: LocationLanding[] = [
     ],
     faqs: sharedFaqs("Viña del Mar"),
     metaDescription:
-      "Abogado en Viña del Mar especializado en derecho civil, comercial, inmobiliario y laboral. Saúl Cancino, Magíster LL.M. UC. Atención presencial y virtual."
+      "Asesor legal en Viña del Mar especializado en derecho civil, comercial, inmobiliario y laboral. Saúl Cancino, Magíster LL.M. UC. Atención presencial y virtual."
   },
   {
     city: "Santiago",

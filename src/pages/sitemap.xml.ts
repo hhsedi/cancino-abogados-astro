@@ -7,7 +7,9 @@ const staticPages = ["", "nosotros", "trayectoria", "faq", "blog", "contacto"];
 
 export async function GET() {
   const servicePages = services.map((service) => service.slug);
-  const locationPages = locations.map((location) => location.slug);
+  const locationPages = locations
+    .filter((location) => !location.isPrimaryMarket)
+    .map((location) => location.slug);
   const blogPages = (await getPosts()).map((post) => `blog/${post.slug}`);
   const pages = [...staticPages, ...servicePages, ...locationPages, ...blogPages];
   const body = `<?xml version="1.0" encoding="UTF-8"?>

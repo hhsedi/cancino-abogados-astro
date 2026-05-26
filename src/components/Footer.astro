@@ -25,7 +25,7 @@ import { site } from "@data/site";
       <h2 class="text-sm font-semibold uppercase tracking-[0.18em] text-gold">Ubicaciones</h2>
       <ul class="mt-4 space-y-3 text-sm text-white/75">
         {locations.map((location) => (
-          <li><a class="hover:text-white" href={`/${location.slug}/`}>{location.city}</a></li>
+          <li><a class="hover:text-white" href={location.href ?? `/${location.slug}/`}>{location.city}</a></li>
         ))}
       </ul>
     </div>
