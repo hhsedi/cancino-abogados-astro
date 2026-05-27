@@ -25,7 +25,7 @@ const temporaryDate = "Fecha por confirmar";
 
 export const reviews: Review[] = [
   {
-    name: "Miguel Capo",
+    name: "Miguel Capó",
     context: "Contratos complejos de construcción",
     quote: "Alto nivel técnico jurídico aplicado en contratos complejos de construcción.",
     rating: 5,
@@ -64,7 +64,7 @@ export const reviews: Review[] = [
     source: "Google"
   },
   {
-    name: "Luna",
+    name: "Luna Bustamante Navarro",
     context: "Asesoría legal empresarial",
     quote:
       "He tenido la oportunidad de trabajar con Saúl Cancino y sus asesorías han sido clave para el área legal de nuestra empresa. Es un abogado comprometido, resolutivo, siempre da respuestas inmediatas y con claridad. Excelente profesional.",

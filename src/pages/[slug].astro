@@ -17,12 +17,10 @@ type PageProps =
 
 export function getStaticPaths() {
   return [
-    ...services.flatMap((service) =>
-      [service.slug, ...(service.aliases ?? [])].map((slug) => ({
-        params: { slug },
-        props: { kind: "service", item: service, currentSlug: slug }
-      }))
-    ),
+    ...services.map((service) => ({
+      params: { slug: service.slug },
+      props: { kind: "service", item: service, currentSlug: service.slug }
+    })),
     ...locations
       .filter((location) => !location.isPrimaryMarket)
       .map((location) => ({

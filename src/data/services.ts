@@ -7,7 +7,6 @@ export type ServiceSection = {
 export type Service = {
   title: string;
   slug: string;
-  aliases?: string[];
   keyword: string;
   titleTag: string;
   h1: string;
@@ -41,7 +40,6 @@ export const services: Service[] = [
   {
     title: "Resolución de controversias en construcción y contratación pública",
     slug: "resolucion-controversias-construccion-contratacion-publica",
-    aliases: ["controversias-construccion-contratacion-publica"],
     keyword: "abogado contrato construcción chile",
     titleTag: "Abogado en construcción y contratación pública | Cancino Abogados",
     h1: "Abogado en controversias de construcción y contratación pública",
@@ -120,7 +118,6 @@ export const services: Service[] = [
   {
     title: "Asesoría legal de empresa",
     slug: "asesoria-legal-empresa",
-    aliases: ["asesoria-legal-empresas"],
     keyword: "asesoría legal empresas viña del mar",
     titleTag: "Asesoría legal para empresas en Viña del Mar | Cancino Abogados",
     h1: "Asesoría legal para empresas en Viña del Mar",
@@ -767,4 +764,4 @@ export const services: Service[] = [
 });
 
 export const getServiceBySlug = (slug: string) =>
-  services.find((service) => service.slug === slug || service.aliases?.includes(slug));
+  services.find((service) => service.slug === slug);
