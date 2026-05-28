@@ -1,13 +1,11 @@
 ---
 import {
-  averageRating,
   businessName,
   googleProfileUrl,
   googleReviewUrl,
   googleReviewsLabel,
   reviews,
-  siteUrl,
-  totalReviews
+  siteUrl
 } from "@data/reviews";
 
 const previewLimit = 145;
@@ -28,20 +26,12 @@ const reviewSchema = {
   "@type": "LegalService",
   name: businessName,
   url: siteUrl,
-  aggregateRating: {
-    "@type": "AggregateRating",
-    ratingValue: Number(averageRating.toFixed(1)),
-    reviewCount: totalReviews,
-    bestRating: 5,
-    worstRating: 1
-  },
   review: reviews.map((review) => ({
     "@type": "Review",
     author: {
       "@type": "Person",
       name: review.name
     },
-    datePublished: review.datePublished,
     reviewBody: review.quote,
     publisher: {
       "@type": "Organization",
@@ -69,6 +59,9 @@ const reviewSchema = {
         </div>
       </div>
       <p>{googleReviewsLabel}</p>
+      <a class="reviews-summary__link" href={googleProfileUrl} target="_blank" rel="noopener noreferrer">
+        Ver todas las reseñas
+      </a>
       <a class="reviews-summary__button" href={googleReviewUrl} target="_blank" rel="noopener noreferrer">
         Escribe una reseña
       </a>
@@ -380,6 +373,19 @@ const reviewSchema = {
     color: #ffffff;
   }
 
+  .reviews-summary__link {
+    margin-top: 0.6rem;
+    color: #0f2752;
+    font-size: 0.92rem;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 0.18rem;
+  }
+
+  .reviews-summary__link:hover {
+    color: #a25226;
+  }
+
   .reviews-carousel {
     position: relative;
     min-width: 0;
@@ -631,6 +637,7 @@ const reviewSchema = {
 
   .reviews-arrow:focus-visible,
   .review-card__read-more:focus-visible,
+  .reviews-summary__link:focus-visible,
   .reviews-summary__button:focus-visible,
   .reviews-modal__close:focus-visible {
     outline: 3px solid rgba(66, 133, 244, 0.34);

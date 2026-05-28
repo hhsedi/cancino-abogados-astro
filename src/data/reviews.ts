@@ -1,9 +1,10 @@
-export const businessName = "Cancino Abogados";
+import { site } from "./site";
 
-export const siteUrl = "https://www.cancinoabogados.cl";
+export const businessName = site.name;
 
-export const googleProfileUrl =
-  "https://www.google.com/maps/place/Cancino+Abogados/@-33.0085545,-71.5510109,17z/data=!4m8!3m7!1s0x26c47ba9a5e697b:0x62e184e3c6026c61!8m2!3d-33.0085545!4d-71.5510109!9m1!1b1!16s%2Fg%2F11yx7vg250?hl=es-419&entry=ttu";
+export const siteUrl = site.url;
+
+export const googleProfileUrl = site.googleBusinessProfileUrl;
 
 export const googleReviewUrl = "https://g.page/r/CWFsAsbjhOFiEBM/review";
 

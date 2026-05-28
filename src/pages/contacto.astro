@@ -33,6 +33,12 @@ const contactItems = [
     value: site.locations.join(" · "),
     href: undefined,
     helper: "Atención vinculada a Viña del Mar, Santiago, Quillota y San Felipe."
+  },
+  {
+    label: "Ficha Google",
+    value: "Ver Cancino Abogados en Google Maps",
+    href: site.googleBusinessProfileUrl,
+    helper: "Consulte la ubicación, indicaciones y reseñas visibles en Google."
   }
 ];
 ---
@@ -41,7 +47,7 @@ const contactItems = [
   title="Contacto"
   description="Contacte a Cancino Abogados por WhatsApp, teléfono o correo. Atención legal en Viña del Mar, Santiago, Quillota y San Felipe."
   path="/contacto/"
-  schema={schema}
+  schemas={schema}
 >
   <section class="bg-mist py-14">
     <div class="container-page">
@@ -70,7 +76,7 @@ const contactItems = [
             <div class="rounded-md border border-muted-blue/35 bg-white p-5 shadow-soft">
               <p class="text-xs font-bold uppercase tracking-[0.18em] text-gold">{item.label}</p>
               {item.href ? (
-                <a class="mt-2 block font-semibold text-primary hover:text-accent-dark" href={item.href} target={item.label === "WhatsApp" ? "_blank" : undefined} rel={item.label === "WhatsApp" ? "noreferrer" : undefined}>
+                <a class="mt-2 block font-semibold text-primary hover:text-accent-dark" href={item.href} target={item.label === "WhatsApp" || item.label === "Ficha Google" ? "_blank" : undefined} rel={item.label === "WhatsApp" || item.label === "Ficha Google" ? "noreferrer" : undefined}>
                   {item.value}
                 </a>
               ) : (

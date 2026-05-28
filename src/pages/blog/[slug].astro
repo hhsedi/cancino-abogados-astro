@@ -2,7 +2,7 @@
 import Breadcrumbs from "@components/Breadcrumbs.astro";
 import MainLayout from "@layouts/MainLayout.astro";
 import { getPostBySlug, getPosts, type BlogPost } from "@lib/blog";
-import { breadcrumbSchema, legalServiceSchema } from "@utils/schema";
+import { articleSchema, breadcrumbSchema, legalServiceSchema, organizationSchema, personSchema } from "@utils/schema";
 import { buildCanonical } from "@utils/seo";
 
 export async function getStaticPaths() {
@@ -43,33 +43,25 @@ const formatDate = (date: string) =>
 
 const schema = [
   legalServiceSchema(),
+  organizationSchema(),
+  personSchema(),
   breadcrumbSchema([
     { name: "Inicio", url: buildCanonical("/") },
     { name: "Blog", url: buildCanonical("/blog/") },
     { name: post.title, url: articleUrl }
   ]),
-  {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    headline: post.title,
+  articleSchema({
+    title: post.title,
     description: post.seoDescription,
-    datePublished: post.date,
-    author: {
-      "@type": "Organization",
-      name: "Cancino Abogados"
-    },
-    publisher: {
-      "@type": "Organization",
-      name: "Cancino Abogados"
-    },
-    image: articleImage,
     url: articleUrl,
-    mainEntityOfPage: articleUrl
-  }
+    image: articleImage,
+    datePublished: post.date,
+    dateModified: post.date
+  })
 ];
 ---
 
-<MainLayout title={post.seoTitle} description={post.seoDescription} path={articlePath} schema={schema}>
+<MainLayout title={post.seoTitle} description={post.seoDescription} path={articlePath} schemas={schema}>
   <section class="bg-mist py-12 sm:py-16">
     <div class="container-page">
       <Breadcrumbs items={[{ label: "Inicio", href: "/" }, { label: "Blog", href: "/blog/" }, { label: post.title }]} />

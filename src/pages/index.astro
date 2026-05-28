@@ -13,16 +13,21 @@ import { faqs } from "@data/faqs";
 import { locations } from "@data/locations";
 import { services } from "@data/services";
 import { site } from "@data/site";
-import { attorneySchema, faqPageSchema, legalServiceSchema, localBusinessSchema } from "@utils/schema";
+import { baseBusinessSchema, breadcrumbSchema, faqPageSchema } from "@utils/schema";
+import { buildCanonical } from "@utils/seo";
 
-const schema = [legalServiceSchema(), localBusinessSchema(), attorneySchema(), faqPageSchema(faqs)];
+const schema = [
+  ...baseBusinessSchema(),
+  breadcrumbSchema([{ name: "Inicio", url: buildCanonical("/") }]),
+  faqPageSchema(faqs)
+];
 ---
 
 <MainLayout
   title="Abogado en Viña del Mar | Cancino Abogados"
   description="Abogado en Viña del Mar con más de 10 años de experiencia. Derecho civil, comercial, inmobiliario y laboral para empresas y personas. Saúl Cancino — Magíster LL.M. UC."
   path="/"
-  schema={schema}
+  schemas={schema}
 >
   <Hero />
 

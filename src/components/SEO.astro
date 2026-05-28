@@ -6,12 +6,13 @@ type Props = {
   description: string;
   path?: string;
   schema?: Record<string, unknown> | Record<string, unknown>[];
+  schemas?: Record<string, unknown>[];
 };
 
-const { title, description, path = "/", schema } = Astro.props;
+const { title, description, path = "/", schema, schemas: schemaList } = Astro.props;
 const pageTitle = buildTitle(title);
 const canonical = buildCanonical(path);
-const schemas = Array.isArray(schema) ? schema : schema ? [schema] : [];
+const schemas = schemaList ?? (Array.isArray(schema) ? schema : schema ? [schema] : []);
 ---
 
 <title>{pageTitle}</title>
