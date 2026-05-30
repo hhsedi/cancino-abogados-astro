@@ -8,7 +8,7 @@ export const googleProfileUrl = site.googleBusinessProfileUrl;
 
 export const googleReviewUrl = "https://g.page/r/CWFsAsbjhOFiEBM/review";
 
-export const googleReviewsLabel = "+ de 80 reseñas de Google";
+export const googleReviewsLabel = "+ de 100 reseñas de Google";
 
 export type Review = {
   name: string;
@@ -133,6 +133,6 @@ export const averageRating =
 
 export const featuredReviewsCount = reviews.length;
 
-export const totalReviews = 80;
+export const totalReviews = 100;
 
 export const testimonials = reviews;
