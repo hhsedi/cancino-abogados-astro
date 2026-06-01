@@ -11,8 +11,8 @@ export const site = {
   phone: "+56 9 5607 5464",
   phoneHref: "tel:+56956075464",
   whatsapp: "https://wa.me/56956075464",
-  email: "scancino@cancinoabogados.cl",
-  emailHref: "mailto:scancino@cancinoabogados.cl",
+  email: "contacto@cancinoabogados.cl",
+  emailHref: "mailto:contacto@cancinoabogados.cl",
   address: {
     streetAddress: "Avenida San Martín 1330",
     addressLocality: "Viña del Mar",
